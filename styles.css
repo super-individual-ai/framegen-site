@@ -53,6 +53,7 @@ header.top.scrolled { border-bottom-color: var(--line); }
 .links a:hover { color: var(--text); }
 .end { margin-left: auto; display: flex; align-items: center; gap: 6px; }
 .icon-btn { display: inline-flex; align-items: center; gap: 6px; height: 36px; padding: 0 10px; border: 0; border-radius: 9px; background: transparent; color: var(--muted); font: 500 14px var(--sans); cursor: pointer; }
+.icon-btn { text-decoration: none; flex-shrink: 0; white-space: nowrap; }
 .icon-btn:hover { color: var(--text); background: var(--panel); }
 .icon-btn .sun { display: none; }
 :root[data-theme="dark"] .icon-btn .sun { display: block; }
@@ -161,6 +162,39 @@ h2 { margin: 0; font-size: clamp(30px, 4vw, 40px); line-height: 1.15; letter-spa
 .closing { text-align: center; }
 .closing p { margin: 14px auto 30px; max-width: 520px; color: var(--muted); }
 
+/* Guides share the product page's type, color and spacing. */
+.guide-links { border-top: 1px solid var(--line); }
+.guide-links article { padding: 24px 0; border-bottom: 1px solid var(--line); }
+.guide-links h3 { margin: 0; font-size: 20px; line-height: 1.4; }
+.guide-links a { text-decoration-thickness: 1px; text-underline-offset: 5px; }
+.guide-links p { margin: 10px 0 0; color: var(--muted); }
+.reading { width: min(760px, 100% - 48px); margin: 0 auto; padding: 48px 0 88px; font-size: 18px; line-height: 1.85; }
+.breadcrumbs { margin-bottom: 34px; color: var(--muted); font-size: 14px; }
+.breadcrumbs a { text-underline-offset: 4px; }
+.reading h1 { font-size: clamp(30px, 5vw, 48px); line-height: 1.25; text-wrap: balance; letter-spacing: -0.025em; }
+.reading h2 { margin: 48px 0 16px; font-size: clamp(24px, 3vw, 28px); line-height: 1.4; text-wrap: balance; }
+.reading h3 { margin: 32px 0 12px; font-size: 21px; line-height: 1.4; }
+.reading p { margin: 16px 0; }
+.reading .article-meta { margin-top: 18px; color: var(--muted); font-size: 14px; }
+.reading .answer { margin: 24px 0 32px; font-size: 21px; }
+.reading a { text-underline-offset: 4px; }
+.reading li + li { margin-top: 12px; }
+.reading ol, .reading ul { padding-left: 1.5em; }
+.reading figure { margin: 32px 0; }
+.reading figure img { width: 100%; height: auto; border-radius: 12px; }
+.reading figcaption { margin-top: 12px; color: var(--muted); font-size: 14px; }
+.table-scroll { overflow-x: auto; margin: 24px 0; }
+.reading table { width: 100%; min-width: 510px; border-collapse: collapse; font-size: 16px; text-align: left; }
+.reading th, .reading td { padding: 14px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.reading th { font-weight: 650; }
+.reading th:first-child { width: 21%; }
+.reading .sources { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line); font-size: 15px; color: var(--muted); }
+.reading .related { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 12px 24px; }
+.guide-nav { margin-left: auto; display: flex; gap: 20px; font-size: 15px; }
+.guide-nav a { text-decoration: none; }
+.guide-nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
+::selection { background: var(--accent); color: #17171a; }
+
 footer { border-top: 1px solid var(--line); }
 footer .bar { min-height: 76px; flex-wrap: wrap; gap: 14px 28px; }
 footer .fine { margin: 0 0 0 auto; }
@@ -183,6 +217,9 @@ dialog.player .close { position: absolute; right: 10px; top: 10px; width: 36px; 
   footer .fine { margin-left: 0; }
 }
 @media (max-width: 520px) {
+  .bar { gap: 12px; }
+  .end .icon-btn, .end .gh { padding-inline: 6px; }
+  .end [data-language-switch] svg { display: none; }
   .cmd { width: 100%; }
   .cta .btn { width: 100%; }
   .watch { left: 12px; bottom: 12px; }
