@@ -346,9 +346,10 @@ h2 {
 .steps li > span { grid-column: 2; grid-row: 2; color: var(--muted); font-size: 15px; line-height: 1.55; }
 
 .head { margin-bottom: 32px; max-width: 40em; }
-.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px 20px; }
-.card h3 { margin-top: 14px; font-size: 16px; font-weight: 650; letter-spacing: -0.012em; }
-.card p { margin-top: 6px; color: var(--muted); font-size: 14.5px; line-height: 1.55; }
+.cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 42px 28px; }
+.card h3 { margin-top: 16px; font-size: 18px; font-weight: 650; letter-spacing: -0.012em; }
+.card p { margin-top: 6px; color: var(--muted); font-size: 15.5px; line-height: 1.55; }
+.card-any { grid-column: 1 / -1; }
 .illu-wrap {
   position: relative;
   aspect-ratio: 16 / 10;
@@ -378,8 +379,10 @@ h2 {
   background: var(--card);
   color: var(--text);
   box-shadow: 0 0 0 1px var(--line);
-  font: 650 12px/1 var(--mono);
+  max-width: calc(100% - 20px);
+  font: 650 12px/1.35 var(--mono);
   letter-spacing: 0.01em;
+  white-space: normal;
 }
 .pip { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); display: block; }
 .illu-wrap.plus {
@@ -389,6 +392,7 @@ h2 {
   background-size: 16px 16px;
 }
 .plus-btn {
+  flex: none;
   width: 52px;
   height: 52px;
   border-radius: 50%;
@@ -399,6 +403,21 @@ h2 {
   color: var(--text);
 }
 .plus-btn svg { width: 22px; height: 22px; display: block; }
+.plus-bar {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  min-height: 120px;
+  padding: 24px 32px;
+  border-radius: 12px;
+  background-color: var(--panel);
+  background-image: radial-gradient(var(--line-strong) 1.15px, transparent 1.15px);
+  background-size: 16px 16px;
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+.plus-copy { min-width: 0; }
+.plus-bar h3 { margin: 0; }
+.plus-bar p { margin: 4px 0 0; }
 
 .faq-list { min-width: 0; }
 [data-faq] { border-top: 1px solid var(--line); }
@@ -460,6 +479,8 @@ footer nav a:hover { color: var(--text); }
   .section { padding: 56px 0; }
   .split { grid-template-columns: minmax(0, 1fr); gap: 22px; }
   .cards { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .card-any { grid-column: auto; }
+  .plus-bar { padding: 20px; }
   .foot .fine { margin-left: 0; }
 }
 

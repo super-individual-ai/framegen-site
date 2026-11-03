@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
-  <title>〔产品名〕 · Mac 实时补帧</title>
-  <meta name="description" content="在 Mac 上实时补帧。识别窗口里的真实帧率，用本地 AI 补出中间帧，画面不离开这台 Mac。">
+  <title>〔产品名〕 · Mac 实时补帧与超分</title>
+  <meta name="description" content="在 Mac 上实时补帧和超分。24 帧变成 48 帧，低分辨率画面放大到屏幕分辨率，全部在本地完成。">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1.6' y='1.6' width='12.8' height='12.8' rx='3' fill='none' stroke='%23e04e22' stroke-width='1.4' stroke-dasharray='2.2 1.8'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -34,8 +34,8 @@
   <main>
     <section id="hero">
       <div class="wrap">
-        <h1><span data-i18n="h1a">让 Mac 上的画面</span><br><span data-i18n="h1b">流畅一倍</span></h1>
-        <p class="sub" data-i18n="sub">实时识别窗口里的真实帧率，用本地 AI 补出中间帧。24 帧的电影变 48 帧，30 帧变 60 帧，片源不用改，画面不出这台 Mac。</p>
+        <h1><span data-i18n="h1a">让 Mac 上的画面</span><br><span data-i18n="h1b">更流畅、更清晰</span></h1>
+        <p class="sub" data-i18n="sub">实时补帧，把 24 帧变成 48 帧；实时超分，把低分辨率画面放大到屏幕分辨率。网页视频、下载的视频、游戏和串流画面都能用，全部在本地完成。</p>
         <div class="actions">
           <button type="button" class="btn solid" data-cta="download" aria-disabled="true" data-i18n="download">下载 Mac 版（即将推出）</button>
           <a class="btn" href="#how" data-i18n="seeHow">看看原理</a>
@@ -78,8 +78,8 @@
             <span data-i18n="how1d">只数画面真正变化的帧，24 帧的视频按 24 帧算，不会被 120 Hz 刷新率骗到。</span>
           </li>
           <li>
-            <strong data-i18n="how2t">2 倍、3 倍补帧</strong>
-            <span data-i18n="how2d">24 → 48、30 → 60，也可以试试 24 → 72。</span>
+            <strong data-i18n="how2t">补帧和超分</strong>
+            <span data-i18n="how2d">2 倍、3 倍补帧，24 → 48、30 → 60；低分辨率画面实时放大，细节更清楚。</span>
           </li>
           <li>
             <strong data-i18n="how3t">算力不够自动降档</strong>
@@ -109,7 +109,7 @@
       <div class="wrap">
         <div class="head">
           <h2 data-i18n="usesTitle">适合用在哪</h2>
-          <p class="lede" data-i18n="usesLede">只要是窗口里在动的画面，都可以试试。</p>
+          <p class="lede" data-i18n="usesLede">四个最常用的场景，也可以选任何窗口试试。</p>
         </div>
         <div class="cards">
           <article class="card" data-card>
@@ -123,10 +123,10 @@
                 <rect class="screen" x="60" y="52" width="200" height="86" rx="6"/>
                 <path class="accent" d="M146 80l26 15-26 15z"/>
               </svg>
-              <span class="rate"><i class="pip"></i>24 → 48</span>
+              <span class="rate"><i class="pip"></i>24 → 48 fps</span>
             </div>
             <h3 data-i18n="use1t">网页视频</h3>
-            <p data-i18n="use1d">浏览器里的视频网站，普通窗口或网页全屏都行。</p>
+            <p data-i18n="use1d">浏览器里的视频网站，普通窗口或网页全屏都行，24 帧补到 48 帧。</p>
           </article>
           <article class="card" data-card>
             <div class="illu-wrap">
@@ -144,65 +144,58 @@
                 <circle class="accent" cx="198" cy="82" r="11"/>
                 <path class="ground" d="M64 108c26-16 46-14 76-4s50 0 70 8 38 6 62-2v18H64z"/>
               </svg>
-              <span class="rate"><i class="pip"></i>24 → 48</span>
+              <span class="rate"><i class="pip"></i>24 → 48 fps · 720p → 1440p</span>
             </div>
-            <h3 data-i18n="use2t">本地电影</h3>
-            <p data-i18n="use2d">播放器里的 24 帧电影，镜头平移不再一顿一顿。</p>
+            <h3 data-i18n="use2t">下载的视频</h3>
+            <p data-i18n="use2d">播放器里的电影和剧集，镜头平移不再一顿一顿，低清片源也能放大得更清楚。</p>
           </article>
           <article class="card" data-card>
             <div class="illu-wrap">
               <svg class="scene" viewBox="0 0 320 200" aria-hidden="true">
-                <rect class="win" x="54" y="40" width="148" height="108" rx="10" transform="rotate(-7 128 94)"/>
-                <rect class="win" x="78" y="34" width="148" height="108" rx="10" transform="rotate(-2 152 88)"/>
-                <rect class="win" x="104" y="32" width="148" height="108" rx="10"/>
-                <circle class="accent" cx="166" cy="70" r="14"/>
-                <rect class="ink" x="150" y="90" width="32" height="28" rx="8"/>
+                <rect class="win" x="28" y="64" width="84" height="58" rx="8"/>
+                <rect class="screen" x="36" y="72" width="68" height="34"/>
+                <path class="accent" d="M128 86h20v-7l16 14-16 14v-7h-20z"/>
+                <rect class="win" x="176" y="34" width="116" height="118" rx="10"/>
+                <rect class="screen" x="186" y="46" width="96" height="82" rx="4"/>
+                <circle class="accent" cx="228" cy="72" r="9"/>
+                <path class="ground" d="M186 112c18-12 32-10 50-2s30 2 46 8v8H186z"/>
               </svg>
-              <span class="rate"><i class="pip"></i>24 → 48</span>
+              <span class="rate"><i class="pip"></i>1080p → 1440p</span>
             </div>
-            <h3 data-i18n="use3t">动画番剧</h3>
-            <p data-i18n="use3d">帧数低的动画，动作更连贯。</p>
+            <h3 data-i18n="use3t">游戏超分</h3>
+            <p data-i18n="use3d">用较低分辨率跑游戏，换更高帧率，再实时放大到屏幕分辨率，清晰和流畅兼顾。</p>
           </article>
           <article class="card" data-card>
             <div class="illu-wrap">
               <svg class="scene" viewBox="0 0 320 200" aria-hidden="true">
-                <rect class="win" x="42" y="26" width="196" height="140" rx="12"/>
-                <circle class="accent" cx="62" cy="46" r="5"/>
-                <rect class="chip" x="76" y="41" width="72" height="10" rx="5"/>
-                <rect class="screen" x="58" y="66" width="164" height="8" rx="4"/>
-                <rect class="screen" x="58" y="82" width="136" height="8" rx="4"/>
-                <rect class="screen" x="58" y="98" width="112" height="8" rx="4"/>
-                <path class="ink" d="M196 118l16 5-3 3 8 8-5 5-8-8-4 3z"/>
+                <rect class="win" x="24" y="78" width="32" height="68" rx="4"/>
+                <rect class="chip" x="30" y="90" width="20" height="4" rx="1"/>
+                <rect class="chip" x="30" y="100" width="20" height="4" rx="1"/>
+                <circle class="accent" cx="40" cy="128" r="3"/>
+                <rect class="win" x="66" y="46" width="78" height="56" rx="6"/>
+                <rect class="screen" x="72" y="52" width="66" height="38"/>
+                <rect class="ink" x="96" y="102" width="18" height="6"/>
+                <rect class="ink" x="84" y="108" width="42" height="4" rx="1"/>
+                <path class="accent" d="M156 84h18v-6l14 12-14 12v-6h-18z"/>
+                <rect class="win" x="204" y="52" width="86" height="56" rx="6"/>
+                <rect class="screen" x="210" y="58" width="74" height="42"/>
+                <path class="ink" d="M192 112h118l-12 14H204z"/>
               </svg>
-              <span class="rate"><i class="pip"></i>30 → 60</span>
+              <span class="rate"><i class="pip"></i>PC → Mac · 1080p → 1440p</span>
             </div>
-            <h3 data-i18n="use4t">录屏与教程</h3>
-            <p data-i18n="use4d">30 帧的录屏回放，滚动和拖动更顺。</p>
+            <h3 data-i18n="use4t">Windows 游戏串流到 Mac</h3>
+            <p data-i18n="use4d">用串流软件把 Windows 电脑上的游戏投到 Mac，在 Mac 上超分，串流画面更清晰。</p>
           </article>
-          <article class="card" data-card>
-            <div class="illu-wrap">
-              <svg class="scene" viewBox="0 0 320 200" aria-hidden="true">
-                <rect class="screen" x="36" y="28" width="248" height="136" rx="12"/>
-                <circle class="accent" cx="232" cy="58" r="12"/>
-                <ellipse class="chip" cx="160" cy="142" rx="110" ry="26"/>
-                <circle class="ink" cx="108" cy="104" r="8"/>
-                <rect class="ink" x="98" y="114" width="20" height="22" rx="6"/>
-                <circle class="ink" cx="178" cy="104" r="16"/>
-                <rect class="ink" x="174" y="114" width="8" height="22" rx="3"/>
-              </svg>
-              <span class="rate"><i class="pip"></i>30 → 60</span>
-            </div>
-            <h3 data-i18n="use5t">慢节奏游戏</h3>
-            <p data-i18n="use5d">锁 30 帧的单机游戏。补帧会增加一点延迟，不适合竞技对战。</p>
-          </article>
-          <article class="card" data-card>
-            <div class="illu-wrap plus">
+          <article class="card card-any" data-card>
+            <div class="plus-bar">
               <span class="plus-btn" aria-hidden="true">
                 <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
               </span>
+              <div class="plus-copy">
+                <h3 data-i18n="use5t">任意窗口</h3>
+                <p data-i18n="use5d">别的窗口也能选，效果自己看。</p>
+              </div>
             </div>
-            <h3 data-i18n="use6t">任意窗口</h3>
-            <p data-i18n="use6d">别的窗口也能选，效果自己看。</p>
           </article>
         </div>
       </div>
@@ -221,7 +214,7 @@
             </button>
             <div class="answer" id="faq-a1" role="region" aria-hidden="true">
               <div class="answer-inner">
-                <p data-i18n="faq1a">一款 Mac 上的实时补帧应用。它识别窗口里画面的真实帧率，用本地 AI 模型在两帧之间补出新画面，让视频和动画更流畅。</p>
+                <p data-i18n="faq1a">一款 Mac 上的实时补帧和超分应用。它识别窗口里画面的真实帧率，用本地 AI 模型补出中间帧，也能把低分辨率画面实时放大，让视频、游戏和串流画面更流畅、更清晰。</p>
               </div>
             </div>
           </div>
