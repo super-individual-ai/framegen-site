@@ -29,6 +29,6 @@ python3 -m http.server 4178 --bind 127.0.0.1
 - `main.js`：链接、版本、英文文案、主题和语言切换、播放器。
 - `styles.css`：浅色和深色主题，桌面端和移动端样式。
 - `assets/openduckframe-library.webp`：v0.1.0 技术库实机截图。
-- `assets/media/hero.mp4`、`promo.mp4`：首屏动画和宣传片，由程序生成，页面上标为示意。
+- `assets/media/hero.mp4`：首屏示意动画；`assets/media/promo-v2.mp4`：52 秒宣传片。
 - `assets/media/*.jpg`：场景卡片配图，均为示意图。
 - `assets/icon.png`、`favicon.png`、`og.jpg`：图标和分享卡片。
