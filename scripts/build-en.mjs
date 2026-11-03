@@ -27,6 +27,7 @@ html = html
   .replace('<meta property="og:locale:alternate" content="en_US">', '<meta property="og:locale:alternate" content="zh_CN">')
   .replace('href="/en/" data-language-switch', 'href="/" data-language-switch')
   .replace('<span class="lang-label">EN</span>', '<span class="lang-label">中文</span>')
+  .replace(/<a href="\/guides\/([^"]+)" hreflang="zh-CN"/g, '<a href="/en/guides/$1" hreflang="en"')
   .replace(/\b(href|src|poster)="(?![a-z]+:|\/|#)([^"]+)"/g, '$1="/$2"');
 
 html = html.replace(/(<script type="application\/ld\+json" id="site-schema">)([\s\S]*?)(<\/script>)/, (_, open, json, close) => {

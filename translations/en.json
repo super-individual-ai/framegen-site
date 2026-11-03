@@ -114,8 +114,8 @@
   "navGuides": "Guides",
   "guidesTitle": "Mac video guides",
   "guidesBody": "Choose a source and engine, then check the frame rate actually displayed.",
-  "guideFrameTitle": "How to interpolate video on a Mac (Chinese)",
+  "guideFrameTitle": "How to interpolate video on a Mac",
   "guideFrameBody": "System requirements, window and local-file setup, and why a 4× setting does not guarantee 120 fps.",
-  "guideScaleTitle": "Frame generation vs. upscaling (Chinese)",
+  "guideScaleTitle": "Frame generation vs. upscaling",
   "guideScaleBody": "One changes motion continuity; the other changes picture dimensions. Learn when to use each or both."
 }
