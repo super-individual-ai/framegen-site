@@ -53,7 +53,7 @@ const EN = {
   usesNote: "Pictures are illustrations.",
   dlTitle: "Download", dlBody: "Release builds are published on GitHub, together with every earlier version.", allReleases: "All releases",
   reqs: "macOS 14 or later · Mac with Apple silicon", downloadDmg: "Download .dmg",
-  s1t: "Drag to Applications", s1d: "Open the downloaded .dmg and drag OpenDuckFrame into the Applications folder.",
+  s1t: "Drag to Applications", s1d: "Open the downloaded .dmg and drag OpenDuckFrame into Applications. This community build is not Apple notarized; macOS may block its first launch.",
   s2t: "Allow screen recording", s2d: "The first time you choose a window, turn on OpenDuckFrame in System Settings › Privacy & Security › Screen Recording.",
   s3t: "Choose a window and start", s3d: "Pick the source in the Quality Workbench and press Start. After three seconds the output covers the original window.",
   notesTitle: "In this version", limitsTitle: "Known limits",
@@ -69,7 +69,7 @@ const EN = {
   q4: "Does it work in full screen?", a4: "Normal windows and full-page video work today. macOS full screen is in development.",
   q5: "Is anything uploaded?", a5: "No. Capture, detection and frame generation all run on your Mac, and there is no account.",
   q6: "How much does it cost?", a6: "Nothing. The source code is on GitHub under the MIT License.",
-  q7: "macOS says it can't verify the developer.", a7: "Release builds are notarized by Apple and open normally. If you built it yourself, Control-click OpenDuckFrame in Applications and choose Open.",
+  q7: "macOS says it can't verify the developer.", a7: "This community build is not Apple notarized. If you trust the download, review its blocked-launch message in System Settings → Privacy & Security and decide whether to allow it. The app does not change system security settings.",
   openTitle: "Built in the open", openBody: "OpenDuckFrame is free and MIT licensed. A star helps more people find it.",
   footReleases: "Releases", footPrivacy: "Privacy", footLicense: "License",
 };

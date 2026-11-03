@@ -20,8 +20,8 @@ python3 -m http.server 4178 --bind 127.0.0.1
 链接和版本号只在 `main.js` 顶部的 `SITE` 里改。
 
 - `SITE.version`：页面上显示的版本号。
-- `SITE.links.dmg`：指向 `releases/latest/download/OpenDuckFrame.dmg`。GitHub 会把它解析到最新 Release 里名为 `OpenDuckFrame.dmg` 的附件。只要每次发版都带上这个固定文件名的附件，就不用改链接。产品仓库里的 `Scripts/publish_github_release.sh` 会自动上传它。
-- 第一个 Release 发出来之前，“下载 Mac 版”按钮会返回 404。
+- `SITE.links.dmg`：指向 `releases/latest/download/OpenDuckFrame.dmg`。GitHub 会把它解析到最新 Release 里名为 `OpenDuckFrame.dmg` 的附件。只要每次发版都带上这个固定文件名的附件，就不用改链接。产品仓库里的 `Scripts/community_release.py` 会自动上传它。
+- 当前提供 0.1.0 社区版（未经过 Apple 公证），支持签名验证的应用内更新。
 
 ## 内容与资源
 
