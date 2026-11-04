@@ -3,25 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>OpenDuckFrame guide: real-time video interpolation on Mac</title>
-<meta name="description" content="Use OpenDuckFrame, a free open-source Mac app, to interpolate windows, displays and local video in real time. Check Apple silicon and macOS requirements, start with 2×, and understand actual output frame rates.">
+<title>Mac frame generation and video interpolation guide | OpenDuckFrame</title>
+<meta name="description" content="Use OpenDuckFrame for real-time frame generation on a Mac. Learn window and local-video interpolation, how it differs from in-game frame generation, 2× setup and actual output limits.">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="canonical" href="https://openduckframe.cn/en/guides/mac-video-frame-interpolation/">
 <link rel="alternate" hreflang="zh-CN" href="https://openduckframe.cn/guides/mac-video-frame-interpolation/">
 <link rel="alternate" hreflang="en" href="https://openduckframe.cn/en/guides/mac-video-frame-interpolation/">
 <link rel="alternate" hreflang="x-default" href="https://openduckframe.cn/guides/mac-video-frame-interpolation/">
-<link rel="icon" type="image/png" href="/assets/favicon.png">
-<link rel="stylesheet" href="/styles.css?v=20261103-seo4">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon.png">
+<link rel="stylesheet" href="/styles.css?v=20261104-seo5">
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="OpenDuckFrame">
 <meta property="og:url" content="https://openduckframe.cn/en/guides/mac-video-frame-interpolation/">
-<meta property="og:title" content="How to interpolate video on a Mac with OpenDuckFrame">
-<meta property="og:description" content="Choose a window or local video, start with 2× frame generation, and compare the actual displayed result with the original.">
+<meta property="og:title" content="How to use frame generation on a Mac">
+<meta property="og:description" content="Use OpenDuckFrame for real-time frame generation on a Mac. Learn window and local-video interpolation, how it differs from in-game frame generation, 2× setup and actual output limits.">
 <meta property="og:image" content="https://openduckframe.cn/assets/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://openduckframe.cn/en/guides/mac-video-frame-interpolation/#article","url":"https://openduckframe.cn/en/guides/mac-video-frame-interpolation/","headline":"How to interpolate video on a Mac with OpenDuckFrame","description":"System requirements, real-time frame-generation setup and the limits of actual displayed frame rates.","inLanguage":"en","datePublished":"2026-11-03","dateModified":"2026-11-03","about":{"@id":"https://openduckframe.cn/#app"},"isPartOf":{"@id":"https://openduckframe.cn/#website"},"image":"https://openduckframe.cn/assets/openduckframe-library.webp","citation":["https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/quick-start.md","https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/features.md"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"OpenDuckFrame","item":"https://openduckframe.cn/en/"},{"@type":"ListItem","position":2,"name":"Mac video interpolation guide","item":"https://openduckframe.cn/en/guides/mac-video-frame-interpolation/"}]}]}
+{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://openduckframe.cn/en/guides/mac-video-frame-interpolation/#article","url":"https://openduckframe.cn/en/guides/mac-video-frame-interpolation/","headline":"How to use frame generation on a Mac","description":"Use OpenDuckFrame for real-time frame generation on a Mac. Learn window and local-video interpolation, how it differs from in-game frame generation, 2× setup and actual output limits.","inLanguage":"en","datePublished":"2026-11-03","dateModified":"2026-11-04","about":{"@type":"SoftwareApplication","@id":"https://openduckframe.cn/#app","name":"OpenDuckFrame","alternateName":"开源小鸭","url":"https://openduckframe.cn/","sameAs":"https://github.com/Jun-bao/OpenDuckFrame"},"isPartOf":{"@id":"https://openduckframe.cn/#website"},"image":"https://openduckframe.cn/assets/openduckframe-library.webp","citation":["https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/quick-start.md","https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/features.md"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"OpenDuckFrame","item":"https://openduckframe.cn/en/"},{"@type":"ListItem","position":2,"name":"Mac video interpolation guide","item":"https://openduckframe.cn/en/guides/mac-video-frame-interpolation/"}]}]}
 </script>
 <script>try { const theme = localStorage.getItem("odf-theme"); if (theme === "dark" || theme === "light") document.documentElement.dataset.theme = theme; } catch (e) {}</script>
 </head>
@@ -33,8 +33,8 @@
 <main class="reading">
   <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/en/">Home</a> / Mac video interpolation guide</nav>
   <article>
-    <h1>How to interpolate video on a Mac</h1>
-    <p class="article-meta">Updated <time datetime="2026-11-03">November 3, 2026</time> · Based on OpenDuckFrame 0.1.0 and project documentation · <a href="/guides/mac-video-frame-interpolation/" hreflang="zh-CN" lang="zh-CN">中文版</a></p>
+    <h1>How to use frame generation on a Mac</h1>
+    <p class="article-meta">Updated <time datetime="2026-11-04">November 4, 2026</time> · Based on OpenDuckFrame 0.1.0 and project documentation · <a href="/guides/mac-video-frame-interpolation/" hreflang="zh-CN" lang="zh-CN">中文版</a></p>
     <p class="answer">OpenDuckFrame is a free, open-source Mac app that generates intermediate pictures for windows, displays and local video in real time. On an Apple silicon Mac, open File → Quality Workbench, choose a source, start with 2× frame generation, and compare the FPS overlay and the picture with the original. Picture processing stays on your Mac.</p>
 
     <h2>Check your Mac and display first</h2>
@@ -44,6 +44,10 @@
       <li><strong>Display:</strong> Its refresh rate limits how many distinct pictures you can see. A 60 Hz display cannot present 120 distinct frames per second.</li>
     </ul>
     <p>Get the GitHub release from the <a href="/en/#download">official download section</a>. The current community build is not Apple notarized. Check the download source before deciding whether to allow its first launch through macOS.</p>
+
+    <h2>How does window interpolation differ from in-game frame generation?</h2>
+    <p>OpenDuckFrame processes pictures that have already been displayed or decoded. It captures a game, browser or player window, or reads a local video directly, then generates intermediate pictures. It does not increase the source application's simulation or logic update rate. Smoother output does not mean the game has rendered more native frames.</p>
+    <p>For a window source, check capture, motion quality and input latency together. Do not assume that the compatibility, frame rate or latency of a game's built-in frame-generation implementation also applies to window capture.</p>
 
     <h2>Start with a simple 2× setup</h2>
     <ol>
@@ -72,7 +76,7 @@
     <p>This guide covers real-time enhancement while viewing. Generating intermediate pictures does not increase the source application's simulation or logic update rate.</p>
 
     <div class="sources"><p>Sources: the project's <a href="https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/quick-start.md">quick start</a> and <a href="https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/features.md">features and requirements</a>. Refer to the current project documentation and the app's availability state for supported configurations.</p></div>
-    <nav class="related" aria-label="Related pages"><a href="/en/guides/frame-generation-vs-upscaling/">Frame generation vs. upscaling</a><a href="/en/#download">Download OpenDuckFrame</a><a href="https://github.com/Jun-bao/OpenDuckFrame/issues">Report a problem</a></nav>
+    <nav class="related" aria-label="Related pages"><a href="/en/guides/mac-video-upscaling/">Mac video upscaling guide</a><a href="/en/guides/frame-generation-vs-upscaling/">Frame generation vs. upscaling</a><a href="/en/#download">Download OpenDuckFrame</a><a href="https://github.com/Jun-bao/OpenDuckFrame/issues">Report a problem</a></nav>
   </article>
 </main>
 <footer><div class="wrap bar"><a class="brand" href="/en/">OpenDuckFrame</a><p class="fine">Free · Open source (MIT) · Local processing</p></div></footer>

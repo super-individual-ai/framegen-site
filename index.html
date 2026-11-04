@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>OpenDuckFrame（开源小鸭）官网 | Mac 实时补帧与视频超分</title>
-<meta name="description" content="OpenDuckFrame（开源小鸭）是免费开源的 Mac 实时补帧与超分应用，支持窗口、显示器和本地视频。RIFE 与 Apple 插帧，画面在本机处理，无需账号。适用于 Apple 芯片 Mac，macOS 14+。">
+<title>OpenDuckFrame（开源小鸭）官网 | Mac 帧生成与实时超分</title>
+<meta name="description" content="OpenDuckFrame（开源小鸭）是免费开源的 Mac 帧生成（视频补帧）与超分应用，支持窗口、显示器和本地视频。RIFE 与 Apple 插帧，画面在本机处理，无需账号。适用于 Apple 芯片 Mac，macOS 14+。">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="google-site-verification" content="zg7aWTV5WbYvKjNawczuvA6CRnt5Tj6Yqc69Py7mdcI">
 <meta name="msvalidate.01" content="4435EE63ABA0D88CBFEF3C08BE95830D">
@@ -18,16 +18,17 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:locale:alternate" content="en_US">
 <meta property="og:url" content="https://openduckframe.cn/">
-<meta property="og:title" content="OpenDuckFrame（开源小鸭）官网 | Mac 实时补帧与视频超分">
+<meta property="og:title" content="OpenDuckFrame（开源小鸭）官网 | Mac 帧生成与实时超分">
 <meta property="og:description" content="免费开源的 Mac 实时补帧与超分应用。支持窗口、显示器和本地视频，画面在本机处理，无需账号。Apple 芯片 · macOS 14+。">
 <meta property="og:image" content="https://openduckframe.cn/assets/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="OpenDuckFrame（开源小鸭）官网 | Mac 实时补帧与视频超分">
+<meta name="twitter:title" content="OpenDuckFrame（开源小鸭）官网 | Mac 帧生成与实时超分">
 <meta name="twitter:description" content="免费开源的 Mac 实时补帧与超分应用。支持窗口、显示器和本地视频，画面在本机处理，无需账号。Apple 芯片 · macOS 14+。">
 <meta name="twitter:image" content="https://openduckframe.cn/assets/og.jpg">
-<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="apple-touch-icon" href="assets/icon.png">
-<link rel="stylesheet" href="styles.css?v=20261103-seo4">
+<link rel="stylesheet" href="styles.css?v=20261104-seo5">
 <script type="application/ld+json" id="site-schema">
 {
   "@context": "https://schema.org",
@@ -37,16 +38,19 @@
       "@id": "https://openduckframe.cn/#website",
       "url": "https://openduckframe.cn/",
       "name": "OpenDuckFrame",
-      "alternateName": "开源小鸭",
-      "inLanguage": ["zh-CN", "en"]
+      "alternateName": ["开源小鸭", "openduckframe.cn"],
+      "inLanguage": ["zh-CN", "en"],
+      "about": {"@id": "https://openduckframe.cn/#app"}
     },
     {
       "@type": "SoftwareApplication",
       "@id": "https://openduckframe.cn/#app",
       "name": "OpenDuckFrame",
       "alternateName": "开源小鸭",
+      "identifier": "OpenDuckFrame",
       "url": "https://openduckframe.cn/",
-      "description": "免费开源的 Mac 实时补帧与超分应用，支持窗口、显示器和本地视频。画面在本机处理，无需账号。",
+      "mainEntityOfPage": {"@id": "https://openduckframe.cn/#webpage"},
+      "description": "免费开源的 Mac 帧生成（视频补帧）与超分应用，支持窗口、显示器和本地视频。画面在本机处理，无需账号。",
       "applicationCategory": "MultimediaApplication",
       "operatingSystem": "macOS 14 or later",
       "processorRequirements": "Apple silicon",
@@ -58,16 +62,18 @@
       "downloadUrl": "https://github.com/Jun-bao/OpenDuckFrame/releases/latest/download/OpenDuckFrame.dmg",
       "license": "https://github.com/Jun-bao/OpenDuckFrame/blob/main/LICENSE",
       "sameAs": "https://github.com/Jun-bao/OpenDuckFrame",
+      "isAccessibleForFree": true,
       "offers": {"@type": "Offer", "price": "0", "priceCurrency": "CNY"}
     },
     {
       "@type": "WebPage",
       "@id": "https://openduckframe.cn/#webpage",
       "url": "https://openduckframe.cn/",
-      "name": "OpenDuckFrame（开源小鸭）官网 | Mac 实时补帧与视频超分",
-      "description": "OpenDuckFrame（开源小鸭）是免费开源的 Mac 实时补帧与超分应用，支持窗口、显示器和本地视频。RIFE 与 Apple 插帧，画面在本机处理，无需账号。适用于 Apple 芯片 Mac，macOS 14+。",
+      "name": "OpenDuckFrame（开源小鸭）官网 | Mac 帧生成与实时超分",
+      "description": "OpenDuckFrame（开源小鸭）是免费开源的 Mac 帧生成（视频补帧）与超分应用，支持窗口、显示器和本地视频。RIFE 与 Apple 插帧，画面在本机处理，无需账号。适用于 Apple 芯片 Mac，macOS 14+。",
       "inLanguage": "zh-CN",
       "isPartOf": {"@id": "https://openduckframe.cn/#website"},
+      "mainEntity": {"@id": "https://openduckframe.cn/#app"},
       "about": {"@id": "https://openduckframe.cn/#app"}
     }
   ]
@@ -111,8 +117,8 @@
 <main id="top">
   <section class="hero">
     <div class="wrap">
-      <h1><span data-i18n="h1a">OpenDuckFrame</span><br><span data-i18n="h1b">Mac 实时补帧与超分</span></h1>
-      <p class="lede" data-i18n="heroSub">OpenDuckFrame（开源小鸭）是一款免费开源的 Mac 实时补帧与超分应用。选一个窗口、显示器或本地视频，让画面更流畅、更清晰，全部在本机处理。</p>
+      <h1><span data-i18n="h1a">OpenDuckFrame</span><br><span data-i18n="h1b">Mac 帧生成与实时超分</span></h1>
+      <p class="lede" data-i18n="heroSub">OpenDuckFrame（开源小鸭）是一款免费开源的 Mac 帧生成（实时补帧）与超分应用。选一个窗口、显示器或本地视频，让画面更流畅、更清晰，全部在本机处理。</p>
       <div class="cta">
         <div class="cmd" role="group" aria-label="安装方式" data-i18n-aria="ariaInstall">
           <div class="cmd-tabs" role="tablist">
@@ -275,21 +281,31 @@
       </div>
       <div class="guide-links">
         <article>
-          <h3><a href="/guides/mac-video-frame-interpolation/" hreflang="zh-CN" data-i18n="guideFrameTitle">Mac 视频如何实时补帧？</a></h3>
+          <h3><a href="/guides/mac-video-frame-interpolation/" hreflang="zh-CN" data-i18n="guideFrameTitle">Mac 帧生成与实时补帧教程</a></h3>
           <p data-i18n="guideFrameBody">兼容要求、窗口与本地文件的使用步骤，以及为什么选择 4 倍不一定达到 120 fps。</p>
         </article>
         <article>
           <h3><a href="/guides/frame-generation-vs-upscaling/" hreflang="zh-CN" data-i18n="guideScaleTitle">视频补帧和超分有什么区别？</a></h3>
           <p data-i18n="guideScaleBody">一个处理运动连贯性，一个处理画面尺寸。了解何时单独使用，何时一起开启。</p>
         </article>
+        <article>
+          <h3><a href="/guides/mac-video-upscaling/" hreflang="zh-CN" data-i18n="guideUpscaleTitle">Mac 超分怎么用？</a></h3>
+          <p data-i18n="guideUpscaleBody">选择 Lanczos 或 MetalFX，放大窗口或本地视频，并检查清晰度、处理开销和引擎限制。</p>
+        </article>
       </div>
     </div>
   </section>
 
-  <section class="closing">
+  <section id="project" class="closing">
     <div class="wrap">
       <h2 data-i18n="openTitle">开源构建</h2>
-      <p data-i18n="openBody">OpenDuckFrame 免费并以 MIT 许可开源。点个 Star，让更多人找到它。</p>
+      <p data-i18n="openBody">OpenDuckFrame（中文名：开源小鸭）是一款免费、MIT 开源的 Mac 桌面应用。它为已有视频生成中间帧，并可独立进行超分；画面在本机处理。</p>
+      <dl class="project-facts">
+        <div><dt data-i18n="projectWebsite">官方网站</dt><dd><a href="https://openduckframe.cn/">openduckframe.cn</a></dd></div>
+        <div><dt data-i18n="projectSource">开源仓库</dt><dd><a href="https://github.com/Jun-bao/OpenDuckFrame">Jun-bao/OpenDuckFrame</a></dd></div>
+        <div><dt data-i18n="projectRelease">安装包与版本记录</dt><dd><a href="https://github.com/Jun-bao/OpenDuckFrame/releases" data-i18n="projectReleaseLink">GitHub Releases</a></dd></div>
+        <div><dt data-i18n="projectFeedback">提问与反馈</dt><dd><a href="https://github.com/Jun-bao/OpenDuckFrame/discussions" data-i18n="projectDiscussionLink">项目讨论区</a> · <a href="https://github.com/Jun-bao/OpenDuckFrame/issues" data-i18n="projectIssueLink">报告问题</a></dd></div>
+      </dl>
       <a class="btn solid" href="https://github.com/Jun-bao/OpenDuckFrame" data-link="repo">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m12 2.6 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5-4.7-4.6 6.5-.9L12 2.6Z"/></svg>
         <span data-i18n="star">在 GitHub 点 Star</span>
