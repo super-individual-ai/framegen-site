@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mac video upscaling guide: Lanczos and MetalFX | OpenDuckFrame</title>
+<meta name="description" content="Upscale windows and local video on an Apple silicon Mac with OpenDuckFrame. Learn Lanczos and MetalFX setup, engine requirements and how to compare real-time picture quality.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://openduckframe.cn/en/guides/mac-video-upscaling/">
+<link rel="alternate" hreflang="zh-CN" href="https://openduckframe.cn/guides/mac-video-upscaling/">
+<link rel="alternate" hreflang="en" href="https://openduckframe.cn/en/guides/mac-video-upscaling/">
+<link rel="alternate" hreflang="x-default" href="https://openduckframe.cn/guides/mac-video-upscaling/">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon.png">
+<link rel="stylesheet" href="/styles.css?v=20261104-seo5">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="OpenDuckFrame">
+<meta property="og:url" content="https://openduckframe.cn/en/guides/mac-video-upscaling/">
+<meta property="og:title" content="How to upscale windows and video on a Mac">
+<meta property="og:description" content="Upscale windows and local video on an Apple silicon Mac with OpenDuckFrame. Learn Lanczos and MetalFX setup, engine requirements and how to compare real-time picture quality.">
+<meta property="og:image" content="https://openduckframe.cn/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://openduckframe.cn/en/guides/mac-video-upscaling/#article","url":"https://openduckframe.cn/en/guides/mac-video-upscaling/","headline":"How to upscale windows and video on a Mac","description":"Upscale windows and local video on an Apple silicon Mac with OpenDuckFrame. Learn Lanczos and MetalFX setup, engine requirements and how to compare real-time picture quality.","inLanguage":"en","datePublished":"2026-11-04","dateModified":"2026-11-04","about":{"@type":"SoftwareApplication","@id":"https://openduckframe.cn/#app","name":"OpenDuckFrame","alternateName":"开源小鸭","url":"https://openduckframe.cn/","sameAs":"https://github.com/Jun-bao/OpenDuckFrame"},"isPartOf":{"@id":"https://openduckframe.cn/#website"},"image":"https://openduckframe.cn/assets/openduckframe-library.webp","citation":["https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/quick-start.md","https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/features.md"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"OpenDuckFrame","item":"https://openduckframe.cn/en/"},{"@type":"ListItem","position":2,"name":"How to upscale windows and video on a Mac","item":"https://openduckframe.cn/en/guides/mac-video-upscaling/"}]}]}
+</script>
+<script>try { const theme = localStorage.getItem("odf-theme"); if (theme === "dark" || theme === "light") document.documentElement.dataset.theme = theme; } catch (e) {}</script>
+</head>
+<body>
+<header class="top"><div class="wrap bar">
+  <a class="brand" href="/en/"><img src="/assets/icon.png" width="28" height="28" alt=""><span>OpenDuckFrame</span></a>
+  <nav class="guide-nav" aria-label="Site navigation"><a href="/en/#download">Download</a><a href="/en/#guides">Guides</a></nav>
+</div></header>
+<main class="reading">
+  <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/en/">Home</a> / Mac video upscaling guide</nav>
+  <article>
+    <h1>How to upscale windows and video on a Mac</h1>
+    <p class="article-meta">Updated <time datetime="2026-11-04">November 4, 2026</time> · Based on OpenDuckFrame 0.1.0 and project documentation · <a href="/guides/mac-video-upscaling/" hreflang="zh-CN" lang="zh-CN">中文版</a></p>
+    <p class="answer">OpenDuckFrame is a free, open-source Mac app for real-time video upscaling. Open File → Quality Workbench, choose a window, display or local video, and start with Lanczos or an available MetalFX scaler. Compare Original and Enhanced at the same output size. The app requires Apple silicon and macOS 14 or later; some engines have additional requirements.</p>
+
+    <h2>When should you use upscaling instead of frame generation?</h2>
+    <p>Upscaling enlarges existing pictures to a higher resolution. Frame generation adds in-between pictures for more continuous motion. If a low-resolution video looks unclear when enlarged, test scaling first. If camera movement looks discontinuous, test interpolation separately.</p>
+    <p>Not every scaler uses an AI model. OpenDuckFrame's Lanczos option is spatial scaling without a learned model; MetalFX provides system spatial scaling. Enhancement does not guarantee the recovery of real detail that the source never contained, or increase a game's simulation or logic update rate.</p>
+
+    <h2>Choose an available scaling engine</h2>
+    <ul>
+      <li><strong>Lanczos:</strong> spatial scaling without a learned model. Use it as a starting point for a comparison.</li>
+      <li><strong>MetalFX:</strong> system spatial scaling, subject to the Mac's Metal capability. Check its availability in the app.</li>
+      <li><strong>Apple low-latency super resolution:</strong> requires macOS 26 or later. The current workbench also checks for 720p input and supported 1.5× scaling.</li>
+      <li><strong>Experimental video and animation engines:</strong> Apple video super resolution, Anime4K and Real-CUGAN have distinct input-size, scale-factor or optional-runtime limits. A visible entry does not mean the current Mac and input can use it.</li>
+    </ul>
+    <p>Start with an available Lanczos or MetalFX option to establish a comparable result.</p>
+
+    <h2>Set up real-time upscaling</h2>
+    <ol>
+      <li><strong>Download and open the app.</strong> Use the GitHub release linked in the <a href="/en/#download">official download section</a>. The community build is not Apple notarized. Check the source before deciding whether to allow its first launch through macOS.</li>
+      <li><strong>Select a source.</strong> Open File → Quality Workbench (⇧⌘E). Choose a browser window for web video, a player or streaming-app window for its pictures, or Video file to read a local file directly.</li>
+      <li><strong>Select an output and test scaling alone.</strong> Choose the output display and an available scaling engine. Interpolation and scaling have separate controls. Enable one enhancement first so you can identify what changes the picture.</li>
+      <li><strong>Start and compare.</strong> Switch between Original, Enhanced and Comparison views at the same output size. Inspect subtitles, edges, faces and moving pictures, then check actual output in the FPS overlay.</li>
+      <li><strong>Save settings for the source.</strong> Save a profile once quality and processing cost suit the content. Check again after changing source resolution or application.</li>
+    </ol>
+    <p>Window and display capture require Screen Recording permission. Local video-file playback does not need that capture permission. For display capture, avoid including the enhancement output in the captured area, which can produce visual feedback.</p>
+    <figure><img src="/assets/openduckframe-library.webp" width="1180" height="792" loading="lazy" decoding="async" alt="The frame-generation and scaling engine library in OpenDuckFrame"><figcaption>A real screenshot of the OpenDuckFrame 0.1.0 technology library. Runtime checks determine each engine's availability.</figcaption></figure>
+
+    <h2>Troubleshoot softness, artifacts and low output rates</h2>
+    <ul>
+      <li><strong>Soft detail or unnatural edges:</strong> compare engines at the same output size, temporarily disabling interpolation to isolate the stage that changes the picture.</li>
+      <li><strong>The Mac cannot keep up:</strong> lower the source resolution, use a lighter quality mode, or reduce simultaneous enhancements. A scaling multiplier is not a promise of more frames per second.</li>
+      <li><strong>An engine is unavailable:</strong> check system, input-size and runtime requirements. Start with a currently available option.</li>
+      <li><strong>No picture or problems after full screen:</strong> check permission and reselect the source. Protected content, window sizes and fullscreen transitions can affect capture or output.</li>
+    </ul>
+    <p>This guide covers real-time enhancement while viewing. Judge the picture at equal output dimensions, together with latency and stability.</p>
+    <div class="sources"><p>Sources: the project's <a href="https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/quick-start.md">quick start</a> and <a href="https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/features.md">scaling and super-resolution requirements</a>. Use the current documentation and the app's availability state for supported configurations.</p></div>
+    <nav class="related" aria-label="Related pages"><a href="/en/guides/mac-video-frame-interpolation/">Mac frame-generation guide</a><a href="/en/guides/frame-generation-vs-upscaling/">Frame generation vs. upscaling</a><a href="/en/#download">Download OpenDuckFrame</a></nav>
+  </article>
+</main>
+<footer><div class="wrap bar"><a class="brand" href="/en/">OpenDuckFrame</a><p class="fine">Free · Open source (MIT) · Local processing</p></div></footer>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frame generation vs. upscaling on Mac | OpenDuckFrame</title>
+<meta name="description" content="Frame generation creates in-between pictures; upscaling changes output dimensions. Compare their uses, limits, RIFE and Lanczos/MetalFX examples, and how to enable them separately in OpenDuckFrame for Mac.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://openduckframe.cn/en/guides/frame-generation-vs-upscaling/">
+<link rel="alternate" hreflang="zh-CN" href="https://openduckframe.cn/guides/frame-generation-vs-upscaling/">
+<link rel="alternate" hreflang="en" href="https://openduckframe.cn/en/guides/frame-generation-vs-upscaling/">
+<link rel="alternate" hreflang="x-default" href="https://openduckframe.cn/guides/frame-generation-vs-upscaling/">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon.png">
+<link rel="stylesheet" href="/styles.css?v=20261104-seo5">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="OpenDuckFrame">
+<meta property="og:url" content="https://openduckframe.cn/en/guides/frame-generation-vs-upscaling/">
+<meta property="og:title" content="Frame generation vs. upscaling on Mac">
+<meta property="og:description" content="One changes motion continuity; the other changes picture dimensions. Compare each separately before combining them in OpenDuckFrame.">
+<meta property="og:image" content="https://openduckframe.cn/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://openduckframe.cn/en/guides/frame-generation-vs-upscaling/#article","url":"https://openduckframe.cn/en/guides/frame-generation-vs-upscaling/","headline":"Frame generation vs. upscaling on Mac","description":"Motion and resolution examples explain the uses, limits and combination of frame generation and upscaling in OpenDuckFrame.","inLanguage":"en","datePublished":"2026-11-03","dateModified":"2026-11-03","about":{"@type":"SoftwareApplication","@id":"https://openduckframe.cn/#app","name":"OpenDuckFrame","alternateName":"开源小鸭","url":"https://openduckframe.cn/","sameAs":"https://github.com/Jun-bao/OpenDuckFrame"},"isPartOf":{"@id":"https://openduckframe.cn/#website"},"citation":["https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/quick-start.md","https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/features.md"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"OpenDuckFrame","item":"https://openduckframe.cn/en/"},{"@type":"ListItem","position":2,"name":"Frame generation vs. upscaling","item":"https://openduckframe.cn/en/guides/frame-generation-vs-upscaling/"}]}]}
+</script>
+<script>try { const theme = localStorage.getItem("odf-theme"); if (theme === "dark" || theme === "light") document.documentElement.dataset.theme = theme; } catch (e) {}</script>
+</head>
+<body>
+<header class="top"><div class="wrap bar">
+  <a class="brand" href="/en/"><img src="/assets/icon.png" width="28" height="28" alt=""><span>OpenDuckFrame</span></a>
+  <nav class="guide-nav" aria-label="Site navigation"><a href="/en/#download">Download</a><a href="/en/#guides">Guides</a></nav>
+</div></header>
+<main class="reading">
+  <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/en/">Home</a> / Frame generation vs. upscaling</nav>
+  <article>
+    <h1>Frame generation vs. upscaling</h1>
+    <p class="article-meta">Updated <time datetime="2026-11-03">November 3, 2026</time> · Based on OpenDuckFrame project documentation · <a href="/guides/frame-generation-vs-upscaling/" hreflang="zh-CN" lang="zh-CN">中文版</a></p>
+    <p class="answer">Frame generation creates intermediate pictures between existing frames to change motion continuity. Upscaling enlarges a picture to a higher output resolution. OpenDuckFrame is a free, open-source Mac app that provides both, with separate controls so you can use either enhancement or combine them.</p>
+
+    <div class="table-scroll" role="region" aria-label="Frame generation and upscaling comparison; scroll horizontally" tabindex="0">
+      <table>
+        <thead><tr><th scope="col">Compare</th><th scope="col">Frame generation / interpolation</th><th scope="col">Upscaling</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Changes</th><td>The density of pictures over time</td><td>Output picture dimensions</td></tr>
+          <tr><th scope="row">Example target</th><td>24 fps × 2 targets 48 fps</td><td>720p enlarged to 1440p</td></tr>
+          <tr><th scope="row">Useful when</th><td>Motion in low-frame-rate video looks uneven</td><td>Lower-resolution content is viewed on a larger screen</td></tr>
+          <tr><th scope="row">App examples</th><td>RIFE and Apple interpolation</td><td>Scaling methods such as Lanczos and MetalFX</td></tr>
+          <tr><th scope="row">Check</th><td>Displayed FPS, motion artifacts and latency</td><td>Detail changes, edges, softness and oversharpening</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>These numbers illustrate processing targets. They are not device measurements or output guarantees.</p>
+
+    <h2>The film is sharp enough, but a pan looks uneven</h2>
+    <p>Try frame generation alone first. With 24 fps content, an X2 request targets 48 fps by inserting intermediate pictures. Whether the target is reached and whether the motion looks natural must be checked in the displayed result.</p>
+    <p>Frame generation does not directly turn a low-resolution source into a high-resolution one or increase a game's simulation rate. It adds latency, and fast motion or occlusion can introduce artifacts.</p>
+
+    <h2>Motion is acceptable, but a low-resolution source looks soft when enlarged</h2>
+    <p>Try scaling or super resolution first. Enlarging a 720p picture to 1440p changes its output dimensions without increasing the source frame rate. Generated or reconstructed detail should not be treated as detail that was actually present in the source.</p>
+    <p>Methods differ. Lanczos is spatial scaling without a learned model. MetalFX provides system scaling on supported Macs. Other engines can require a newer macOS version, a particular input size or an optional runtime. A library entry does not mean every Mac supports that engine or that every scaling method uses AI.</p>
+
+    <h2>Can you enable both?</h2>
+    <p>Yes. OpenDuckFrame lets you configure interpolation and scaling independently. Start with the issue you want to solve: try X2 for low-frame-rate motion, or one available scaling method for a low-resolution source. Add the other enhancement after checking the first, so you can identify which stage changes the picture.</p>
+    <p>Combined processing needs more compute time. Higher resolution, multipliers and quality settings leave a tighter frame budget. If output becomes unstable, lower one setting first. Compare original and enhanced pictures at equal output sizes, rather than treating a larger picture as proof of more detail.</p>
+
+    <h2>Choose a setup in OpenDuckFrame</h2>
+    <ol>
+      <li>Open File → Quality Workbench and select a window, display or local video.</li>
+      <li>Check engine availability in the technology library. The app requires Apple silicon and macOS 14+. Some Apple engines also need macOS 26 and compatible hardware.</li>
+      <li>Enable frame generation or scaling alone, press Start enhancement, and compare Original, Enhanced and Comparison views.</li>
+      <li>Observe actual output FPS, motion quality and input latency before saving a profile or adding the second enhancement.</li>
+    </ol>
+
+    <div class="sources"><p>Sources: the project's <a href="https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/quick-start.md">quick start</a> and <a href="https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/features.md">features and engine requirements</a>. OpenDuckFrame is free, MIT licensed and processes pictures locally.</p></div>
+    <nav class="related" aria-label="Related pages"><a href="/en/guides/mac-video-upscaling/">Mac video upscaling guide</a><a href="/en/guides/mac-video-frame-interpolation/">Mac video interpolation setup</a><a href="/en/#download">Download OpenDuckFrame</a></nav>
+  </article>
+</main>
+<footer><div class="wrap bar"><a class="brand" href="/en/">OpenDuckFrame</a><p class="fine">Free · Open source (MIT) · Local processing</p></div></footer>
+</body>
+</html>

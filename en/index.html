@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>OpenDuckFrame | Free Mac frame generation and video upscaling</title>
-<meta name="description" content="OpenDuckFrame is a free, MIT-licensed Mac app for real-time frame generation and upscaling. Enhance windows, displays and local video on Apple silicon, macOS 14+. No account or picture uploads.">
+<meta name="description" content="OpenDuckFrame (开源小鸭) is a free, open-source Mac app for real-time video frame interpolation and upscaling. Apple silicon, macOS 14+. Local processing, no account.">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="google-site-verification" content="zg7aWTV5WbYvKjNawczuvA6CRnt5Tj6Yqc69Py7mdcI">
 <meta name="msvalidate.01" content="4435EE63ABA0D88CBFEF3C08BE95830D">
@@ -14,20 +14,21 @@
 <link rel="alternate" hreflang="x-default" href="https://openduckframe.cn/">
 <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="OpenDuckFrame（开源小鸭）">
+<meta property="og:site_name" content="OpenDuckFrame">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="zh_CN">
 <meta property="og:url" content="https://openduckframe.cn/en/">
 <meta property="og:title" content="OpenDuckFrame | Free Mac frame generation and video upscaling">
-<meta property="og:description" content="OpenDuckFrame is a free, MIT-licensed Mac app for real-time frame generation and upscaling. Enhance windows, displays and local video on Apple silicon, macOS 14+. No account or picture uploads.">
+<meta property="og:description" content="OpenDuckFrame (开源小鸭) is a free, open-source Mac app for real-time video frame interpolation and upscaling. Apple silicon, macOS 14+. Local processing, no account.">
 <meta property="og:image" content="https://openduckframe.cn/assets/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="OpenDuckFrame | Free Mac frame generation and video upscaling">
-<meta name="twitter:description" content="OpenDuckFrame is a free, MIT-licensed Mac app for real-time frame generation and upscaling. Enhance windows, displays and local video on Apple silicon, macOS 14+. No account or picture uploads.">
+<meta name="twitter:description" content="OpenDuckFrame (开源小鸭) is a free, open-source Mac app for real-time video frame interpolation and upscaling. Apple silicon, macOS 14+. Local processing, no account.">
 <meta name="twitter:image" content="https://openduckframe.cn/assets/og.jpg">
-<link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="apple-touch-icon" href="/assets/icon.png">
-<link rel="stylesheet" href="/styles.css?v=20261103-seo3">
+<link rel="stylesheet" href="/styles.css?v=20261104-seo5">
 <script type="application/ld+json" id="site-schema">
 {
   "@context": "https://schema.org",
@@ -37,19 +38,29 @@
       "@id": "https://openduckframe.cn/#website",
       "url": "https://openduckframe.cn/",
       "name": "OpenDuckFrame",
-      "alternateName": "开源小鸭",
+      "alternateName": [
+        "开源小鸭",
+        "openduckframe.cn"
+      ],
       "inLanguage": [
         "zh-CN",
         "en"
-      ]
+      ],
+      "about": {
+        "@id": "https://openduckframe.cn/#app"
+      }
     },
     {
       "@type": "SoftwareApplication",
       "@id": "https://openduckframe.cn/#app",
       "name": "OpenDuckFrame",
       "alternateName": "开源小鸭",
+      "identifier": "OpenDuckFrame",
       "url": "https://openduckframe.cn/",
-      "description": "OpenDuckFrame is a free, MIT-licensed Mac app for real-time frame generation and upscaling. Enhance windows, displays and local video on Apple silicon, macOS 14+. No account or picture uploads.",
+      "mainEntityOfPage": {
+        "@id": "https://openduckframe.cn/#webpage"
+      },
+      "description": "OpenDuckFrame (开源小鸭) is a free, open-source Mac app for real-time video frame interpolation and upscaling. Apple silicon, macOS 14+. Local processing, no account.",
       "applicationCategory": "MultimediaApplication",
       "operatingSystem": "macOS 14 or later",
       "processorRequirements": "Apple silicon",
@@ -66,6 +77,7 @@
       "downloadUrl": "https://github.com/Jun-bao/OpenDuckFrame/releases/latest/download/OpenDuckFrame.dmg",
       "license": "https://github.com/Jun-bao/OpenDuckFrame/blob/main/LICENSE",
       "sameAs": "https://github.com/Jun-bao/OpenDuckFrame",
+      "isAccessibleForFree": true,
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -77,10 +89,13 @@
       "@id": "https://openduckframe.cn/en/#webpage",
       "url": "https://openduckframe.cn/en/",
       "name": "OpenDuckFrame | Free Mac frame generation and video upscaling",
-      "description": "OpenDuckFrame is a free, MIT-licensed Mac app for real-time frame generation and upscaling. Enhance windows, displays and local video on Apple silicon, macOS 14+. No account or picture uploads.",
+      "description": "OpenDuckFrame (开源小鸭) is a free, open-source Mac app for real-time video frame interpolation and upscaling. Apple silicon, macOS 14+. Local processing, no account.",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://openduckframe.cn/#website"
+      },
+      "mainEntity": {
+        "@id": "https://openduckframe.cn/#app"
       },
       "about": {
         "@id": "https://openduckframe.cn/#app"
@@ -127,7 +142,7 @@
 <main id="top">
   <section class="hero">
     <div class="wrap">
-      <h1><span data-i18n="h1a">Real-time frame</span><br><span data-i18n="h1b">generation for Mac</span></h1>
+      <h1><span data-i18n="h1a">OpenDuckFrame</span><br><span data-i18n="h1b">Frame generation for Mac</span></h1>
       <p class="lede" data-i18n="heroSub">OpenDuckFrame is a free, open-source Mac app for real-time frame generation and upscaling. Choose a window, display or local video for smoother, clearer pictures. All picture processing happens on your Mac.</p>
       <div class="cta">
         <div class="cmd" role="group" aria-label="How to install" data-i18n-aria="ariaInstall">
@@ -268,7 +283,7 @@
         <p><span data-i18n="faqMore">Something else?</span> <a href="https://github.com/Jun-bao/OpenDuckFrame/discussions" data-link="discussions" data-i18n="faqAsk">Join the discussion</a></p>
       </div>
       <div class="faq">
-        <details><summary data-i18n="q1">What is OpenDuckFrame?</summary><p data-i18n="a1">OpenDuckFrame is a free, MIT-licensed Mac app for real-time frame generation and upscaling. It enhances existing windows, displays and local video, with RIFE and Apple interpolation, independent scaling and local playback.</p></details>
+        <details><summary data-i18n="q1">What is OpenDuckFrame?</summary><p data-i18n="a1">OpenDuckFrame (Chinese name: 开源小鸭) is a free, MIT-licensed Mac desktop app for real-time frame generation and upscaling. It enhances existing windows, displays and local video, with RIFE and Apple interpolation, independent scaling and local playback.</p></details>
         <details><summary data-i18n="q2">Which Macs are supported? What about Windows and Intel?</summary><p data-i18n="a2">Apple silicon Macs on macOS 14 or later are supported. Apple interpolation and some other engines require macOS 26 and compatible hardware and inputs. Intel Macs, Windows, iPhone and iPad are not currently supported.</p></details>
         <details><summary data-i18n="q3">Does it add latency?</summary><p data-i18n="a3">Yes. Generating in-between pictures adds latency, which varies with engine, resolution and quality settings. Start with 2× and compare Original, Enhanced and Comparison views; choose carefully for latency-sensitive use.</p></details>
         <details><summary data-i18n="q4">Does it work in full screen?</summary><p data-i18n="a4">Normal windows and full-page video work today. macOS full screen is in development.</p></details>
@@ -291,21 +306,31 @@
       </div>
       <div class="guide-links">
         <article>
-          <h3><a href="/guides/mac-video-frame-interpolation/" hreflang="zh-CN" data-i18n="guideFrameTitle">How to interpolate video on a Mac (Chinese)</a></h3>
+          <h3><a href="/en/guides/mac-video-frame-interpolation/" hreflang="en" data-i18n="guideFrameTitle">How to use frame generation on a Mac</a></h3>
           <p data-i18n="guideFrameBody">System requirements, window and local-file setup, and why a 4× setting does not guarantee 120 fps.</p>
         </article>
         <article>
-          <h3><a href="/guides/frame-generation-vs-upscaling/" hreflang="zh-CN" data-i18n="guideScaleTitle">Frame generation vs. upscaling (Chinese)</a></h3>
+          <h3><a href="/en/guides/frame-generation-vs-upscaling/" hreflang="en" data-i18n="guideScaleTitle">Frame generation vs. upscaling</a></h3>
           <p data-i18n="guideScaleBody">One changes motion continuity; the other changes picture dimensions. Learn when to use each or both.</p>
+        </article>
+        <article>
+          <h3><a href="/en/guides/mac-video-upscaling/" hreflang="en" data-i18n="guideUpscaleTitle">How to upscale video on a Mac</a></h3>
+          <p data-i18n="guideUpscaleBody">Choose Lanczos or MetalFX for windows and local video, then check picture quality, processing cost and engine requirements.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <section class="closing">
+  <section id="project" class="closing">
     <div class="wrap">
       <h2 data-i18n="openTitle">Built in the open</h2>
-      <p data-i18n="openBody">OpenDuckFrame is free and MIT licensed. A star helps more people find it.</p>
+      <p data-i18n="openBody">OpenDuckFrame (Chinese name: 开源小鸭) is a free, MIT-licensed Mac desktop app. It generates in-between frames for existing video and offers independent upscaling. Picture processing runs locally.</p>
+      <dl class="project-facts">
+        <div><dt data-i18n="projectWebsite">Official website</dt><dd><a href="https://openduckframe.cn/">openduckframe.cn</a></dd></div>
+        <div><dt data-i18n="projectSource">Source repository</dt><dd><a href="https://github.com/Jun-bao/OpenDuckFrame">Jun-bao/OpenDuckFrame</a></dd></div>
+        <div><dt data-i18n="projectRelease">Downloads and releases</dt><dd><a href="https://github.com/Jun-bao/OpenDuckFrame/releases" data-i18n="projectReleaseLink">GitHub Releases</a></dd></div>
+        <div><dt data-i18n="projectFeedback">Questions and feedback</dt><dd><a href="https://github.com/Jun-bao/OpenDuckFrame/discussions" data-i18n="projectDiscussionLink">Discussions</a> · <a href="https://github.com/Jun-bao/OpenDuckFrame/issues" data-i18n="projectIssueLink">Report an issue</a></dd></div>
+      </dl>
       <a class="btn solid" href="https://github.com/Jun-bao/OpenDuckFrame" data-link="repo">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m12 2.6 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5-4.7-4.6 6.5-.9L12 2.6Z"/></svg>
         <span data-i18n="star">Star on GitHub</span>
