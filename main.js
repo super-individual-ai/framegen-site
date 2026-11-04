@@ -2,7 +2,7 @@
 
 // One place for every outbound link and the current release.
 const SITE = {
-  version: "0.2.1",
+  version: "0.2.2",
   links: {
     repo: "https://github.com/Jun-bao/OpenDuckFrame",
     readme: "https://github.com/Jun-bao/OpenDuckFrame#readme",
@@ -14,6 +14,7 @@ const SITE = {
     discussions: "https://github.com/Jun-bao/OpenDuckFrame/discussions",
     source: "https://github.com/Jun-bao/OpenDuckFrame#build-from-source",
     issues: "https://github.com/Jun-bao/OpenDuckFrame/issues",
+    feedback: document.documentElement.lang === "en" ? "/feedback/?lang=en" : "/feedback/",
     privacy: "https://github.com/Jun-bao/OpenDuckFrame/blob/main/PRIVACY.md",
     license: "https://github.com/Jun-bao/OpenDuckFrame/blob/main/LICENSE",
   },
@@ -76,6 +77,10 @@ onScroll();
 const dialog = document.querySelector("dialog.player");
 const film = dialog.querySelector("video");
 document.querySelector('[data-action="watch"]').addEventListener("click", () => {
+  if (!film.getAttribute("src")) {
+    film.poster = film.dataset.poster;
+    film.src = film.dataset.src;
+  }
   dialog.showModal();
   film.currentTime = 0;
   film.play().catch(() => {});

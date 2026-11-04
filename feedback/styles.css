@@ -1,0 +1,59 @@
+.feedback-page { min-height: 100vh; }
+.feedback-page ::selection { background: #e8a20040; color: var(--text); }
+.feedback-header { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 32px; border-bottom: 1px solid var(--line); }
+.feedback-header > a:last-child { color: var(--muted); font-size: 13px; text-underline-offset: 4px; }
+.feedback-page main { width: min(1120px, calc(100% - 64px)); margin: 40px auto 56px; }
+.feedback-page h1 { font-size: 26px; line-height: 1.3; font-weight: 650; letter-spacing: -.02em; }
+.feedback-intro { margin: 10px 0 26px; font-size: 15px; color: var(--muted); }
+.feedback-form { overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); }
+.feedback-fields { display: grid; gap: 22px; padding: 26px; }
+.field label { display: block; margin-bottom: 8px; font-size: 13px; font-weight: 600; }
+.optional { margin-left: 6px; color: var(--muted); font-size: 12px; font-weight: 400; }
+.feedback-page input, .feedback-page textarea { width: 100%; border: 1px solid var(--line); border-radius: 11px; background: color-mix(in srgb, var(--bg) 85%, var(--panel)); padding: 12px 14px; color: var(--text); font: 14px/1.6 var(--sans); caret-color: var(--accent-ink); }
+.feedback-page input::placeholder, .feedback-page textarea::placeholder { color: var(--muted); opacity: 1; }
+.feedback-page input:focus-visible, .feedback-page textarea:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 2px; }
+.message-box { position: relative; }
+.message-box textarea { display: block; min-height: 240px; resize: vertical; padding-bottom: 36px; }
+.character-count { position: absolute; right: 16px; bottom: 12px; color: var(--muted); font: 11px var(--mono); font-variant-numeric: tabular-nums; pointer-events: none; }
+.dropzone { position: relative; border: 1px dashed var(--line-strong); border-radius: 11px; min-height: 82px; }
+.dropzone:focus-within, .dropzone.drag-over { outline: 2px solid var(--accent-ink); outline-offset: 2px; background: color-mix(in srgb, var(--accent) 7%, var(--panel)); }
+.dropzone input[type="file"] { position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; opacity: 0; cursor: pointer; }
+.upload-empty { display: flex; align-items: center; gap: 14px; padding: 15px 16px; pointer-events: none; }
+.image-icon { display: grid; place-items: center; width: 40px; height: 40px; border: 1px solid var(--line); border-radius: 9px; color: var(--muted); flex: none; }
+.image-icon svg { width: 20px; height: 20px; }
+.upload-empty strong { display: block; font-size: 13px; font-weight: 600; }
+.upload-empty small { display: block; margin-top: 3px; color: var(--muted); font-size: 12px; line-height: 1.6; }
+.upload-preview { display: flex; align-items: center; gap: 14px; padding: 12px 16px; }
+.upload-preview img { width: 64px; height: 52px; object-fit: contain; border-radius: 5px; background: var(--bg); }
+.upload-preview > span { overflow: hidden; text-overflow: ellipsis; font-size: 13px; }
+.upload-preview button { position: relative; z-index: 1; margin-left: auto; flex: none; }
+.feedback-context { margin: -2px 0 0; color: var(--muted); font-size: 12px; }
+.field-error { margin: 8px 0 0; color: #b43b31; font-size: 13px; }
+.feedback-actions { display: flex; align-items: center; justify-content: space-between; gap: 28px; padding: 18px 26px; border-top: 1px solid var(--line); background: var(--bg); }
+.feedback-actions p { max-width: 72ch; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.7; }
+.feedback-actions a { text-underline-offset: 3px; }
+.feedback-page button { border: 1px solid var(--line-strong); border-radius: 8px; padding: 8px 14px; background: var(--panel); color: var(--text); font: 500 13px var(--sans); cursor: pointer; }
+.feedback-page button:hover { border-color: var(--text); }
+.feedback-page button[type="submit"] { flex: none; min-width: 108px; border-color: transparent; border-radius: 999px; padding: 10px 20px; background: var(--solid); color: var(--solid-ink); }
+.feedback-page button[type="submit"]:disabled { background: color-mix(in srgb, var(--text) 15%, var(--panel)); color: var(--muted); cursor: default; }
+.feedback-page button[type="submit"]:disabled:hover { border-color: transparent; }
+.feedback-success { padding: 72px 26px; text-align: center; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); }
+.feedback-success > svg { width: 38px; height: 38px; margin: 0 auto 16px; color: var(--accent-ink); }
+.feedback-success h2 { margin: 0; font-size: 22px; font-weight: 600; }
+.feedback-success p { margin: 10px 0 24px; color: var(--muted); font-size: 14px; }
+.feedback-privacy { max-width: 70ch; }
+.feedback-privacy h2 { margin: 28px 0 10px; font-size: 18px; }
+.feedback-privacy p { color: var(--muted); font-size: 15px; }
+@media (max-width: 600px) {
+  .feedback-header { padding: 16px 20px; gap: 12px; }
+  .feedback-header .brand { font-size: 15px; gap: 8px; }
+  .feedback-page main { width: calc(100% - 32px); margin: 28px auto 32px; }
+  .feedback-page h1 { font-size: 24px; }
+  .feedback-fields { padding: 20px 16px; gap: 20px; }
+  .feedback-actions { align-items: stretch; flex-direction: column; gap: 16px; padding: 16px; }
+  .feedback-page input, .feedback-page textarea { font-size: 16px; }
+  .upload-empty { align-items: flex-start; gap: 10px; padding: 14px 12px; }
+  .upload-empty small { font-size: 12px; }
+  .message-box textarea { min-height: 220px; }
+  .field-error { overflow-wrap: anywhere; }
+}

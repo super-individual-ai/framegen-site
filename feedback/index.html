@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>反馈 · OpenDuckFrame</title>
+  <link rel="icon" href="/favicon.png">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/feedback/styles.css?v=1">
+  <script src="/feedback/main.js?v=2" defer></script>
+</head>
+<body class="feedback-page">
+  <header class="feedback-header">
+    <a class="brand" href="/" aria-label="OpenDuckFrame 官网"><img src="/assets/icon.png" width="28" height="28" alt="">OpenDuckFrame</a>
+    <a href="/" data-copy="back">返回官网</a>
+  </header>
+  <main>
+    <h1 data-copy="title">说说你的想法</h1>
+    <p class="feedback-intro" data-copy="intro">发现 bug、想要的功能、使用中不顺手的地方，都可以告诉我。</p>
+    <form id="feedback-form" class="feedback-form">
+      <div class="feedback-fields">
+        <div class="field">
+          <label for="message" data-copy="message">想说点什么？</label>
+          <div class="message-box">
+            <textarea id="message" name="message" rows="8" maxlength="2000" required placeholder="比如：开启补帧后出现了什么问题、希望增加什么功能……" aria-describedby="character-count"></textarea>
+            <span id="character-count" class="character-count"><span id="count">0</span> / 2000</span>
+          </div>
+        </div>
+        <div class="field">
+          <label for="email"><span data-copy="email">邮箱</span><span class="optional" data-copy="optional">（选填）</span></label>
+          <input id="email" name="email" type="email" autocomplete="email" maxlength="254" placeholder="留下邮箱，方便我在需要时联系你">
+        </div>
+        <div class="field">
+          <label for="screenshot"><span data-copy="screenshot">截图</span><span class="optional" data-copy="optional">（选填）</span></label>
+          <div id="dropzone" class="dropzone">
+            <input id="screenshot" type="file" accept="image/png,image/jpeg,image/webp" aria-describedby="upload-help">
+            <div id="upload-empty" class="upload-empty">
+              <span class="image-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m5 19 6-7 4 4 3-3 3 4"/></svg></span>
+              <span><strong data-copy="addImage">添加一张问题截图</strong><small id="upload-help" data-copy="uploadHelp">粘贴或拖到这里也可以。请先遮盖敏感信息；PNG、JPEG 或 WebP，不超过 5 MB。</small></span>
+            </div>
+            <div id="upload-preview" class="upload-preview" hidden>
+              <img id="preview-image" alt="待发送的截图">
+              <span id="image-name"></span>
+              <button id="remove-image" type="button" data-copy="remove">移除</button>
+            </div>
+          </div>
+          <p id="image-error" class="field-error" role="alert" hidden></p>
+        </div>
+        <p id="context" class="feedback-context" hidden></p>
+        <p id="submit-error" class="field-error" role="alert" hidden></p>
+      </div>
+      <footer class="feedback-actions">
+        <p><span data-copy="privacy">请勿提交密码、密钥或与问题无关的敏感信息。反馈仅用于排查问题和改进产品。</span> <a href="/feedback/privacy/" data-copy="privacyLink">隐私说明</a></p>
+        <button id="submit" type="submit" disabled data-copy="send">发送反馈</button>
+      </footer>
+    </form>
+    <section id="success" class="feedback-success" role="status" hidden>
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>
+      <h2 id="success-title" data-copy="received">反馈已收到</h2>
+      <p id="success-message" data-copy="thanks">谢谢你，我会认真查看。</p>
+      <button id="write-again" type="button" data-copy="again">再写一条</button>
+    </section>
+    <noscript>请启用 JavaScript 后发送反馈。</noscript>
+  </main>
+</body>
+</html>

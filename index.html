@@ -55,7 +55,7 @@
       "operatingSystem": "macOS 14 or later",
       "processorRequirements": "Apple silicon",
       "softwareRequirements": "Apple 帧率转换等部分引擎需要 macOS 26 及受支持的硬件与输入格式。",
-      "softwareVersion": "0.2.1",
+      "softwareVersion": "0.2.2",
       "featureList": ["实时补帧（视频插帧）", "实时超分辨率", "窗口、显示器与本地视频输入", "本地视频播放与字幕"],
       "image": "https://openduckframe.cn/assets/icon.png",
       "screenshot": "https://openduckframe.cn/assets/openduckframe-library.webp",
@@ -87,7 +87,7 @@
 <header class="top">
   <div class="wrap bar">
     <a class="brand" href="#top" aria-label="OpenDuckFrame">
-      <img src="assets/icon.png" alt="" width="28" height="28">
+      <img src="assets/icon-128.webp" alt="" width="28" height="28">
       <span>OpenDuckFrame</span>
     </a>
     <nav class="links" aria-label="页面导航" data-i18n-aria="ariaNav">
@@ -145,7 +145,7 @@
     <div class="wrap wide">
       <figure class="app">
         <div class="app-frame">
-          <video src="assets/media/hero.mp4" poster="assets/media/hero-poster.jpg" muted loop playsinline autoplay preload="metadata" aria-label="OpenDuckFrame 画质工作台：选窗口、倒计时、开始补帧" data-i18n-aria="ariaHero"></video>
+          <video src="assets/media/hero.mp4" poster="assets/media/hero-poster.webp" muted loop playsinline autoplay preload="metadata" aria-label="OpenDuckFrame 画质工作台：选窗口、倒计时、开始补帧" data-i18n-aria="ariaHero"></video>
           <button type="button" class="watch" data-action="watch">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5.5v13l11-6.5-11-6.5Z"/></svg>
             <span data-i18n="watch">观看宣传片</span><span class="dim">0:52</span>
@@ -200,14 +200,14 @@
         <span class="pager"><span data-pager>1</span> / 2</span>
       </div>
       <div class="cards" data-panel="frames">
-        <article class="card"><div class="shot"><img src="assets/media/web-video.jpg" alt="" decoding="async"><span class="chip">24 → 48 fps</span></div><h3 data-i18n="c1t">网页视频</h3><p data-i18n="c1d">浏览器里的视频网站，普通窗口或网页全屏都行。</p></article>
-        <article class="card"><div class="shot"><img src="assets/media/downloaded.jpg" alt="" decoding="async"><span class="chip">24 → 48 fps</span></div><h3 data-i18n="c2t">下载的视频</h3><p data-i18n="c2d">播放器里的电影和剧集，镜头平移不再一顿一顿。</p></article>
-        <article class="card"><div class="shot"><img src="assets/media/anime.jpg" alt="" decoding="async"><span class="chip">24 → 48 fps</span></div><h3 data-i18n="c3t">动画番剧</h3><p data-i18n="c3d">帧数低的动画，动作更连贯。</p></article>
+        <article class="card"><div class="shot"><img src="assets/media/web-video.webp" alt="" loading="lazy" decoding="async"><span class="chip">24 → 48 fps</span></div><h3 data-i18n="c1t">网页视频</h3><p data-i18n="c1d">浏览器里的视频网站，普通窗口或网页全屏都行。</p></article>
+        <article class="card"><div class="shot"><img src="assets/media/downloaded.webp" alt="" loading="lazy" decoding="async"><span class="chip">24 → 48 fps</span></div><h3 data-i18n="c2t">下载的视频</h3><p data-i18n="c2d">播放器里的电影和剧集，镜头平移不再一顿一顿。</p></article>
+        <article class="card"><div class="shot"><img src="assets/media/anime.webp" alt="" loading="lazy" decoding="async"><span class="chip">24 → 48 fps</span></div><h3 data-i18n="c3t">动画番剧</h3><p data-i18n="c3d">帧数低的动画，动作更连贯。</p></article>
       </div>
       <div class="cards" data-panel="scale" hidden>
-        <article class="card"><div class="shot"><img src="assets/media/game.jpg" alt="" decoding="async"><span class="chip">1080p → 1440p</span></div><h3 data-i18n="c4t">游戏超分</h3><p data-i18n="c4d">用较低分辨率跑游戏换帧率，再实时放大到屏幕分辨率。</p></article>
-        <article class="card"><div class="shot"><img src="assets/media/stream.jpg" alt="" decoding="async"><span class="chip">PC → Mac</span></div><h3 data-i18n="c5t">Windows 游戏串流到 Mac</h3><p data-i18n="c5d">把 Windows 电脑上的游戏串流到 Mac，在 Mac 上超分，画面更清晰。</p></article>
-        <article class="card"><div class="shot"><img src="assets/media/compare.jpg" alt="" decoding="async"><span class="chip">720p → 1440p</span></div><h3 data-i18n="c6t">低清片源</h3><p data-i18n="c6d">老电影、低码率视频，放大到屏幕分辨率再看。</p></article>
+        <article class="card"><div class="shot"><img src="assets/media/game.webp" alt="" loading="lazy" decoding="async"><span class="chip">1080p → 1440p</span></div><h3 data-i18n="c4t">游戏超分</h3><p data-i18n="c4d">用较低分辨率跑游戏换帧率，再实时放大到屏幕分辨率。</p></article>
+        <article class="card"><div class="shot"><img src="assets/media/stream.webp" alt="" loading="lazy" decoding="async"><span class="chip">PC → Mac</span></div><h3 data-i18n="c5t">Windows 游戏串流到 Mac</h3><p data-i18n="c5d">把 Windows 电脑上的游戏串流到 Mac，在 Mac 上超分，画面更清晰。</p></article>
+        <article class="card"><div class="shot"><img src="assets/media/compare.webp" alt="" loading="lazy" decoding="async"><span class="chip">720p → 1440p</span></div><h3 data-i18n="c6t">低清片源</h3><p data-i18n="c6d">老电影、低码率视频，放大到屏幕分辨率再看。</p></article>
       </div>
       <p class="note" data-i18n="usesNote">图片与帧率数值为示意，实际效果和输出帧率随设备、引擎与来源而变。</p>
     </div>
@@ -222,9 +222,9 @@
       </div>
       <div class="release">
         <div class="release-head">
-          <img src="assets/icon.png" alt="" width="64" height="64">
+          <img src="assets/icon-128.webp" alt="" width="64" height="64">
           <div>
-            <h3>OpenDuckFrame <span data-version>0.2.1</span></h3>
+            <h3>OpenDuckFrame <span data-version>0.2.2</span></h3>
             <p data-i18n="reqs">macOS 14 或更高 · Apple 芯片的 Mac</p>
           </div>
           <a class="btn solid" href="https://github.com/Jun-bao/OpenDuckFrame/releases/latest/download/OpenDuckFrame.dmg" data-link="dmg"><span data-i18n="downloadDmg">下载 .dmg</span></a>
@@ -304,7 +304,7 @@
         <div><dt data-i18n="projectWebsite">官方网站</dt><dd><a href="https://openduckframe.cn/">openduckframe.cn</a></dd></div>
         <div><dt data-i18n="projectSource">开源仓库</dt><dd><a href="https://github.com/Jun-bao/OpenDuckFrame">Jun-bao/OpenDuckFrame</a></dd></div>
         <div><dt data-i18n="projectRelease">安装包与版本记录</dt><dd><a href="https://github.com/Jun-bao/OpenDuckFrame/releases" data-i18n="projectReleaseLink">GitHub Releases</a></dd></div>
-        <div><dt data-i18n="projectFeedback">提问与反馈</dt><dd><a href="https://github.com/Jun-bao/OpenDuckFrame/discussions" data-i18n="projectDiscussionLink">项目讨论区</a> · <a href="https://github.com/Jun-bao/OpenDuckFrame/issues" data-i18n="projectIssueLink">报告问题</a></dd></div>
+        <div><dt data-i18n="projectFeedback">提问与反馈</dt><dd><a href="https://github.com/Jun-bao/OpenDuckFrame/discussions" data-i18n="projectDiscussionLink">项目讨论区</a> · <a href="/feedback/" data-link="feedback" data-i18n="projectIssueLink">报告问题</a></dd></div>
       </dl>
       <a class="btn solid" href="https://github.com/Jun-bao/OpenDuckFrame" data-link="repo">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m12 2.6 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5-4.7-4.6 6.5-.9L12 2.6Z"/></svg>
@@ -316,7 +316,7 @@
 
 <footer>
   <div class="wrap bar">
-    <a class="brand" href="#top"><img src="assets/icon.png" alt="" width="22" height="22"><span>OpenDuckFrame</span></a>
+    <a class="brand" href="#top"><img src="assets/icon-128.webp" alt="" width="22" height="22"><span>OpenDuckFrame</span></a>
     <nav class="links" aria-label="页脚" data-i18n-aria="ariaFoot">
       <a href="https://github.com/Jun-bao/OpenDuckFrame" data-link="repo">GitHub</a>
       <a href="https://github.com/Jun-bao/OpenDuckFrame/releases" data-link="releases" data-i18n="footReleases">版本发布</a>
@@ -328,10 +328,10 @@
 </footer>
 
 <dialog class="player" aria-label="OpenDuckFrame 宣传片" data-i18n-aria="ariaPlayer">
-  <video controls playsinline preload="none" poster="assets/media/promo-v2-poster.jpg" src="assets/media/promo-v2.mp4"></video>
+  <video controls playsinline preload="none" data-poster="/assets/media/promo-v2-poster.webp" data-src="/assets/media/promo-web-v3.mp4"></video>
   <form method="dialog"><button class="close" aria-label="关闭" data-i18n-aria="ariaClose">×</button></form>
 </dialog>
 
-<script src="main.js?v=20261104-0.2.1"></script>
+<script src="main.js?v=20261104-perf1"></script>
 </body>
 </html>

@@ -23,7 +23,7 @@ python3 -m http.server 4178 --bind 127.0.0.1
 
 - `SITE.version`：页面上显示的版本号。
 - `SITE.links.dmg`：指向 `releases/latest/download/OpenDuckFrame.dmg`。GitHub 会把它解析到最新 Release 里名为 `OpenDuckFrame.dmg` 的附件。只要每次发版都带上这个固定文件名的附件，就不用改链接。产品仓库里的 `Scripts/community_release.py` 会自动上传它。
-- 当前提供 0.2.1 社区版（未经过 Apple 公证），支持签名验证的应用内更新。
+- 当前提供 0.2.2 社区版（未经过 Apple 公证），支持签名验证的应用内更新。
 
 ## 内容与资源
 
@@ -58,3 +58,11 @@ python3 -m http.server 4178 --bind 127.0.0.1
 本机运行路径、后台服务配置和隧道令牌属于部署环境，保存在仓库外；令牌不得放入公开目录或提交 Git。
 
 `server.py` 用于生产服务，启动时必须显式传入只含公开文件的 `--directory`。它把 `www` 与 `index.html` 别名合并到正式 HTTPS 网址，保留路径和查询参数；中文、英文与三篇指南仍各有独立规范地址。服务脚本不放入公开文件目录。
+
+## 用户反馈
+
+`feedback/` 是中英文反馈表单，沿用产品字体与颜色，按提供的参考图排布。支持 2000 字问题描述、选填的联系邮箱、一张不超过 5 MB 的 PNG/JPEG/WebP 截图，以及图片粘贴、拖入、预览和移除。仅点击发送时提交；失败会保留当前填写内容。
+
+`server.py` 的 `POST /api/feedback` 通过 `feedback_service.py` 调用已登录的 `lark-cli` 用户身份，写入开发者私有的飞书多维表格，并把截图加入附件字段。应用通过不会随页面请求发送的网址片段传入版本信息，仅在点击发送时提交。启动时传 `--feedback-config` 指向公开目录以外的配置文件，其中只指定 `base_token`、`table_id` 和 `lark_cli` 可执行文件；不把飞书登录信息、收集表坐标或部署路径写入浏览器代码。服务器限制正文、图片大小和提交频率，不在反馈表格保存来源地址。
+
+部署时还需将 `feedback/` 放入公开目录，将 `feedback_service.py` 与 `server.py` 放在服务目录，并在服务启动参数中提供私有配置文件。隐私说明位于 `/feedback/privacy/`。如果没有配置收集端，接口返回不可用，不能显示发送成功。
