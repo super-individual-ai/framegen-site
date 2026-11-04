@@ -23,7 +23,7 @@ python3 -m http.server 4178 --bind 127.0.0.1
 
 - `SITE.version`：页面上显示的版本号。
 - `SITE.links.dmg`：指向 `releases/latest/download/OpenDuckFrame.dmg`。GitHub 会把它解析到最新 Release 里名为 `OpenDuckFrame.dmg` 的附件。只要每次发版都带上这个固定文件名的附件，就不用改链接。产品仓库里的 `Scripts/community_release.py` 会自动上传它。
-- 当前提供 0.1.1 社区版（未经过 Apple 公证），支持签名验证的应用内更新。
+- 当前提供 0.1.3 社区版（未经过 Apple 公证），支持签名验证的应用内更新。
 
 ## 内容与资源
 
