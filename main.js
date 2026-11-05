@@ -2,21 +2,21 @@
 
 // One place for every outbound link and the current release.
 const SITE = {
-  version: "0.2.2",
+  version: "0.3.0",
   links: {
     repo: "https://github.com/Jun-bao/OpenDuckFrame",
     readme: "https://github.com/Jun-bao/OpenDuckFrame#readme",
     releases: "https://github.com/Jun-bao/OpenDuckFrame/releases",
     // GitHub serves the asset named OpenDuckFrame.dmg from the newest release.
     dmg: "https://github.com/Jun-bao/OpenDuckFrame/releases/latest/download/OpenDuckFrame.dmg",
-    guide: "https://github.com/Jun-bao/OpenDuckFrame/blob/2a4a112abbb21b320f82559e84d8c96483e1cab1/docs/quick-start.md",
-    features: "https://github.com/Jun-bao/OpenDuckFrame/blob/2a4a112abbb21b320f82559e84d8c96483e1cab1/docs/features.md",
+    guide: "https://github.com/Jun-bao/OpenDuckFrame/blob/v0.3.0/docs/quick-start.md",
+    features: "https://github.com/Jun-bao/OpenDuckFrame/blob/v0.3.0/docs/features.md",
     discussions: "https://github.com/Jun-bao/OpenDuckFrame/discussions",
     source: "https://github.com/Jun-bao/OpenDuckFrame#build-from-source",
     issues: "https://github.com/Jun-bao/OpenDuckFrame/issues",
     feedback: document.documentElement.lang === "en" ? "/feedback/?lang=en" : "/feedback/",
-    privacy: "https://github.com/Jun-bao/OpenDuckFrame/blob/2a4a112abbb21b320f82559e84d8c96483e1cab1/PRIVACY.md",
-    license: "https://github.com/Jun-bao/OpenDuckFrame/blob/2a4a112abbb21b320f82559e84d8c96483e1cab1/LICENSE",
+    privacy: "https://github.com/Jun-bao/OpenDuckFrame/blob/v0.3.0/PRIVACY.md",
+    license: "https://github.com/Jun-bao/OpenDuckFrame/blob/v0.3.0/LICENSE",
   },
   clone: "git clone https://github.com/Jun-bao/OpenDuckFrame",
 };

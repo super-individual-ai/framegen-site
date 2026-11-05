@@ -65,7 +65,7 @@
       "operatingSystem": "macOS 14 or later",
       "processorRequirements": "Apple silicon",
       "softwareRequirements": "Apple interpolation and some other engines require macOS 26 and compatible hardware and input formats.",
-      "softwareVersion": "0.2.2",
+      "softwareVersion": "0.3.0",
       "featureList": [
         "Real-time frame generation (video interpolation)",
         "Real-time upscaling",
@@ -75,7 +75,7 @@
       "image": "https://openduckframe.cn/assets/icon.png",
       "screenshot": "https://openduckframe.cn/assets/openduckframe-library.webp",
       "downloadUrl": "https://github.com/Jun-bao/OpenDuckFrame/releases/latest/download/OpenDuckFrame.dmg",
-      "license": "https://github.com/Jun-bao/OpenDuckFrame/blob/2a4a112abbb21b320f82559e84d8c96483e1cab1/LICENSE",
+      "license": "https://github.com/Jun-bao/OpenDuckFrame/blob/v0.3.0/LICENSE",
       "sameAs": "https://github.com/Jun-bao/OpenDuckFrame",
       "isAccessibleForFree": true,
       "offers": {
@@ -176,7 +176,7 @@
             <span data-i18n="watch">Watch the film</span><span class="dim">0:52</span>
           </button>
         </div>
-        <figcaption data-i18n="heroCaption">The Quality Workbench: choose a window, wait three seconds, frames are generated. Interface shown as an animation.</figcaption>
+        <figcaption data-i18n="heroCaption">Quality Workbench animation. In v0.3.0, press Delayed enhancement, then focus your target window. The default countdown is 5 seconds and can be changed in Settings.</figcaption>
       </figure>
     </div>
   </section>
@@ -186,7 +186,7 @@
       <div class="side">
         <h2 data-i18n="whatTitle">What is OpenDuckFrame?</h2>
         <p data-i18n="whatBody">OpenDuckFrame is a native Mac picture-enhancement app. It detects the source frame rate, creates in-between frames with RIFE or Apple interpolation, and lets you configure upscaling independently. Windows, displays and local video are supported inputs. Pictures are not uploaded.</p>
-        <a class="more" href="https://github.com/Jun-bao/OpenDuckFrame/blob/2a4a112abbb21b320f82559e84d8c96483e1cab1/docs/quick-start.md" data-link="guide"><span data-i18n="readDocs">Read the quick start</span> →</a>
+        <a class="more" href="https://github.com/Jun-bao/OpenDuckFrame/blob/v0.3.0/docs/quick-start.md" data-link="guide"><span data-i18n="readDocs">Read the quick start</span> →</a>
       </div>
       <ol class="features">
         <li><span class="n">01</span><div><h3 data-i18n="f1t">Detects the real frame rate</h3><p data-i18n="f1d">Counts only frames that actually change, so 24 fps video counts as 24 even on a 120 Hz display.</p></div></li>
@@ -249,7 +249,7 @@
         <div class="release-head">
           <img src="/assets/icon-128.webp" alt="" width="64" height="64">
           <div>
-            <h3>OpenDuckFrame <span data-version>0.2.2</span></h3>
+            <h3>OpenDuckFrame <span data-version>0.3.0</span></h3>
             <p data-i18n="reqs">macOS 14 or later · Mac with Apple silicon</p>
           </div>
           <a class="btn solid" href="https://github.com/Jun-bao/OpenDuckFrame/releases/latest/download/OpenDuckFrame.dmg" data-link="dmg"><span data-i18n="downloadDmg">Download .dmg</span></a>
@@ -257,14 +257,14 @@
         <ol class="steps">
           <li><b data-i18n="s1t">Drag to Applications</b><span data-i18n="s1d">Open the downloaded .dmg and drag OpenDuckFrame into Applications. This community build is not Apple notarized; macOS may block its first launch.</span></li>
           <li><b data-i18n="s2t">Allow screen recording</b><span data-i18n="s2d">Allow Screen Recording in System Settings › Privacy &amp; Security for window or display capture. Local video playback does not need it.</span></li>
-          <li><b data-i18n="s3t">Choose a window and start</b><span data-i18n="s3d">Open File › Quality Workbench, choose the source and output mode, then press Start enhancement. Output can follow the window or fill the selected display.</span></li>
+          <li><b data-i18n="s3t">Focus a window during the countdown</b><span data-i18n="s3d">Open File › Quality Workbench, configure enhancement, press Delayed enhancement, then focus your target window. Enhancement starts when the countdown ends. Settings allow 1–20 seconds; the default is 5.</span></li>
         </ol>
         <div class="notes">
           <h4 data-i18n="notesTitle">In this version</h4>
           <ul>
-            <li data-i18n="n1">Real-time frame generation and upscaling for windows, displays and video files, with a frame-rate overlay.</li>
-            <li data-i18n="n2">Live RIFE multiplier mode adjusts to the processing budget and display refresh rate. Check the FPS panel for actual output.</li>
-            <li data-i18n="n3">Local video playback, subtitles and Quick Look previews. The player has 17 interface languages; the workbench supports Chinese and English.</li>
+            <li data-i18n="n1">New delayed enhancement selects the focused window and starts automatically when the countdown ends.</li>
+            <li data-i18n="n2">Live RIFE target-FPS mode now reuses source pictures and schedules interpolation by timestamps and processing budget. Check the FPS panel for actual output.</li>
+            <li data-i18n="n3">Settings control the 1–20 second countdown, language and appearance. Local playback, subtitles and Quick Look remain available.</li>
           </ul>
           <h4 data-i18n="limitsTitle">Known limits</h4>
           <ul>
@@ -290,10 +290,10 @@
         <details><summary data-i18n="q5">Is anything uploaded?</summary><p data-i18n="a5">Enhancement runs locally, without automatically uploading captured pictures or media, and no account is required. Update checks use the network. Sending feedback submits the content you enter and any screenshot you explicitly attach.</p></details>
         <details><summary data-i18n="q6">How much does it cost?</summary><p data-i18n="a6">Free. The project's own code is MIT licensed on GitHub. FFmpeg, RIFE, model weights and other dependencies retain their own licenses.</p></details>
         <details><summary data-i18n="q7">macOS says it can't verify the developer.</summary><p data-i18n="a7">This community build is not Apple notarized. If you trust the download, review its blocked-launch message in System Settings → Privacy &amp; Security and decide whether to allow it. The app does not change system security settings.</p></details>
-        <details><summary data-i18n="q8">How do I generate frames for video on a Mac?</summary><p data-i18n="a8">After installing, open File → Quality Workbench, choose a window, display or local video, start with 2× frame generation, then press Start enhancement. Capturing a window or display needs Screen Recording permission; local video playback does not.</p></details>
+        <details><summary data-i18n="q8">How do I generate frames for video on a Mac?</summary><p data-i18n="a8">After installing, open File → Quality Workbench and start with 2× frame generation. For a window, press Delayed enhancement and focus the target before the countdown ends. Displays and video files use Start enhancement. Window and display capture need Screen Recording permission.</p></details>
         <details><summary data-i18n="q9">Does selecting a multiplier guarantee 120 fps?</summary><p data-i18n="a9">A multiplier is a requested processing mode, not a guarantee of displayed frame rate. The engine, source cadence, resolution and display refresh rate affect the result. A 60 Hz display cannot present 120 distinct frames per second. Check the FPS overlay and the picture you actually see.</p></details>
         <details><summary data-i18n="q10">What is the difference between frame generation and upscaling?</summary><p data-i18n="a10">Frame generation creates in-between pictures for more continuous motion; upscaling enlarges pictures to a higher resolution. They can be enabled separately. Artifacts or changes in detail can occur, so compare at equal output sizes.</p></details>
-        <p class="note"><a href="https://github.com/Jun-bao/OpenDuckFrame/blob/2a4a112abbb21b320f82559e84d8c96483e1cab1/docs/features.md" data-link="features" data-i18n="featureReference">Read the features, requirements and current limitations</a></p>
+        <p class="note"><a href="https://github.com/Jun-bao/OpenDuckFrame/blob/v0.3.0/docs/features.md" data-link="features" data-i18n="featureReference">Read the features, requirements and current limitations</a></p>
       </div>
     </div>
   </section>
@@ -345,8 +345,8 @@
     <nav class="links" aria-label="Footer" data-i18n-aria="ariaFoot">
       <a href="https://github.com/Jun-bao/OpenDuckFrame" data-link="repo">GitHub</a>
       <a href="https://github.com/Jun-bao/OpenDuckFrame/releases" data-link="releases" data-i18n="footReleases">Releases</a>
-      <a href="https://github.com/Jun-bao/OpenDuckFrame/blob/2a4a112abbb21b320f82559e84d8c96483e1cab1/PRIVACY.md" data-link="privacy" data-i18n="footPrivacy">Privacy</a>
-      <a href="https://github.com/Jun-bao/OpenDuckFrame/blob/2a4a112abbb21b320f82559e84d8c96483e1cab1/LICENSE" data-link="license" data-i18n="footLicense">License</a>
+      <a href="https://github.com/Jun-bao/OpenDuckFrame/blob/v0.3.0/PRIVACY.md" data-link="privacy" data-i18n="footPrivacy">Privacy</a>
+      <a href="https://github.com/Jun-bao/OpenDuckFrame/blob/v0.3.0/LICENSE" data-link="license" data-i18n="footLicense">License</a>
     </nav>
     <p class="fine">© 2026 OpenDuckFrame contributors · MIT License</p>
   </div>
@@ -357,6 +357,6 @@
   <form method="dialog"><button class="close" aria-label="Close" data-i18n-aria="ariaClose">×</button></form>
 </dialog>
 
-<script src="/main.js?v=20261105-content1"></script>
+<script src="/main.js?v=20261106-release030"></script>
 </body>
 </html>
