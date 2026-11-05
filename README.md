@@ -33,8 +33,8 @@ python3 -m http.server 4178 --bind 127.0.0.1
 - `guides/` 和 `en/guides/`：中英文帧生成与实时补帧教程、视频超分教程、补帧与超分对照。核心结论与步骤写在 HTML 正文中，附项目文档依据。
 - `styles.css`：浅色和深色主题，桌面端和移动端样式。
 - `assets/openduckframe-library.webp`：v0.1.0 技术库实机截图。
-- `assets/media/hero.mp4`：首屏示意动画；`assets/media/promo-v2.mp4`：52 秒宣传片。
-- `assets/media/*.jpg`：场景卡片配图，均为示意图。
+- `assets/media/hero.mp4`：首屏示意动画；`assets/media/promo-web-v3.mp4`：网页使用的 52 秒宣传片；`promo-v2.mp4` 保留为原始版本。
+- `assets/media/*.webp`：网页使用的场景卡片配图，均为示意图；原始 JPG 保留。
 - `assets/icon.png`、`favicon.png`、`og.jpg`：图标和分享卡片。
 
 ## 搜索与 AI 搜索
@@ -58,6 +58,22 @@ python3 -m http.server 4178 --bind 127.0.0.1
 本机运行路径、后台服务配置和隧道令牌属于部署环境，保存在仓库外；令牌不得放入公开目录或提交 Git。
 
 `server.py` 用于生产服务，启动时必须显式传入只含公开文件的 `--directory`。它把 `www` 与 `index.html` 别名合并到正式 HTTPS 网址，保留路径和查询参数；中文、英文与三篇指南仍各有独立规范地址。服务脚本不放入公开文件目录。
+
+### 完整发布包与回退
+
+先完成 `node scripts/build-en.mjs`、`python3 scripts/check-performance.py` 和 `git diff --check`，核对并提交本轮改动。然后从已提交版本生成一个全新的发布目录：
+
+```sh
+python3 scripts/stage-release.py --output /absolute/private/runtime/releases/release-id
+```
+
+`--output` 必须在源码目录以外且尚不存在。`HEAD` 模式拒绝未提交的工作区；如需从历史提交回退，可显式使用 `--ref <commit>`。脚本直接读取 Git 提交中的文件，不把当前工作区或机器私有配置混进发布物。
+
+发布包包含 `site/` 下的公开文件，以及公开目录之外的 `server.py`、`performance_http.py`、`feedback_service.py` 和协议检查脚本。脚本先校验白名单、八个站点地图页面、服务模块导入及 HTTP 回归测试，全部通过才写出 `release-manifest.json`（提交、文件 SHA-256 和检查结果）。含 `INCOMPLETE` 的目录不得部署。脚本本身只准备发布包，不切换服务、不读取反馈配置或隧道凭据。
+
+切换时先保留现有 HTTP 服务配置。将服务的程序路径、`--directory` 和工作目录一并指向同一个已验证发布目录；`--feedback-config` 继续使用公开目录外的原有私有配置。仅重载官网 HTTP 服务。不要边覆盖单个服务文件边重启，否则可能出现主文件已更新、依赖模块尚未到位的启动失败。
+
+切换后检查源站与正式域名的八个 SEO 页面、反馈页的 `no-store`、视频 Range、规范重定向和服务启动日志，并将运行中的程序参数与发布清单对照。保留切换前的发布目录和服务配置；失败时恢复该配置并重载 HTTP 服务，再验证同一组路径。Cloudflare 缓存更新与源站切换分别核对，源站成功不代表边缘已经更新。
 
 ### 网页性能
 

@@ -1,8 +1,18 @@
 """Cache public static content and stream single byte ranges for MP4 playback."""
 
+from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
 import os
 import re
 from urllib.parse import urlsplit
+
+
+def bounded_decimal(value, limit):
+    """Parse a range offset without converting an unbounded integer string."""
+    digits = value.lstrip("0") or "0"
+    if len(digits) > len(str(limit)):
+        return limit
+    return min(int(digits), limit)
 
 
 class StaticPerformanceMixin:
@@ -11,65 +21,88 @@ class StaticPerformanceMixin:
         super().send_response(code, message)
 
     def end_headers(self):
-        if self.command in ("GET", "HEAD"):
+        status = self._response_status
+        if status >= 400 or self.command not in ("GET", "HEAD"):
+            self.send_header("Cache-Control", "no-store")
+        elif status in (200, 206, 304):
             path = urlsplit(self.path).path
-            status = self._response_status
-            if status in (200, 206, 304):
-                if path in ("/", "/en/") or path.startswith(("/guides/", "/en/guides/")):
-                    policy = "public, max-age=0, s-maxage=300, stale-while-revalidate=30"
-                elif path.startswith("/assets/") or path in (
-                    "/main.js", "/styles.css", "/favicon.ico", "/favicon.png",
-                    "/robots.txt", "/sitemap.xml",
-                ):
-                    policy = "public, max-age=3600, s-maxage=86400, stale-while-revalidate=3600"
-                else:
-                    policy = "no-store"
-                self.send_header("Cache-Control", policy)
-                if path.endswith(".mp4"):
-                    self.send_header("Accept-Ranges", "bytes")
-            elif status >= 400:
-                self.send_header("Cache-Control", "no-store")
+            if path in ("/", "/en/") or path.startswith(("/guides/", "/en/guides/")):
+                policy = "public, max-age=0, s-maxage=300, stale-while-revalidate=30"
+            elif path.startswith("/assets/") or path in (
+                "/main.js", "/styles.css", "/favicon.ico", "/favicon.png",
+                "/robots.txt", "/sitemap.xml",
+            ):
+                policy = "public, max-age=3600, s-maxage=86400, stale-while-revalidate=3600"
+            else:
+                policy = "no-store"
+            self.send_header("Cache-Control", policy)
+            if path.lower().endswith(".mp4"):
+                self.send_header("Accept-Ranges", "bytes")
         super().end_headers()
 
     def send_head(self):
         self._range_remaining = None
         path = urlsplit(self.path).path
-        requested = self.headers.get("Range", "")
-        match = re.fullmatch(r"bytes=(\d*)-(\d*)", requested)
-        if not path.endswith(".mp4") or not match or not any(match.groups()):
+        requested = self.headers.get("Range", "").strip()
+        match = re.fullmatch(r"bytes=([0-9]*)-([0-9]*)", requested, re.IGNORECASE)
+        # RFC 9110 defines Range for GET only; HEAD describes the full resource.
+        if self.command != "GET" or not path.lower().endswith(".mp4") or not match or not any(match.groups()):
             return super().send_head()
 
         filename = self.translate_path(self.path)
         if not os.path.isfile(filename):
             return super().send_head()
-        file = open(filename, "rb")
-        stat = os.fstat(file.fileno())
-        modified = self.date_time_string(stat.st_mtime)
-        if self.headers.get("If-Range", modified) != modified:
-            file.close()
-            return super().send_head()
-
-        first, last = match.groups()
-        size = stat.st_size
-        start = int(first) if first else max(0, size - int(last))
-        end = min(int(last), size - 1) if first and last else size - 1
-        if start >= size or start > end:
-            file.close()
-            self.send_response(416)
-            self.send_header("Content-Range", f"bytes */{size}")
-            self.send_header("Content-Length", "0")
-            self.end_headers()
+        try:
+            file = open(filename, "rb")
+        except OSError:
+            self.send_error(404, "File not found")
             return None
+        try:
+            stat = os.fstat(file.fileno())
+            modified = self.date_time_string(stat.st_mtime)
+            # Conditional GET is evaluated before Range, as in the stdlib path.
+            if "If-Modified-Since" in self.headers and "If-None-Match" not in self.headers:
+                try:
+                    since = parsedate_to_datetime(self.headers["If-Modified-Since"])
+                    if since.tzinfo is None:
+                        since = since.replace(tzinfo=timezone.utc)
+                    last_modified = datetime.fromtimestamp(stat.st_mtime, timezone.utc).replace(microsecond=0)
+                    if last_modified <= since:
+                        self.send_response(304)
+                        self.end_headers()
+                        file.close()
+                        return None
+                except (TypeError, IndexError, OverflowError, ValueError):
+                    pass
 
-        self.send_response(206)
-        self.send_header("Content-Type", self.guess_type(filename))
-        self.send_header("Content-Range", f"bytes {start}-{end}/{size}")
-        self.send_header("Content-Length", str(end - start + 1))
-        self.send_header("Last-Modified", modified)
-        self.end_headers()
-        file.seek(start)
-        self._range_remaining = end - start + 1
-        return file
+            size = stat.st_size
+            if size == 0 or self.headers.get("If-Range", modified) != modified:
+                file.close()
+                return super().send_head()
+
+            first, last = match.groups()
+            start = bounded_decimal(first, size) if first else max(0, size - bounded_decimal(last, size))
+            end = min(bounded_decimal(last, size), size - 1) if first and last else size - 1
+            if start >= size or start > end:
+                file.close()
+                self.send_response(416)
+                self.send_header("Content-Range", f"bytes */{size}")
+                self.send_header("Content-Length", "0")
+                self.end_headers()
+                return None
+
+            file.seek(start)
+            self.send_response(206)
+            self.send_header("Content-Type", self.guess_type(filename))
+            self.send_header("Content-Range", f"bytes {start}-{end}/{size}")
+            self.send_header("Content-Length", str(end - start + 1))
+            self.send_header("Last-Modified", modified)
+            self.end_headers()
+            self._range_remaining = end - start + 1
+            return file
+        except BaseException:
+            file.close()
+            raise
 
     def copyfile(self, source, outputfile):
         if self._range_remaining is None:
