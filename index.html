@@ -60,7 +60,7 @@
       "image": "https://openduckframe.cn/assets/icon.png",
       "screenshot": "https://openduckframe.cn/assets/openduckframe-library.webp",
       "downloadUrl": "https://github.com/Jun-bao/OpenDuckFrame/releases/latest/download/OpenDuckFrame.dmg",
-      "license": "https://github.com/Jun-bao/OpenDuckFrame/blob/main/LICENSE",
+      "license": "https://github.com/Jun-bao/OpenDuckFrame/blob/2a4a112abbb21b320f82559e84d8c96483e1cab1/LICENSE",
       "sameAs": "https://github.com/Jun-bao/OpenDuckFrame",
       "isAccessibleForFree": true,
       "offers": {"@type": "Offer", "price": "0", "priceCurrency": "CNY"}
@@ -161,14 +161,14 @@
       <div class="side">
         <h2 data-i18n="whatTitle">OpenDuckFrame 是什么？</h2>
         <p data-i18n="whatBody">OpenDuckFrame（开源小鸭）是一款原生 Mac 画质增强应用。它识别来源画面的帧率，用 RIFE 或 Apple 插帧补出中间帧，也能独立配置超分。窗口、显示器与本地视频都可以作为输入，画面不上传。</p>
-        <a class="more" href="https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/quick-start.md" data-link="guide"><span data-i18n="readDocs">读使用指南</span> →</a>
+        <a class="more" href="https://github.com/Jun-bao/OpenDuckFrame/blob/2a4a112abbb21b320f82559e84d8c96483e1cab1/docs/quick-start.md" data-link="guide"><span data-i18n="readDocs">读使用指南</span> →</a>
       </div>
       <ol class="features">
         <li><span class="n">01</span><div><h3 data-i18n="f1t">识别真实帧率</h3><p data-i18n="f1d">只数画面真正变化的帧，24 帧的视频按 24 帧算，不会被 120 Hz 刷新率骗到。</p></div></li>
         <li><span class="n">02</span><div><h3 data-i18n="f2t">RIFE 与 Apple 插帧</h3><p data-i18n="f2d">选择目标帧率，或请求 2 倍、3 倍、4 倍补帧。实际输出取决于引擎、画面分辨率和显示器刷新率。</p></div></li>
         <li><span class="n">03</span><div><h3 data-i18n="f3t">实时超分</h3><p data-i18n="f3d">用 Lanczos、MetalFX 等方案实时放大低分辨率画面。超分与补帧可以分别配置，清晰度和开销随方案而变。</p></div></li>
-        <li><span class="n">04</span><div><h3 data-i18n="f4t">算力不够自动降档</h3><p data-i18n="f4d">跟不上时自动退到更低倍率，不让画面忽快忽慢。</p></div></li>
-        <li><span class="n">05</span><div><h3 data-i18n="f5t">到屏幕上限就直通</h3><p data-i18n="f5d">内容乘倍率超过屏幕刷新率时直接显示原画，不让显卡白忙。</p></div></li>
+        <li><span class="n">04</span><div><h3 data-i18n="f4t">按预算调整倍率</h3><p data-i18n="f4d">实时 RIFE 倍率模式会按处理预算调整有效倍率；实际流畅度仍取决于设备和输入。</p></div></li>
+        <li><span class="n">05</span><div><h3 data-i18n="f5t">按屏幕刷新率限制倍率</h3><p data-i18n="f5d">实时 RIFE 倍率模式会按屏幕刷新率降低倍率，降到 1 倍时直通原画。</p></div></li>
         <li><span class="n">06</span><div><h3 data-i18n="f6t">帧率一眼看清</h3><p data-i18n="f6d">角落的小面板实时显示内容帧率、输出帧率和当前倍率。</p></div></li>
         <li><span class="n">07</span><div><h3 data-i18n="f7t">全部本地处理</h3><p data-i18n="f7d">采集和模型都在你的 Mac 上运行，不需要账号，画面不出这台电脑。</p></div></li>
       </ol>
@@ -191,7 +191,7 @@
   <section id="uses">
     <div class="wrap">
       <h2 data-i18n="usesTitle">能用在哪些画面？</h2>
-      <p class="sub" data-i18n="usesSub">窗口里在动的画面都能选。这几种最常用。</p>
+      <p class="sub" data-i18n="usesSub">可以选择窗口、显示器或本地视频。受保护内容可能无法采集。</p>
       <div class="tabbar">
         <div class="seg" role="tablist">
           <button type="button" role="tab" aria-selected="true" data-uses="frames" data-i18n="tabFrames">补帧</button>
@@ -231,20 +231,20 @@
         </div>
         <ol class="steps">
           <li><b data-i18n="s1t">拖进“应用程序”</b><span data-i18n="s1d">打开下载的 .dmg，把 OpenDuckFrame 拖到“应用程序”文件夹。社区版未经过 Apple 公证，首次打开可能被 macOS 拦截。</span></li>
-          <li><b data-i18n="s2t">允许屏幕录制</b><span data-i18n="s2d">第一次选窗口时，在 系统设置 › 隐私与安全性 › 屏幕录制 里打开 OpenDuckFrame。</span></li>
-          <li><b data-i18n="s3t">选窗口，开始补帧</b><span data-i18n="s3d">在画质工作台选来源窗口，点“开始增强”，3 秒后输出画面盖在原窗口上。</span></li>
+          <li><b data-i18n="s2t">允许屏幕录制</b><span data-i18n="s2d">采集窗口或显示器时，在 系统设置 › 隐私与安全性 中允许屏幕录制；播放本地视频无需此权限。</span></li>
+          <li><b data-i18n="s3t">选窗口，开始补帧</b><span data-i18n="s3d">打开 文件 › 画质工作台，选择来源与输出方式，点“开始增强”。输出可跟随窗口或在所选显示器全屏显示。</span></li>
         </ol>
         <div class="notes">
           <h4 data-i18n="notesTitle">这一版有什么</h4>
           <ul>
             <li data-i18n="n1">窗口、显示器和视频文件的实时补帧与超分，带帧率面板。</li>
-            <li data-i18n="n2">自动识别内容帧率，算力不够时自动降档，到屏幕上限时直通。</li>
-            <li data-i18n="n3">本地视频播放、字幕、Finder 快速查看，界面支持 17 种语言。</li>
+            <li data-i18n="n2">实时 RIFE 倍率模式按处理预算和屏幕刷新率调整有效倍率，以帧率面板的实际读数为准。</li>
+            <li data-i18n="n3">本地视频播放、字幕和 Finder 快速查看。播放器支持 17 种界面语言，画质工作台支持中文和英文。</li>
           </ul>
           <h4 data-i18n="limitsTitle">已知限制</h4>
           <ul>
             <li data-i18n="l1">补帧会增加延迟，具体随引擎、分辨率和质量设置而变。对操作延迟敏感时，请先比较原画和增强结果。</li>
-            <li data-i18n="l2">macOS 原生全屏（绿色按钮）暂不支持，请用普通窗口或网页全屏。</li>
+            <li data-i18n="l2">源窗口缩放、全屏切换或遮挡可能影响采集。异常时请重新选择来源，并比较普通窗口模式。</li>
           </ul>
         </div>
       </div>
@@ -261,14 +261,14 @@
         <details><summary data-i18n="q1">OpenDuckFrame（开源小鸭）是什么？</summary><p data-i18n="a1">OpenDuckFrame（开源小鸭）是一款免费、MIT 开源的 Mac 实时补帧与超分应用。它增强已有的窗口、显示器或本地视频画面，提供 RIFE 与 Apple 插帧，以及独立的画面缩放和本地视频播放功能。</p></details>
         <details><summary data-i18n="q2">支持哪些 Mac？支持 Windows 和 Intel 吗？</summary><p data-i18n="a2">支持 Apple 芯片的 Mac，要求 macOS 14 或更高版本。Apple 插帧等部分引擎需要 macOS 26 及受支持的硬件与输入格式。目前不支持 Intel Mac、Windows、iPhone 或 iPad。</p></details>
         <details><summary data-i18n="q3">会增加延迟吗？</summary><p data-i18n="a3">会。补帧需要根据已有帧计算中间画面，延迟会随引擎、分辨率和质量设置变化。建议先从 2 倍补帧开始，使用原画、增强和对比视图检查效果；对操作延迟敏感时应谨慎选择。</p></details>
-        <details><summary data-i18n="q4">支持全屏吗？</summary><p data-i18n="a4">目前支持普通窗口和网页全屏。macOS 原生全屏还在开发中。</p></details>
-        <details><summary data-i18n="q5">画面会上传吗？</summary><p data-i18n="a5">不会。采集、识别和补帧都在你的 Mac 上完成，也不需要账号。</p></details>
-        <details><summary data-i18n="q6">多少钱？</summary><p data-i18n="a6">免费。源代码以 MIT 许可公开在 GitHub 上。</p></details>
+        <details><summary data-i18n="q4">支持全屏吗？</summary><p data-i18n="a4">输出可跟随来源窗口，也可在所选显示器全屏显示。源应用切换原生全屏时可能影响采集，兼容性取决于具体应用与模式。</p></details>
+        <details><summary data-i18n="q5">画面会上传吗？</summary><p data-i18n="a5">画面增强在本机完成，不自动上传采集画面或媒体，无需账号。检查更新会联网；主动发送反馈时，会提交你填写的内容和明确附上的截图。</p></details>
+        <details><summary data-i18n="q6">多少钱？</summary><p data-i18n="a6">免费。项目自有代码以 MIT 许可公开在 GitHub 上；FFmpeg、RIFE、模型权重等依赖保留各自许可证。</p></details>
         <details><summary data-i18n="q7">打开时提示“无法验证开发者”怎么办？</summary><p data-i18n="a7">当前社区版未经过 Apple 公证。确认信任下载来源后，可在“系统设置 → 隐私与安全性”中查看拦截提示，自行决定是否允许打开。应用不会替你修改系统安全设置。</p></details>
         <details><summary data-i18n="q8">Mac 上如何给视频补帧？</summary><p data-i18n="a8">下载安装后，打开“文件 → 画质工作台”，选择窗口、显示器或本地视频，先尝试 2 倍补帧，再点“开始增强”。采集窗口或显示器需要屏幕录制权限；本地视频播放不需要这项权限。</p></details>
         <details><summary data-i18n="q9">选择倍率后，一定能达到 120 fps 吗？</summary><p data-i18n="a9">倍率是请求的处理模式，不能保证实际显示帧率。引擎、来源帧率、分辨率和显示器刷新率都会影响结果；60 Hz 显示器也无法显示每秒 120 张不同画面。请以帧率面板和实际观看结果为准。</p></details>
         <details><summary data-i18n="q10">视频补帧和超分分别做什么？</summary><p data-i18n="a10">补帧在相邻画面之间生成中间帧，改善运动连贯性；超分把画面放大到更高分辨率。两项功能可分别启用，处理结果可能出现伪影或细节变化，建议在相同输出尺寸下比较。</p></details>
-        <p class="note"><a href="https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/features.md" data-link="features" data-i18n="featureReference">查看功能、系统要求与当前限制</a></p>
+        <p class="note"><a href="https://github.com/Jun-bao/OpenDuckFrame/blob/2a4a112abbb21b320f82559e84d8c96483e1cab1/docs/features.md" data-link="features" data-i18n="featureReference">查看功能、系统要求与当前限制</a></p>
       </div>
     </div>
   </section>
@@ -320,8 +320,8 @@
     <nav class="links" aria-label="页脚" data-i18n-aria="ariaFoot">
       <a href="https://github.com/Jun-bao/OpenDuckFrame" data-link="repo">GitHub</a>
       <a href="https://github.com/Jun-bao/OpenDuckFrame/releases" data-link="releases" data-i18n="footReleases">版本发布</a>
-      <a href="https://github.com/Jun-bao/OpenDuckFrame/blob/main/PRIVACY.md" data-link="privacy" data-i18n="footPrivacy">隐私</a>
-      <a href="https://github.com/Jun-bao/OpenDuckFrame/blob/main/LICENSE" data-link="license" data-i18n="footLicense">许可证</a>
+      <a href="https://github.com/Jun-bao/OpenDuckFrame/blob/2a4a112abbb21b320f82559e84d8c96483e1cab1/PRIVACY.md" data-link="privacy" data-i18n="footPrivacy">隐私</a>
+      <a href="https://github.com/Jun-bao/OpenDuckFrame/blob/2a4a112abbb21b320f82559e84d8c96483e1cab1/LICENSE" data-link="license" data-i18n="footLicense">许可证</a>
     </nav>
     <p class="fine">© 2026 OpenDuckFrame contributors · MIT License</p>
   </div>
@@ -332,6 +332,6 @@
   <form method="dialog"><button class="close" aria-label="关闭" data-i18n-aria="ariaClose">×</button></form>
 </dialog>
 
-<script src="main.js?v=20261104-perf1"></script>
+<script src="main.js?v=20261105-content1"></script>
 </body>
 </html>
