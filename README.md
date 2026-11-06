@@ -9,13 +9,15 @@ OpenDuckFrame（开源小鸭）的静态产品页：Mac 实时补帧、超分和
 
 ## 本地预览
 
-纯静态页面，不需要构建，也不向第三方发请求。直接用浏览器打开 `index.html`，或运行：
+页面为静态 HTML，不需要服务器构建。直接用浏览器打开 `index.html`，或运行：
 
 ```sh
 python3 -m http.server 4178 --bind 127.0.0.1
 ```
 
 然后访问 `http://127.0.0.1:4178`。
+
+本地预览默认不启用统计。正式网站保留 Cloudflare 访问统计，并通过同域的 `/stats/script.js` 和 `/stats/api/send` 接入自部署 Umami 3.4.1；这些网络请求与应用中的本机画面处理无关。
 
 ## 发版时要改的地方
 
@@ -31,6 +33,7 @@ python3 -m http.server 4178 --bind 127.0.0.1
 - `main.js`：链接、版本、主题和播放器。
 - `translations/en.json`：英文文案；修改首页或翻译后运行 `node scripts/build-en.mjs` 更新 `en/index.html`，生成后即可静态发布，无需服务器构建。
 - `guides/` 和 `en/guides/`：中英文帧生成与实时补帧教程、视频超分教程、补帧与超分对照。核心结论与步骤写在 HTML 正文中，附项目文档依据。
+- 新增双语 `rife-mac/` 与 `lossless-scaling-mac/` 专题，沿用现有教程版式，说明 RIFE 设置和官方资料支持的客观对比。动画补帧专题待有可展示素材和实测依据后再发布。
 - `styles.css`：浅色和深色主题，桌面端和移动端样式。
 - `assets/openduckframe-library.webp`：v0.1.0 技术库实机截图。
 - `assets/media/hero.mp4`：首屏示意动画；`assets/media/promo-web-v3.mp4`：网页使用的 52 秒宣传片；`promo-v2.mp4` 保留为原始版本。
@@ -51,9 +54,30 @@ python3 -m http.server 4178 --bind 127.0.0.1
 - `/favicon.ico` 与 `/favicon.png` 沿用现有图标，兼容请求根目录图标的客户端；页面同时声明 64 × 64 PNG 图标。
 - 搜索表现使用站长平台的曝光、点击、查询词和索引数据判断；GEO 另外观察品牌是否被提及、是否推荐、是否引用本站，不能用提交成功代替效果。
 
+### 回归检查
+
+```sh
+node scripts/build-en.mjs
+python3 scripts/check-seo.py --directory .
+python3 scripts/check-performance.py
+python3 scripts/check-analytics.py
+node scripts/check-analytics-js.mjs
+git diff --check
+```
+
+`check-seo.py` 要求原有八页继续存在，核对全部已发布指南的标题、语言、JSON-LD、canonical、双向 hreflang、站点地图及本地文件／锚点。可增加 `--base-url https://openduckframe.cn` 检查线上 HTML；使用配置有可信 CA 根证书的 Python 环境。自检请求使用明确的 OpenDuckFrame 标识，不冒充真实搜索爬虫。
+
+### 网站统计
+
+Umami 使用独立应用和数据库，管理端仅绑定本机回环地址。HTTP 服务通过 `--analytics-config` 指定公开目录外的 JSON，字段为本机上游 `origin` 和允许的 `website_ids`。只代理 tracker 和事件接收，不代理管理、登录或查询 API；未配置或统计不可用时，正常页面与下载仍然工作。数据库和管理员凭据由本机部署环境保存，不进入仓库或公开目录。
+
+`analytics.js` 统一记录 `download_click`、`download_section_click`、`github_release_click`、`download_link_copy`，不等待上报完成才跳转。DMG 入口指向 latest 时不猜最终资源版本，事件 `release` 记为 unknown。页面路径、语言、位置和已知目标采用有限字段；URL 查询只接受代码中列明的 UTM 值，来源网站只留站点或站内路径，不记录任意来源查询、片段、账号或反馈内容。服务端再做一次字段白名单过滤。
+
+公开反馈页不加载 Umami；DNT／GPC 开启时不加载统计，服务端也尊重对应的 DNT／Sec-GPC 请求头；本地测试须使用独立测试 ID，不能混入生产数据。网站统计说明见 `/feedback/privacy/#website-analytics`。原始 Umami 事件保留 90 天，部署环境每日运行 `scripts/prune-analytics.py`，只清理本项目独立数据库中的过期事件和无剩余事件的旧会话。
+
 ## 发布
 
-生产服务应只提供官网公开文件，不要把含 `.git` 的整个仓库用作公网服务目录。需发布 `index.html`、`en/`、`guides/`、`main.js`、`styles.css`、`assets/`、`favicon.ico`、`favicon.png`、`robots.txt`、`sitemap.xml`，以及站长平台要求的公开验证文件。`scripts/` 与 `translations/` 属于源码，不需要发布。
+生产服务应只提供官网公开文件，不要把含 `.git` 的整个仓库用作公网服务目录。需发布 `index.html`、`en/`、`guides/`、`main.js`、`analytics.js`、`styles.css`、`assets/`、`favicon.ico`、`favicon.png`、`robots.txt`、`sitemap.xml`，以及站长平台要求的公开验证文件。`scripts/` 与 `translations/` 属于源码，不需要发布。
 
 本机运行路径、后台服务配置和隧道令牌属于部署环境，保存在仓库外；令牌不得放入公开目录或提交 Git。
 
@@ -61,7 +85,7 @@ python3 -m http.server 4178 --bind 127.0.0.1
 
 ### 完整发布包与回退
 
-先完成 `node scripts/build-en.mjs`、`python3 scripts/check-performance.py` 和 `git diff --check`，核对并提交本轮改动。然后从已提交版本生成一个全新的发布目录：
+先完成上述回归检查，包括英文生成、SEO、HTTP、统计与差异检查，核对并提交本轮改动。然后从已提交版本生成一个全新的发布目录：
 
 ```sh
 python3 scripts/stage-release.py --output /absolute/private/runtime/releases/release-id
@@ -69,11 +93,11 @@ python3 scripts/stage-release.py --output /absolute/private/runtime/releases/rel
 
 `--output` 必须在源码目录以外且尚不存在。`HEAD` 模式拒绝未提交的工作区；如需从历史提交回退，可显式使用 `--ref <commit>`。脚本直接读取 Git 提交中的文件，不把当前工作区或机器私有配置混进发布物。
 
-发布包包含 `site/` 下的公开文件，以及公开目录之外的 `server.py`、`performance_http.py`、`feedback_service.py` 和协议检查脚本。脚本先校验白名单、八个站点地图页面、服务模块导入及 HTTP 回归测试，全部通过才写出 `release-manifest.json`（提交、文件 SHA-256 和检查结果）。含 `INCOMPLETE` 的目录不得部署。脚本本身只准备发布包，不切换服务、不读取反馈配置或隧道凭据。
+发布包包含 `site/` 下的公开文件，以及公开目录之外的 `server.py`、`performance_http.py`、`feedback_service.py`、`analytics_service.py` 和检查／统计维护脚本。脚本先校验白名单、十二个站点地图页面、服务模块导入及 HTTP／统计回归测试，全部通过才写出 `release-manifest.json`（提交、文件 SHA-256 和检查结果）。含 `INCOMPLETE` 的目录不得部署。脚本本身只准备发布包，不切换服务、不读取反馈配置或隧道凭据。
 
-切换时先保留现有 HTTP 服务配置。将服务的程序路径、`--directory` 和工作目录一并指向同一个已验证发布目录；`--feedback-config` 继续使用公开目录外的原有私有配置。仅重载官网 HTTP 服务。不要边覆盖单个服务文件边重启，否则可能出现主文件已更新、依赖模块尚未到位的启动失败。
+切换时先保留现有 HTTP 服务配置。将服务的程序路径、`--directory` 和工作目录一并指向同一个已验证发布目录；`--feedback-config` 继续使用公开目录外的原有私有配置；启用统计时 `--analytics-config` 指向独立的私有上游配置。仅重载官网 HTTP 服务。不要边覆盖单个服务文件边重启，否则可能出现主文件已更新、依赖模块尚未到位的启动失败。
 
-切换后检查源站与正式域名的八个 SEO 页面、反馈页的 `no-store`、视频 Range、规范重定向和服务启动日志，并将运行中的程序参数与发布清单对照。保留切换前的发布目录和服务配置；失败时恢复该配置并重载 HTTP 服务，再验证同一组路径。Cloudflare 缓存更新与源站切换分别核对，源站成功不代表边缘已经更新。
+切换后检查源站与正式域名的十二个 SEO 页面、反馈页的 `no-store`、视频 Range、规范重定向和服务启动日志，并将运行中的程序参数与发布清单对照。保留切换前的发布目录和服务配置；失败时恢复该配置并重载 HTTP 服务，再验证同一组路径。Cloudflare 缓存更新与源站切换分别核对，源站成功不代表边缘已经更新。
 
 ### 网页性能
 
@@ -89,3 +113,11 @@ python3 scripts/stage-release.py --output /absolute/private/runtime/releases/rel
 `server.py` 的 `POST /api/feedback` 通过 `feedback_service.py` 调用已登录的 `lark-cli` 用户身份，写入开发者私有的飞书多维表格，并把截图加入附件字段。应用通过不会随页面请求发送的网址片段传入版本信息，仅在点击发送时提交。启动时传 `--feedback-config` 指向公开目录以外的配置文件，其中只指定 `base_token`、`table_id` 和 `lark_cli` 可执行文件；不把飞书登录信息、收集表坐标或部署路径写入浏览器代码。服务器限制正文、图片大小和提交频率，不在反馈表格保存来源地址。
 
 部署时还需将 `feedback/` 放入公开目录，将 `feedback_service.py` 与 `server.py` 放在服务目录，并在服务启动参数中提供私有配置文件。隐私说明位于 `/feedback/privacy/`。如果没有配置收集端，接口返回不可用，不能显示发送成功。
+
+## SEO GEO 观测口径
+
+工程检查、搜索收录、自然搜索展现和 AI 引用分别记录。沿用已有站长属性和检查安排，不重复提交未改变 URL，不把普通 GET 200 当作真实机器人已抓取。
+
+固定非品牌问题为：Mac 怎么实时给视频补帧；Apple Silicon 有哪些免费开源帧生成工具；Mac 能否用 RIFE 实时插帧；Mac 有无类似 Lossless Scaling 的工具；补帧与超分的区别；动画补帧的限制与伪影。品牌问题为 OpenDuckFrame 的设备／系统要求及 X2 是否保证实际帧率翻倍。每个平台每题三次，保存原始回答与全部引用；品牌题不并入非品牌发现率。两个平台的计划样本为 48，缺失与有效分母分别记录，不以失败样本冒充未提及。
+
+本轮没有取得新的 Search Console／Bing 管理后台数据，也没有完成跨平台 AI 引用基线，因此不填写收录率、排名提升或 AI 引用率。新增文章有版本化技术来源；动画专题与普遍性能结论继续等待实测依据。

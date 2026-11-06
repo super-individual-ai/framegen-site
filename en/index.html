@@ -28,7 +28,7 @@
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon.png">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="apple-touch-icon" href="/assets/icon.png">
-<link rel="stylesheet" href="/styles.css?v=20261104-seo5">
+<link rel="stylesheet" href="/styles.css?v=20261106-growth1">
 <script type="application/ld+json" id="site-schema">
 {
   "@context": "https://schema.org",
@@ -107,6 +107,7 @@
 <script>
   try { const s = localStorage.getItem("odf-theme"); if (s === "dark" || s === "light") document.documentElement.dataset.theme = s; } catch (e) {}
 </script>
+<script defer src="/analytics.js?v=20261106-growth1" data-odf-analytics></script>
 </head>
 <body>
 <header class="top">
@@ -123,7 +124,7 @@
       <a href="#faq" data-i18n="navFaq">FAQ</a>
     </nav>
     <div class="end">
-      <a class="icon-btn" href="/" data-language-switch aria-label="Read in Chinese" data-i18n-aria="ariaLang">
+      <a class="icon-btn" href="/" data-language-switch aria-label="中文 · Read in Chinese" data-i18n-aria="ariaLang">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3Z" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
         <span class="lang-label">中文</span>
       </a>
@@ -131,7 +132,7 @@
         <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 3.2a8.2 8.2 0 1 0 5.3 12.6A7.2 7.2 0 0 1 15.5 3.2Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
         <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 3v2M12 19v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M3 12h2M19 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
       </button>
-      <a class="gh" href="https://github.com/Jun-bao/OpenDuckFrame" data-link="repo">
+      <a class="gh" href="https://github.com/Jun-bao/OpenDuckFrame" data-link="repo" aria-label="GitHub">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
         <span>GitHub</span>
       </a>
@@ -317,6 +318,14 @@
           <h3><a href="/en/guides/mac-video-upscaling/" hreflang="en" data-i18n="guideUpscaleTitle">How to upscale video on a Mac</a></h3>
           <p data-i18n="guideUpscaleBody">Choose Lanczos or MetalFX for windows and local video, then check picture quality, processing cost and engine requirements.</p>
         </article>
+        <article>
+          <h3><a href="/en/guides/rife-mac/" hreflang="en" data-i18n="guideRifeTitle">How to use RIFE on a Mac</a></h3>
+          <p data-i18n="guideRifeBody">Metal backends, live capture and files, multipliers, target FPS and what to do when output falls behind.</p>
+        </article>
+        <article>
+          <h3><a href="/en/guides/lossless-scaling-mac/" hreflang="en" data-i18n="guideCompareTitle">Is there a tool like Lossless Scaling for Mac?</a></h3>
+          <p data-i18n="guideCompareBody">Compare documented platforms and use cases without assuming equivalent compatibility, quality or latency.</p>
+        </article>
       </div>
     </div>
   </section>
@@ -347,6 +356,7 @@
       <a href="https://github.com/Jun-bao/OpenDuckFrame/releases" data-link="releases" data-i18n="footReleases">Releases</a>
       <a href="https://github.com/Jun-bao/OpenDuckFrame/blob/v0.3.0/PRIVACY.md" data-link="privacy" data-i18n="footPrivacy">Privacy</a>
       <a href="https://github.com/Jun-bao/OpenDuckFrame/blob/v0.3.0/LICENSE" data-link="license" data-i18n="footLicense">License</a>
+      <a href="/feedback/privacy/#website-analytics" data-i18n="footAnalytics">Website analytics</a>
     </nav>
     <p class="fine">© 2026 OpenDuckFrame contributors · MIT License</p>
   </div>
@@ -357,6 +367,6 @@
   <form method="dialog"><button class="close" aria-label="Close" data-i18n-aria="ariaClose">×</button></form>
 </dialog>
 
-<script src="/main.js?v=20261106-release030"></script>
+<script src="/main.js?v=20261106-growth1"></script>
 </body>
 </html>

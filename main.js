@@ -1,4 +1,4 @@
-// OpenDuckFrame website. Plain script, no build step, no third-party requests.
+// OpenDuckFrame website. Plain script; anonymous analytics loads separately.
 
 // One place for every outbound link and the current release.
 const SITE = {
@@ -55,6 +55,7 @@ copyBtn.addEventListener("click", async () => {
   const source = document.querySelector('.cmd-tabs [aria-selected="true"]').dataset.tab === "src";
   const text = source ? SITE.clone : SITE.links.dmg;
   try { await navigator.clipboard.writeText(text); } catch (e) { return; }
+  if (!source) copyBtn.dispatchEvent(new Event("odf:download-link-copied", { bubbles: true }));
   copyBtn.classList.add("done");
   setTimeout(() => copyBtn.classList.remove("done"), 1400);
 });

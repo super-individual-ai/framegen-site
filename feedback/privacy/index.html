@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex"><title>反馈隐私说明 · OpenDuckFrame</title>
-  <link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/feedback/styles.css?v=1">
+  <link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/styles.css?v=20261106-growth1"><link rel="stylesheet" href="/feedback/styles.css?v=1">
 </head>
 <body class="feedback-page">
   <header class="feedback-header"><a class="brand" href="/">OpenDuckFrame</a><a href="/feedback/">返回反馈页</a></header>
@@ -15,6 +15,11 @@
     <p>连接网站时，服务器和网络服务商会接收到正常的网络请求信息。反馈服务仅在内存中短暂使用来源地址限制频繁提交，不将其写入反馈表格。</p>
     <h2 lang="en">Feedback privacy</h2>
     <p lang="en">Only after you press Send feedback do we receive your message, optional contact email and screenshot. When opened from the app, the app and macOS versions shown on the form are also included. Feedback is stored in the developer’s private Feishu table for troubleshooting, product improvements and necessary replies. It is not published to GitHub or displayed publicly. No screenshot, media file, browsing content or app log is collected automatically. Network providers receive normal connection information; the feedback service briefly uses the source address in memory to limit frequent submissions, without adding it to the feedback table.</p>
+    <h2 id="website-analytics">网站访问统计</h2>
+    <p>官网使用 Cloudflare 访问统计，并通过开发者自部署的 Umami 了解公开页面的访问来源与下载入口点击。Umami 不使用跟踪 Cookie，不与账号或反馈内容关联；记录页面路径、来源网站、语言、按钮位置、设备和大致地区等统计信息。网站访问统计与应用中的画面处理无关，不会读取或上传你播放的媒体。</p>
+    <p>Umami 不采集反馈正文、邮箱、截图、网址片段或任意查询参数；仅保留预先列明的宣传来源参数。连接地址在统计处理时用于生成匿名会话标识，不保存原始 IP。反馈页不加载 Umami。浏览器开启 Do Not Track 或 Global Privacy Control 时，官网不会加载 Umami；屏蔽统计不影响下载。原始 Umami 事件保留 90 天，统计由开发者维护。</p>
+    <h2 lang="en">Website analytics</h2>
+    <p lang="en">The website uses Cloudflare analytics and a developer-hosted Umami instance to understand public-page referrals and download-link clicks. Umami uses no tracking cookies or account identifiers. It records page paths, referring sites, language, button placement, device information and approximate region. It does not read your media, feedback, email, screenshots, URL fragments or arbitrary query parameters; only predefined campaign values are kept. Connection addresses are used to derive anonymous sessions, without storing raw IP addresses. Umami is excluded from feedback pages and is not loaded when Do Not Track or Global Privacy Control is enabled. Blocking analytics does not prevent downloads. Raw Umami events are retained for 90 days.</p>
   </main>
 </body>
 </html>
