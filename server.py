@@ -13,6 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit, urlunsplit
 
 from performance_http import StaticPerformanceMixin
+from analytics_service import AnalyticsService
 from feedback_service import FeedbackError, FeedbackService, MAX_REQUEST_BYTES, validate_feedback
 
 
@@ -66,6 +67,10 @@ class WebsiteHandler(StaticPerformanceMixin, SimpleHTTPRequestHandler):
         pass
 
     def allowed_methods(self):
+        if urlsplit(self.path).path == "/stats/api/send":
+            return "POST, OPTIONS"
+        if urlsplit(self.path).path == "/stats/script.js":
+            return "GET, HEAD, OPTIONS"
         if urlsplit(self.path).path == "/api/feedback":
             return "POST, OPTIONS"
         if Path(self.translate_path(self.path)).exists():
@@ -111,13 +116,21 @@ class WebsiteHandler(StaticPerformanceMixin, SimpleHTTPRequestHandler):
         return True
 
     def do_GET(self):
-        if urlsplit(self.path).path == "/api/feedback":
+        if urlsplit(self.path).path == "/stats/script.js":
+            self.proxy_analytics()
+        elif urlsplit(self.path).path == "/stats/api/send":
+            self.reject_method()
+        elif urlsplit(self.path).path == "/api/feedback":
             self.reject_method()
         elif not self.redirect_to_canonical():
             super().do_GET()
 
     def do_HEAD(self):
-        if urlsplit(self.path).path == "/api/feedback":
+        if urlsplit(self.path).path == "/stats/script.js":
+            self.proxy_analytics()
+        elif urlsplit(self.path).path == "/stats/api/send":
+            self.reject_method()
+        elif urlsplit(self.path).path == "/api/feedback":
             self.reject_method()
         elif not self.redirect_to_canonical():
             super().do_HEAD()
@@ -133,7 +146,43 @@ class WebsiteHandler(StaticPerformanceMixin, SimpleHTTPRequestHandler):
         if self.command != "HEAD":
             self.wfile.write(body)
 
+    def proxy_analytics(self):
+        service = getattr(self.server, "analytics_service", None)
+        if service is None:
+            self.send_json(503, {"ok": False})
+            return
+        body = None
+        if self.command == "POST":
+            if self.headers.get_content_type() != "application/json":
+                self.send_json(415, {"ok": False})
+                return
+            if self.headers.get("Origin") not in (None, self.server.canonical_origin, "http://" + self.headers.get("Host", "")):
+                self.send_json(403, {"ok": False})
+                return
+            try:
+                size = int(self.headers.get("Content-Length", "0"))
+            except ValueError:
+                size = 0
+            if not 0 < size <= 8192:
+                self.send_json(413, {"ok": False})
+                return
+            body = self.rfile.read(size)
+        try:
+            status, content_type, result = service.request(urlsplit(self.path).path, self.command, body, self.headers, self.client_address[0])
+        except (ValueError, TypeError, AttributeError, UnicodeDecodeError):
+            self.send_json(400, {"ok": False})
+            return
+        self.send_response(status)
+        self.send_header("Content-Type", content_type)
+        self.send_header("Content-Length", str(len(result)))
+        self.end_headers()
+        if self.command != "HEAD":
+            self.wfile.write(result)
+
     def do_POST(self):
+        if urlsplit(self.path).path == "/stats/api/send":
+            self.proxy_analytics()
+            return
         if urlsplit(self.path).path != "/api/feedback":
             self.reject_method()
             return
@@ -176,11 +225,13 @@ def main():
     parser.add_argument("--port", type=int, default=4187)
     parser.add_argument("--canonical-origin", default="https://openduckframe.cn")
     parser.add_argument("--feedback-config", type=Path, help="Private Feishu destination config, outside the public directory")
+    parser.add_argument("--analytics-config", type=Path, help="Private local Umami upstream config, outside the public directory")
     args = parser.parse_args()
     handler = partial(WebsiteHandler, directory=args.directory)
     with ThreadingHTTPServer((args.bind, args.port), handler) as server:
         server.canonical_origin = args.canonical_origin.rstrip("/")
         server.feedback_service = FeedbackService(json.loads(args.feedback_config.read_text())) if args.feedback_config else None
+        server.analytics_service = AnalyticsService(json.loads(args.analytics_config.read_text())) if args.analytics_config else None
         server.serve_forever()
 
 
