@@ -20,7 +20,7 @@ from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC_ROOT = {
-    "index.html", "main.js", "styles.css", "favicon.ico", "favicon.png",
+    "index.html", "main.js", "analytics.js", "styles.css", "favicon.ico", "favicon.png",
     "robots.txt", "sitemap.xml",
 }
 REQUIRED_PUBLIC = PUBLIC_ROOT | {
@@ -35,6 +35,8 @@ SEO_PATHS = {
     "/en/guides/frame-generation-vs-upscaling/",
     "/guides/mac-video-upscaling/",
     "/en/guides/mac-video-upscaling/",
+    "/guides/rife-mac/", "/en/guides/rife-mac/",
+    "/guides/lossless-scaling-mac/", "/en/guides/lossless-scaling-mac/",
 }
 PUBLIC_DIRS = {"assets", "en", "guides", "feedback"}
 PUBLIC_EXTENSIONS = {
@@ -42,8 +44,8 @@ PUBLIC_EXTENSIONS = {
     ".svg", ".ico", ".mp4", ".webm", ".woff", ".woff2",
 }
 SERVICE_FILES = {
-    "server.py", "performance_http.py", "feedback_service.py",
-    "scripts/check-performance.py",
+    "server.py", "performance_http.py", "feedback_service.py", "analytics_service.py",
+    "scripts/check-performance.py", "scripts/check-seo.py", "scripts/check-analytics.py", "scripts/prune-analytics.py",
 }
 
 
@@ -139,7 +141,7 @@ def main():
     locations = sitemap.findall(".//{http://www.sitemaps.org/schemas/sitemap/0.9}loc")
     expected = {"https://openduckframe.cn" + path for path in SEO_PATHS}
     if len(locations) != len(expected) or {item.text for item in locations} != expected:
-        raise ValueError("Expected exactly the eight distinct canonical SEO URLs in sitemap.xml")
+        raise ValueError(f"Expected exactly {len(expected)} distinct canonical SEO URLs in sitemap.xml")
     for location in locations:
         url = urlsplit(location.text)
         if url.scheme != "https" or url.netloc != "openduckframe.cn" or url.query or url.fragment:
@@ -152,6 +154,8 @@ def main():
     checks = (
         [sys.executable, "-B", "server.py", "--help"],
         [sys.executable, "-B", "scripts/check-performance.py"],
+        [sys.executable, "-B", "scripts/check-seo.py", "--directory", "site"],
+        [sys.executable, "-B", "scripts/check-analytics.py"],
     )
     for command in checks:
         result = subprocess.run(command, cwd=output, env=env,
@@ -160,7 +164,7 @@ def main():
         if result.returncode:
             print(result.stdout, file=sys.stderr)
             raise RuntimeError(f"Release check failed: {command[-1]}")
-    manifest["verification"] = "passed: service imports, HTTP regression suite, eight sitemap files"
+    manifest["verification"] = f"passed: service imports, HTTP and analytics regression suites, {len(expected)} SEO pages"
     (output / "release-manifest.json").write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2) + "\n"
     )

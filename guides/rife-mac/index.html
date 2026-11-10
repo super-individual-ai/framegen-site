@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RIFE Mac 实时补帧指南：Metal、倍率与实际帧率 | OpenDuckFrame</title>
+<meta name="description" content="在 Apple 芯片 Mac 上配置 RIFE 实时插帧，了解 RIFE 4.25/4.26、窗口与本地视频输入、倍率和目标帧率、处理预算及常见失败。">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://openduckframe.cn/guides/rife-mac/">
+<link rel="alternate" hreflang="zh-CN" href="https://openduckframe.cn/guides/rife-mac/">
+<link rel="alternate" hreflang="en" href="https://openduckframe.cn/en/guides/rife-mac/">
+<link rel="alternate" hreflang="x-default" href="https://openduckframe.cn/guides/rife-mac/">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon.png">
+<link rel="stylesheet" href="/styles.css?v=20261106-growth1">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:site_name" content="OpenDuckFrame">
+<meta property="og:url" content="https://openduckframe.cn/guides/rife-mac/">
+<meta property="og:title" content="Mac 上如何用 RIFE 实时补帧">
+<meta property="og:description" content="在 Apple 芯片 Mac 上配置 RIFE 实时插帧，了解 RIFE 4.25/4.26、窗口与本地视频输入、倍率和目标帧率、处理预算及常见失败。">
+<meta property="og:image" content="https://openduckframe.cn/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://openduckframe.cn/guides/rife-mac/#article","url":"https://openduckframe.cn/guides/rife-mac/","headline":"Mac 上如何用 RIFE 实时补帧","description":"在 Apple 芯片 Mac 上配置 RIFE 实时插帧，了解 RIFE 4.25/4.26、窗口与本地视频输入、倍率和目标帧率、处理预算及常见失败。","inLanguage":"zh-CN","datePublished":"2026-11-06","dateModified":"2026-11-06","about":{"@type":"SoftwareApplication","@id":"https://openduckframe.cn/#app","name":"OpenDuckFrame","url":"https://openduckframe.cn/","sameAs":"https://github.com/Jun-bao/OpenDuckFrame"},"isPartOf":{"@id":"https://openduckframe.cn/#website"},"citation":["https://github.com/Jun-bao/OpenDuckFrame/blob/v0.3.0/docs/quick-start.md","https://github.com/Jun-bao/OpenDuckFrame/blob/v0.3.0/docs/features.md"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"OpenDuckFrame","item":"https://openduckframe.cn/"},{"@type":"ListItem","position":2,"name":"Mac 上如何用 RIFE 实时补帧","item":"https://openduckframe.cn/guides/rife-mac/"}]}]}
+</script>
+<script>try { const theme = localStorage.getItem("odf-theme"); if (theme === "dark" || theme === "light") document.documentElement.dataset.theme = theme; } catch (e) {}</script>
+<script defer src="/analytics.js?v=20261106-growth1" data-odf-analytics></script>
+</head>
+<body>
+<header class="top"><div class="wrap bar"><a class="brand" href="/"><img src="/assets/icon.png" width="28" height="28" alt=""><span>OpenDuckFrame</span></a><nav class="guide-nav" aria-label="网站导航"><a href="/#download">下载</a><a href="/#guides">使用指南</a></nav></div></header>
+<main class="reading"><nav class="breadcrumbs" aria-label="当前位置"><a href="/">官网</a> / Mac 上如何用 RIFE 实时补帧</nav><article>
+<h1>Mac 上如何用 RIFE 实时补帧</h1>
+<p class="article-meta"><time datetime="2026-11-06">更新于 2026 年 11 月 6 日 · OpenDuckFrame 0.3.0</time> · <a href="/en/guides/rife-mac/" hreflang="en" lang="en">English</a></p>
+<p class="answer">OpenDuckFrame 0.3.0 在 Apple 芯片 Mac 上通过 Metal 运行 RIFE 4.25／4.26，为窗口、显示器或本地视频计算中间画面。应用要求 macOS 14 或更高版本。先从 RIFE、快速质量和 X2 开始，观察实际输出与运动效果，再决定是否提高目标。</p>
+<h2>RIFE 和 Apple 插帧要分开看</h2>
+<p>RIFE 是视频帧插值方案；Lanczos、MetalFX 是独立的缩放选项。打开补帧不会自动意味着提高分辨率。Apple FRC 与 Apple 低延迟插帧是其他引擎，需要 macOS 26 及兼容硬件、输入条件，不能把它们的要求套到所有 RIFE 使用场景。</p>
+<p>0.3.0 的全新安装默认使用 RIFE 4.25、快速质量、X2，并启用仅针对实时采集的实验性流缓存；升级时已有配置会保留。4.26 是否可选、引擎是否可用，以当前应用的技术库与状态为准。</p>
+<h2>用一个简单配置建立对照</h2>
+<ol><li>打开“文件 → 画质工作台”（⇧⌘E），选择窗口、显示器或视频文件，配置输出显示器。</li><li>选择可用的 RIFE，引擎质量先用快速档，倍率设为 X2。先关闭缩放，让这次对比只改变补帧。</li><li>窗口输入点击“延迟增强”，在倒计时内切到目标窗口；显示器和视频文件点击“开始增强”。采集窗口或显示器需要屏幕录制权限，本地文件无需采集权限。</li><li>比较原画、增强与对比视图，查看 FPS 面板和字幕、运动边缘。确认稳定后再保存配置；更高质量或倍率需要重新比较。</li></ol>
+<h2>倍率模式与目标帧率如何理解</h2>
+<p>X2／X3／X4 是请求的处理模式。24 fps × 2 的理论目标是 48 fps；实际是否能呈现，仍受源时间戳、分辨率、质量、处理预算和显示器刷新率影响。60 Hz 显示器不能呈现每秒 120 张不同画面。</p>
+<p>实时 RIFE 的目标帧率模式会复用原始画面，只对剩余时隙计算中间帧，并依据来源时间戳安排插值。赶不上输出预算的任务可能被跳过；重复画面不能当作新增运动。倍率模式还会结合处理预算与屏幕刷新率调整有效倍率。请看实际呈现，而非只看请求数字。</p>
+<h2>实时采集和本地文件有什么区别</h2>
+<p>窗口和显示器通过 ScreenCaptureKit 采集；本地文件走播放器解码路径。实验性 RIFE 流缓存只适用于实时采集。文件播放等待模型的时间受可用播放余量与输出间隔约束，迟到的合成帧会被舍弃，原始画面可作为回退；这不保证慢设备仍达到请求倍率。</p>
+<h2>输出跟不上或画面不自然时</h2>
+<ul><li>先回到 X2，降低来源分辨率或选用开销更低的质量档，每次只改一项。</li><li>受保护内容可能采集不到；全屏、窗口尺寸变化或遮挡后异常，先重新选择来源。</li><li>插帧可能增加延迟，或使快速运动、遮挡边缘出现伪影。对操作延迟敏感时对比原画，再决定是否开启。</li><li>为复现问题，记录 Mac 型号、系统与应用版本、输入分辨率／帧率、RIFE 版本、质量、请求倍率、屏幕刷新率和实际输出。</li></ul>
+<p>本页不提供跨设备速度或画质保证，也没有将示意动画当作性能实测。安装和采集步骤见<a href="/guides/mac-video-frame-interpolation/">实时补帧教程</a>；需要放大画面时另看<a href="/guides/mac-video-upscaling/">超分教程</a>。</p>
+<div class="sources"><p>依据：<a href="https://github.com/Jun-bao/OpenDuckFrame/blob/v0.3.0/docs/quick-start.md">快速入门</a> · <a href="https://github.com/Jun-bao/OpenDuckFrame/blob/v0.3.0/docs/features.md">功能与兼容要求</a></p></div>
+<nav class="related" aria-label="继续阅读"><a href="/guides/frame-generation-vs-upscaling/">补帧与超分的区别</a><a href="/#download">下载 OpenDuckFrame</a></nav>
+</article></main>
+<footer><div class="wrap bar"><a class="brand" href="/">OpenDuckFrame</a><p class="fine">免费 · 开源（MIT）· 本地处理</p><a href="/feedback/privacy/#website-analytics">网站统计说明</a></div></footer>
+</body>
+</html>

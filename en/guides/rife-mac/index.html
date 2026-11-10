@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RIFE on Mac: Metal, real-time interpolation and FPS limits | OpenDuckFrame</title>
+<meta name="description" content="Set up RIFE 4.25/4.26 on an Apple silicon Mac. Understand live capture versus local files, multiplier and target-FPS modes, frame budgets and practical limits.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://openduckframe.cn/en/guides/rife-mac/">
+<link rel="alternate" hreflang="zh-CN" href="https://openduckframe.cn/guides/rife-mac/">
+<link rel="alternate" hreflang="en" href="https://openduckframe.cn/en/guides/rife-mac/">
+<link rel="alternate" hreflang="x-default" href="https://openduckframe.cn/guides/rife-mac/">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon.png">
+<link rel="stylesheet" href="/styles.css?v=20261106-growth1">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="OpenDuckFrame">
+<meta property="og:url" content="https://openduckframe.cn/en/guides/rife-mac/">
+<meta property="og:title" content="How to use RIFE for real-time interpolation on Mac">
+<meta property="og:description" content="Set up RIFE 4.25/4.26 on an Apple silicon Mac. Understand live capture versus local files, multiplier and target-FPS modes, frame budgets and practical limits.">
+<meta property="og:image" content="https://openduckframe.cn/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://openduckframe.cn/en/guides/rife-mac/#article","url":"https://openduckframe.cn/en/guides/rife-mac/","headline":"How to use RIFE for real-time interpolation on Mac","description":"Set up RIFE 4.25/4.26 on an Apple silicon Mac. Understand live capture versus local files, multiplier and target-FPS modes, frame budgets and practical limits.","inLanguage":"en","datePublished":"2026-11-06","dateModified":"2026-11-06","about":{"@type":"SoftwareApplication","@id":"https://openduckframe.cn/#app","name":"OpenDuckFrame","url":"https://openduckframe.cn/","sameAs":"https://github.com/Jun-bao/OpenDuckFrame"},"isPartOf":{"@id":"https://openduckframe.cn/#website"},"citation":["https://github.com/Jun-bao/OpenDuckFrame/blob/v0.3.0/docs/quick-start.md","https://github.com/Jun-bao/OpenDuckFrame/blob/v0.3.0/docs/features.md"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"OpenDuckFrame","item":"https://openduckframe.cn/en/"},{"@type":"ListItem","position":2,"name":"How to use RIFE for real-time interpolation on Mac","item":"https://openduckframe.cn/en/guides/rife-mac/"}]}]}
+</script>
+<script>try { const theme = localStorage.getItem("odf-theme"); if (theme === "dark" || theme === "light") document.documentElement.dataset.theme = theme; } catch (e) {}</script>
+<script defer src="/analytics.js?v=20261106-growth1" data-odf-analytics></script>
+</head>
+<body>
+<header class="top"><div class="wrap bar"><a class="brand" href="/en/"><img src="/assets/icon.png" width="28" height="28" alt=""><span>OpenDuckFrame</span></a><nav class="guide-nav" aria-label="Site navigation"><a href="/en/#download">Download</a><a href="/en/#guides">Guides</a></nav></div></header>
+<main class="reading"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/en/">Home</a> / How to use RIFE for real-time interpolation on Mac</nav><article>
+<h1>How to use RIFE for real-time interpolation on Mac</h1>
+<p class="article-meta"><time datetime="2026-11-06">Updated November 6, 2026 · OpenDuckFrame 0.3.0</time> · <a href="/guides/rife-mac/" hreflang="zh-CN" lang="zh-CN">中文版</a></p>
+<p class="answer">OpenDuckFrame 0.3.0 runs RIFE 4.25 / 4.26 through Metal on Apple silicon to create intermediate pictures for windows, displays or local video. The app requires macOS 14 or later. Begin with an available RIFE backend, fast quality and X2, then compare observed output and motion before raising the target.</p>
+<h2>Keep RIFE, Apple interpolation and scaling separate</h2>
+<p>RIFE interpolates video frames. Lanczos and MetalFX are independent scaling options; enabling frame generation does not automatically increase resolution. Apple FRC and Apple low-latency interpolation are other backends that require macOS 26 and compatible hardware and inputs.</p>
+<p>A fresh 0.3.0 installation defaults to RIFE 4.25, fast quality and X2, with the experimental live RIFE stream cache enabled. Upgrades keep saved settings. Check the app’s technology library and availability state for the selectable model and backend.</p>
+<h2>Start with one controlled comparison</h2>
+<ol><li>Open File → Quality Workbench (⇧⌘E), select a window, display or video file, and choose the output display.</li><li>Choose an available RIFE backend, fast quality and X2. Leave scaling off so this comparison changes only interpolation.</li><li>For a window, press Delayed enhancement and focus the source before the countdown ends. For displays and files, press Start enhancement. Live capture needs Screen Recording permission; file playback does not.</li><li>Compare Original, Enhanced and Comparison views. Inspect the FPS panel, subtitles and moving edges, then save a profile. Recheck the result when raising quality or rate.</li></ol>
+<h2>A multiplier is a request, not observed FPS</h2>
+<p>X2 / X3 / X4 request a processing mode. For example, 24 fps × 2 targets 48 fps in theory. Source timestamps, resolution, quality, frame budget and display refresh rate still constrain actual presentation. A 60 Hz display cannot present 120 different pictures per second.</p>
+<p>Live RIFE target-FPS mode reuses source pictures and interpolates remaining slots according to source timestamps. Jobs that miss their output budget may be skipped; repeated pictures do not count as new motion. Multiplier mode also adjusts the effective multiplier to the processing budget and display refresh rate. Check the picture actually presented.</p>
+<h2>Live sources and local files use different paths</h2>
+<p>Windows and displays use ScreenCaptureKit; local files use the player’s decoding path. The experimental stream cache applies only to live capture. File playback bounds the time spent waiting for inference by the available playout runway and output interval. Late synthetic frames can be discarded with original-picture fallback; this does not guarantee the requested multiplier on a slower Mac.</p>
+<h2>When output falls behind or looks unnatural</h2>
+<ul><li>Return to X2, lower the source resolution or choose a lighter quality mode. Change one setting at a time.</li><li>Protected content may not be capturable. Reselect the source after problematic resizing, fullscreen transitions or occlusion.</li><li>Interpolation can add latency or create motion artifacts. Compare the original picture before enabling it for latency-sensitive use.</li><li>For a reproducible report, record the Mac, macOS and app versions, source size and rate, RIFE version, quality, requested rate, display refresh rate and observed output.</li></ul>
+<p>This page makes no cross-device speed or quality promise and does not treat a demo animation as a benchmark. See the <a href="/en/guides/mac-video-frame-interpolation/">interpolation guide</a> for capture setup or the <a href="/en/guides/mac-video-upscaling/">upscaling guide</a> for picture resizing.</p>
+<div class="sources"><p>Sources: <a href="https://github.com/Jun-bao/OpenDuckFrame/blob/v0.3.0/docs/quick-start.md">Quick start</a> · <a href="https://github.com/Jun-bao/OpenDuckFrame/blob/v0.3.0/docs/features.md">Features and requirements</a></p></div>
+<nav class="related" aria-label="Related reading"><a href="/en/guides/frame-generation-vs-upscaling/">Frame generation vs. upscaling</a><a href="/en/#download">Download OpenDuckFrame</a></nav>
+</article></main>
+<footer><div class="wrap bar"><a class="brand" href="/en/">OpenDuckFrame</a><p class="fine">Free · Open source (MIT) · Local processing</p><a href="/feedback/privacy/#website-analytics">Website analytics</a></div></footer>
+</body>
+</html>

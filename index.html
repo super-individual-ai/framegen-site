@@ -28,7 +28,7 @@
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon.png">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="apple-touch-icon" href="assets/icon.png">
-<link rel="stylesheet" href="styles.css?v=20261104-seo5">
+<link rel="stylesheet" href="styles.css?v=20261106-growth1">
 <script type="application/ld+json" id="site-schema">
 {
   "@context": "https://schema.org",
@@ -55,7 +55,7 @@
       "operatingSystem": "macOS 14 or later",
       "processorRequirements": "Apple silicon",
       "softwareRequirements": "Apple 帧率转换等部分引擎需要 macOS 26 及受支持的硬件与输入格式。",
-      "softwareVersion": "0.3.0",
+      "softwareVersion": "0.3.1",
       "featureList": ["实时补帧（视频插帧）", "实时超分辨率", "窗口、显示器与本地视频输入", "本地视频播放与字幕"],
       "image": "https://openduckframe.cn/assets/icon.png",
       "screenshot": "https://openduckframe.cn/assets/openduckframe-library.webp",
@@ -82,6 +82,7 @@
 <script>
   try { const s = localStorage.getItem("odf-theme"); if (s === "dark" || s === "light") document.documentElement.dataset.theme = s; } catch (e) {}
 </script>
+<script defer src="/analytics.js?v=20261106-growth1" data-odf-analytics></script>
 </head>
 <body>
 <header class="top">
@@ -98,7 +99,7 @@
       <a href="#faq" data-i18n="navFaq">常见问题</a>
     </nav>
     <div class="end">
-      <a class="icon-btn" href="/en/" data-language-switch aria-label="阅读英文版" data-i18n-aria="ariaLang">
+      <a class="icon-btn" href="/en/" data-language-switch aria-label="EN · 阅读英文版" data-i18n-aria="ariaLang">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3Z" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
         <span class="lang-label">EN</span>
       </a>
@@ -106,7 +107,7 @@
         <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 3.2a8.2 8.2 0 1 0 5.3 12.6A7.2 7.2 0 0 1 15.5 3.2Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
         <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 3v2M12 19v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M3 12h2M19 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
       </button>
-      <a class="gh" href="https://github.com/Jun-bao/OpenDuckFrame" data-link="repo">
+      <a class="gh" href="https://github.com/Jun-bao/OpenDuckFrame" data-link="repo" aria-label="GitHub">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
         <span>GitHub</span>
       </a>
@@ -151,7 +152,7 @@
             <span data-i18n="watch">观看宣传片</span><span class="dim">0:52</span>
           </button>
         </div>
-        <figcaption data-i18n="heroCaption">画质工作台示意动画。v0.3.0 点击“延迟增强”后切换到目标窗口；默认倒计时 5 秒，可在设置中调整。</figcaption>
+        <figcaption data-i18n="heroCaption">画质工作台示意动画。点击“延迟增强”后切换到目标窗口。默认倒计时 3 秒，可在设置中调整。</figcaption>
       </figure>
     </div>
   </section>
@@ -224,7 +225,7 @@
         <div class="release-head">
           <img src="assets/icon-128.webp" alt="" width="64" height="64">
           <div>
-            <h3>OpenDuckFrame <span data-version>0.3.0</span></h3>
+            <h3>OpenDuckFrame <span data-version>0.3.1</span></h3>
             <p data-i18n="reqs">macOS 14 或更高 · Apple 芯片的 Mac</p>
           </div>
           <a class="btn solid" href="https://github.com/Jun-bao/OpenDuckFrame/releases/latest/download/OpenDuckFrame.dmg" data-link="dmg"><span data-i18n="downloadDmg">下载 .dmg</span></a>
@@ -232,14 +233,14 @@
         <ol class="steps">
           <li><b data-i18n="s1t">拖进“应用程序”</b><span data-i18n="s1d">打开下载的 .dmg，把 OpenDuckFrame 拖到“应用程序”文件夹。社区版未经过 Apple 公证，首次打开可能被 macOS 拦截。</span></li>
           <li><b data-i18n="s2t">允许屏幕录制</b><span data-i18n="s2d">采集窗口或显示器时，在 系统设置 › 隐私与安全性 中允许屏幕录制；播放本地视频无需此权限。</span></li>
-          <li><b data-i18n="s3t">倒计时选窗并增强</b><span data-i18n="s3d">打开 文件 › 画质工作台，配置增强选项，点“延迟增强”后切换到目标窗口。倒计时结束即自动选窗并增强；默认 5 秒，设置中可调为 1–20 秒。</span></li>
+          <li><b data-i18n="s3t">倒计时选窗并增强</b><span data-i18n="s3d">打开 文件 › 画质工作台，配置增强选项，点“延迟增强”后切换到目标窗口。倒计时结束即自动选窗并增强；默认 3 秒，设置中可调为 1–20 秒。</span></li>
         </ol>
         <div class="notes">
           <h4 data-i18n="notesTitle">这一版有什么</h4>
           <ul>
-            <li data-i18n="n1">新增延迟增强：倒计时结束时自动选定当前聚焦窗口并开始增强。</li>
-            <li data-i18n="n2">优化实时 RIFE 目标帧率：复用原始帧，按时间戳与处理预算补帧。实际输出以帧率面板为准。</li>
-            <li data-i18n="n3">设置可调整 1–20 秒倒计时、语言与外观；本地播放、字幕和 Finder 快速查看继续可用。</li>
+            <li data-i18n="n1">RIFE 4.25 · Fast · 2× 窗口补帧在兼容的 MacBook Air M3 输入上自动采用优化。</li>
+            <li data-i18n="n2">MacBook Air M3 的普通 60 Hz SDR 窗口已验证 24→48、30→60 FPS。</li>
+            <li data-i18n="n3">中间帧以较低分辨率生成，其他设备、输入格式与窗口大小的表现以实际输出为准。</li>
           </ul>
           <h4 data-i18n="limitsTitle">已知限制</h4>
           <ul>
@@ -292,6 +293,14 @@
           <h3><a href="/guides/mac-video-upscaling/" hreflang="zh-CN" data-i18n="guideUpscaleTitle">Mac 超分怎么用？</a></h3>
           <p data-i18n="guideUpscaleBody">选择 Lanczos 或 MetalFX，放大窗口或本地视频，并检查清晰度、处理开销和引擎限制。</p>
         </article>
+        <article>
+          <h3><a href="/guides/rife-mac/" hreflang="zh-CN" data-i18n="guideRifeTitle">RIFE 在 Mac 上怎么用？</a></h3>
+          <p data-i18n="guideRifeBody">Metal 引擎、窗口与本地文件、倍率和目标帧率，以及输出跟不上时怎么调整。</p>
+        </article>
+        <article>
+          <h3><a href="/guides/lossless-scaling-mac/" hreflang="zh-CN" data-i18n="guideCompareTitle">Mac 上有类似 Lossless Scaling 的工具吗？</a></h3>
+          <p data-i18n="guideCompareBody">对照平台与使用场景，说明相近用途和不能直接类比的兼容性、画质与延迟。</p>
+        </article>
       </div>
     </div>
   </section>
@@ -322,6 +331,7 @@
       <a href="https://github.com/Jun-bao/OpenDuckFrame/releases" data-link="releases" data-i18n="footReleases">版本发布</a>
       <a href="https://github.com/Jun-bao/OpenDuckFrame/blob/v0.3.0/PRIVACY.md" data-link="privacy" data-i18n="footPrivacy">隐私</a>
       <a href="https://github.com/Jun-bao/OpenDuckFrame/blob/v0.3.0/LICENSE" data-link="license" data-i18n="footLicense">许可证</a>
+      <a href="/feedback/privacy/#website-analytics" data-i18n="footAnalytics">网站统计说明</a>
     </nav>
     <p class="fine">© 2026 OpenDuckFrame contributors · MIT License</p>
   </div>
@@ -332,6 +342,6 @@
   <form method="dialog"><button class="close" aria-label="关闭" data-i18n-aria="ariaClose">×</button></form>
 </dialog>
 
-<script src="main.js?v=20261106-release030"></script>
+<script src="main.js?v=20261110-release031"></script>
 </body>
 </html>

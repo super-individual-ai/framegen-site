@@ -29,7 +29,7 @@ class StaticPerformanceMixin:
             if path in ("/", "/en/") or path.startswith(("/guides/", "/en/guides/")):
                 policy = "public, max-age=0, s-maxage=300, stale-while-revalidate=30"
             elif path.startswith("/assets/") or path in (
-                "/main.js", "/styles.css", "/favicon.ico", "/favicon.png",
+                "/main.js", "/analytics.js", "/stats/script.js", "/styles.css", "/favicon.ico", "/favicon.png",
                 "/robots.txt", "/sitemap.xml",
             ):
                 policy = "public, max-age=3600, s-maxage=86400, stale-while-revalidate=3600"
