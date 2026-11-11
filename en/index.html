@@ -65,7 +65,7 @@
       "operatingSystem": "macOS 14 or later",
       "processorRequirements": "Apple silicon",
       "softwareRequirements": "Apple interpolation and some other engines require macOS 26 and compatible hardware and input formats.",
-      "softwareVersion": "0.3.2",
+      "softwareVersion": "0.3.3",
       "featureList": [
         "Real-time frame generation (video interpolation)",
         "Real-time upscaling",
@@ -250,7 +250,7 @@
         <div class="release-head">
           <img src="/assets/icon-128.webp" alt="" width="64" height="64">
           <div>
-            <h3>OpenDuckFrame <span data-version>0.3.2</span></h3>
+            <h3>OpenDuckFrame <span data-version>0.3.3</span></h3>
             <p data-i18n="reqs">macOS 14 or later · Mac with Apple silicon</p>
           </div>
           <a class="btn solid" href="https://github.com/Jun-bao/OpenDuckFrame/releases/latest/download/OpenDuckFrame.dmg" data-link="dmg"><span data-i18n="downloadDmg">Download .dmg</span></a>
@@ -263,9 +263,9 @@
         <div class="notes">
           <h4 data-i18n="notesTitle">In this version</h4>
           <ul>
-            <li data-i18n="n1">RIFE 4.25 · Fast · 2× window interpolation automatically uses the optimization with compatible MacBook Air M3 inputs.</li>
-            <li data-i18n="n2">24→48 and 30→60 FPS have been verified on MacBook Air M3 in ordinary 60 Hz SDR windows.</li>
-            <li data-i18n="n3">Intermediate frames are generated at a lower resolution. Results on other devices, input formats and window sizes depend on the actual workload.</li>
+            <li data-i18n="n1">The default frame-generation model is now ODF-VFI, a streamlined four-stage model derived from RIFE 4.25.</li>
+            <li data-i18n="n2">Existing enhancement profiles remain compatible; upscaling and local video playback are unchanged.</li>
+            <li data-i18n="n3">Actual frame rate and picture quality still depend on the Mac, input and settings. Compare with the original picture when choosing a setup.</li>
           </ul>
           <h4 data-i18n="limitsTitle">Known limits</h4>
           <ul>
@@ -367,6 +367,6 @@
   <form method="dialog"><button class="close" aria-label="Close" data-i18n-aria="ariaClose">×</button></form>
 </dialog>
 
-<script src="/main.js?v=20261111-release032"></script>
+<script src="/main.js?v=20261111-release033"></script>
 </body>
 </html>

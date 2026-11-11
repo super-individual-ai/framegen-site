@@ -25,7 +25,8 @@ python3 -m http.server 4178 --bind 127.0.0.1
 
 - `SITE.version`：页面上显示的版本号。
 - `SITE.links.dmg`：指向 `releases/latest/download/OpenDuckFrame.dmg`。GitHub 会把它解析到最新 Release 里名为 `OpenDuckFrame.dmg` 的附件。只要每次发版都带上这个固定文件名的附件，就不用改链接。产品仓库里的 `Scripts/community_release.py` 会自动上传它。
-- 当前提供 0.3.2 社区版（未经过 Apple 公证），支持签名验证的应用内更新。
+- 当前提供 0.3.3 社区版（未经过 Apple 公证），支持签名验证的应用内更新。
+- 0.3.3 默认补帧模型为 ODF-VFI（RIFE 4.25 派生的四阶段精简模型）。现有增强配置保持兼容，超分与本地视频播放保持不变。实际帧率与画面效果取决于设备、输入和设置。
 
 ## 内容与资源
 
