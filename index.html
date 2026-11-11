@@ -55,7 +55,7 @@
       "operatingSystem": "macOS 14 or later",
       "processorRequirements": "Apple silicon",
       "softwareRequirements": "Apple 帧率转换等部分引擎需要 macOS 26 及受支持的硬件与输入格式。",
-      "softwareVersion": "0.3.2",
+      "softwareVersion": "0.3.3",
       "featureList": ["实时补帧（视频插帧）", "实时超分辨率", "窗口、显示器与本地视频输入", "本地视频播放与字幕"],
       "image": "https://openduckframe.cn/assets/icon.png",
       "screenshot": "https://openduckframe.cn/assets/openduckframe-library.webp",
@@ -225,7 +225,7 @@
         <div class="release-head">
           <img src="assets/icon-128.webp" alt="" width="64" height="64">
           <div>
-            <h3>OpenDuckFrame <span data-version>0.3.2</span></h3>
+            <h3>OpenDuckFrame <span data-version>0.3.3</span></h3>
             <p data-i18n="reqs">macOS 14 或更高 · Apple 芯片的 Mac</p>
           </div>
           <a class="btn solid" href="https://github.com/Jun-bao/OpenDuckFrame/releases/latest/download/OpenDuckFrame.dmg" data-link="dmg"><span data-i18n="downloadDmg">下载 .dmg</span></a>
@@ -238,9 +238,9 @@
         <div class="notes">
           <h4 data-i18n="notesTitle">这一版有什么</h4>
           <ul>
-            <li data-i18n="n1">RIFE 4.25 · Fast · 2× 窗口补帧在兼容的 MacBook Air M3 输入上自动采用优化。</li>
-            <li data-i18n="n2">MacBook Air M3 的普通 60 Hz SDR 窗口已验证 24→48、30→60 FPS。</li>
-            <li data-i18n="n3">中间帧以较低分辨率生成，其他设备、输入格式与窗口大小的表现以实际输出为准。</li>
+            <li data-i18n="n1">默认补帧模型改为 ODF-VFI：RIFE 4.25 派生的四阶段精简模型。</li>
+            <li data-i18n="n2">保留 Apple 插帧、独立超分与本地视频播放。</li>
+            <li data-i18n="n3">实际帧率与画面效果仍取决于设备、输入和设置，请对照原画选择。</li>
           </ul>
           <h4 data-i18n="limitsTitle">已知限制</h4>
           <ul>
@@ -342,6 +342,6 @@
   <form method="dialog"><button class="close" aria-label="关闭" data-i18n-aria="ariaClose">×</button></form>
 </dialog>
 
-<script src="main.js?v=20261111-release032"></script>
+<script src="main.js?v=20261111-release033"></script>
 </body>
 </html>
