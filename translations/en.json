@@ -78,7 +78,7 @@
   "notesTitle": "In this version",
   "limitsTitle": "Known limits",
   "n1": "The default frame-generation model is now ODF-VFI, a streamlined four-stage model derived from RIFE 4.25.",
-  "n2": "Apple interpolation, independent upscaling and local video playback remain available.",
+  "n2": "Existing enhancement profiles remain compatible; upscaling and local video playback are unchanged.",
   "n3": "Actual frame rate and picture quality still depend on the Mac, input and settings. Compare with the original picture when choosing a setup.",
   "l1": "Frame generation adds latency, which varies with engine, resolution and quality settings. Compare original and enhanced output for latency-sensitive use.",
   "l2": "Resizing, fullscreen transitions and occlusion can affect source capture. If needed, reselect the source and compare normal window mode.",
