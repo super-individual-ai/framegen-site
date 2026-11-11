@@ -38,7 +38,7 @@ html = html.replace(/(<script type="application\/ld\+json" id="site-schema">)([\
     }
     if (node["@type"] === "SoftwareApplication") {
       node.description = translations.description;
-      node.softwareRequirements = "Apple interpolation and some other engines require macOS 26 and compatible hardware and input formats.";
+      node.softwareRequirements = "Apple super resolution and some other experimental features require macOS 26 and compatible hardware and input formats.";
       node.featureList = ["Real-time frame generation (video interpolation)", "Real-time upscaling", "Window, display and local video inputs", "Local video playback and subtitles"];
     }
   }

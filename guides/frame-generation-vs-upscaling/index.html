@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://openduckframe.cn/assets/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://openduckframe.cn/guides/frame-generation-vs-upscaling/#article","url":"https://openduckframe.cn/guides/frame-generation-vs-upscaling/","headline":"视频补帧和超分有什么区别？Mac 上怎么选","description":"用运动与分辨率的具体例子，说明补帧和超分的用途、限制及组合方式。","inLanguage":"zh-CN","datePublished":"2026-11-03","dateModified":"2026-11-06","about":{"@type":"SoftwareApplication","@id":"https://openduckframe.cn/#app","name":"OpenDuckFrame","alternateName":"开源小鸭","url":"https://openduckframe.cn/","sameAs":"https://github.com/Jun-bao/OpenDuckFrame"},"isPartOf":{"@id":"https://openduckframe.cn/#website"},"citation":["https://github.com/Jun-bao/OpenDuckFrame/blob/v0.3.0/docs/quick-start.md","https://github.com/Jun-bao/OpenDuckFrame/blob/v0.3.0/docs/features.md"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"OpenDuckFrame 官网","item":"https://openduckframe.cn/"},{"@type":"ListItem","position":2,"name":"补帧和超分的区别","item":"https://openduckframe.cn/guides/frame-generation-vs-upscaling/"}]}]}
+{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://openduckframe.cn/guides/frame-generation-vs-upscaling/#article","url":"https://openduckframe.cn/guides/frame-generation-vs-upscaling/","headline":"视频补帧和超分有什么区别？Mac 上怎么选","description":"用运动与分辨率的具体例子，说明补帧和超分的用途、限制及组合方式。","inLanguage":"zh-CN","datePublished":"2026-11-03","dateModified":"2026-11-11","about":{"@type":"SoftwareApplication","@id":"https://openduckframe.cn/#app","name":"OpenDuckFrame","alternateName":"开源小鸭","url":"https://openduckframe.cn/","sameAs":"https://github.com/Jun-bao/OpenDuckFrame"},"isPartOf":{"@id":"https://openduckframe.cn/#website"},"citation":["https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/quick-start.md","https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/features.md"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"OpenDuckFrame 官网","item":"https://openduckframe.cn/"},{"@type":"ListItem","position":2,"name":"补帧和超分的区别","item":"https://openduckframe.cn/guides/frame-generation-vs-upscaling/"}]}]}
 </script>
 <script>try { const theme = localStorage.getItem("odf-theme"); if (theme === "dark" || theme === "light") document.documentElement.dataset.theme = theme; } catch (e) {}</script>
 <script defer src="/analytics.js?v=20261106-growth1" data-odf-analytics></script>
@@ -35,7 +35,7 @@
   <nav class="breadcrumbs" aria-label="当前位置"><a href="/">官网</a> / 补帧和超分的区别</nav>
   <article>
     <h1>视频补帧和超分有什么区别？</h1>
-    <p class="article-meta">更新于 <time datetime="2026-11-06">2026 年 11 月 6 日</time> · 依据 OpenDuckFrame 0.3.0 发布文档 · <a href="/en/guides/frame-generation-vs-upscaling/" hreflang="en" lang="en">English</a></p>
+    <p class="article-meta">更新于 <time datetime="2026-11-11">2026 年 11 月 11 日</time> · 依据 OpenDuckFrame 0.3.3 项目文档 · <a href="/en/guides/frame-generation-vs-upscaling/" hreflang="en" lang="en">English</a></p>
     <p class="answer">补帧在相邻画面之间生成中间帧，处理运动连贯性；超分把画面放大到更高分辨率，处理输出尺寸与画面细节。OpenDuckFrame（开源小鸭）在 Mac 上提供这两项功能，可以分别配置，也可以组合开启。</p>
 
     <div class="table-scroll" role="region" aria-label="补帧与超分对照表，可横向滚动" tabindex="0">
@@ -45,7 +45,7 @@
           <tr><th scope="row">改变什么</th><td>画面在时间上的密度</td><td>画面输出的像素尺寸</td></tr>
           <tr><th scope="row">示意目标</th><td>24 fps × 2，目标为 48 fps</td><td>720p 放大到 1440p</td></tr>
           <tr><th scope="row">适合的问题</th><td>低帧率视频平移不够连贯</td><td>较低分辨率内容要放在更大的屏幕上看</td></tr>
-          <tr><th scope="row">本产品示例</th><td>RIFE、Apple 插帧</td><td>Lanczos、MetalFX 等缩放方案</td></tr>
+          <tr><th scope="row">本产品示例</th><td>ODF-VFI（由 RIFE 4.25 精简）</td><td>Lanczos、MetalFX 等缩放方案</td></tr>
           <tr><th scope="row">需要观察</th><td>实际显示帧率、运动伪影、延迟</td><td>细节变化、边缘、柔化或过度锐化</td></tr>
         </tbody>
       </table>
@@ -67,13 +67,13 @@
     <h2>在 OpenDuckFrame 里怎么选？</h2>
     <ol>
       <li>打开“文件 → 画质工作台”，选择窗口、显示器或本地视频。</li>
-      <li>在技术库查看引擎是否可用。Mac 需要 Apple 芯片与 macOS 14+；部分 Apple 引擎另需 macOS 26 和兼容硬件。</li>
+      <li>在技术库查看引擎是否可用。Mac 需要 Apple 芯片与 macOS 14+；部分 Apple 超分引擎另需 macOS 26 和兼容硬件。</li>
       <li>先启用补帧或缩放中的一项。窗口模式点击“延迟增强”后切换到目标窗口；其他输入点击“开始增强”。检查原画、增强与对比视图。</li>
       <li>同时观察实际输出帧率、运动质量与操作延迟，再决定是否保存配置或开启另一项。</li>
     </ol>
 
     <div class="sources">
-      <p>依据：<a href="https://github.com/Jun-bao/OpenDuckFrame/blob/v0.3.0/docs/quick-start.md">项目快速入门</a>、<a href="https://github.com/Jun-bao/OpenDuckFrame/blob/v0.3.0/docs/features.md">功能与引擎可用条件</a>。OpenDuckFrame 免费、以 MIT 许可开源，画面在本机处理。</p>
+      <p>依据：<a href="https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/quick-start.md">项目快速入门</a>、<a href="https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/features.md">功能与引擎可用条件</a>。OpenDuckFrame 免费、以 MIT 许可开源，画面在本机处理。</p>
     </div>
     <nav class="related" aria-label="继续阅读"><a href="/guides/mac-video-upscaling/">Mac 超分使用教程</a><a href="/guides/mac-video-frame-interpolation/">Mac 实时补帧设置教程</a><a href="/#download">下载 OpenDuckFrame</a></nav>
   </article>
