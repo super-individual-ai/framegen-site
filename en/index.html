@@ -64,7 +64,7 @@
       "applicationCategory": "MultimediaApplication",
       "operatingSystem": "macOS 14 or later",
       "processorRequirements": "Apple silicon",
-      "softwareRequirements": "Apple interpolation and some other engines require macOS 26 and compatible hardware and input formats.",
+      "softwareRequirements": "Apple super resolution and some other experimental features require macOS 26 and compatible hardware and input formats.",
       "softwareVersion": "0.3.3",
       "featureList": [
         "Real-time frame generation (video interpolation)",
@@ -73,9 +73,8 @@
         "Local video playback and subtitles"
       ],
       "image": "https://openduckframe.cn/assets/icon.png",
-      "screenshot": "https://openduckframe.cn/assets/openduckframe-library.webp",
       "downloadUrl": "https://github.com/Jun-bao/OpenDuckFrame/releases/latest/download/OpenDuckFrame.dmg",
-      "license": "https://github.com/Jun-bao/OpenDuckFrame/blob/v0.3.0/LICENSE",
+      "license": "https://github.com/Jun-bao/OpenDuckFrame/blob/main/LICENSE",
       "sameAs": "https://github.com/Jun-bao/OpenDuckFrame",
       "isAccessibleForFree": true,
       "offers": {
@@ -177,7 +176,7 @@
             <span data-i18n="watch">Watch the film</span><span class="dim">0:52</span>
           </button>
         </div>
-        <figcaption data-i18n="heroCaption">Quality Workbench animation. Press Delayed enhancement, then focus your target window. The default countdown is 3 seconds and can be changed in Settings.</figcaption>
+        <figcaption data-i18n="heroCaption">Earlier interface illustration. Press Delayed enhancement, then focus your target window. The default countdown is 3 seconds and can be changed in Settings.</figcaption>
       </figure>
     </div>
   </section>
@@ -186,15 +185,15 @@
     <div class="wrap grid2">
       <div class="side">
         <h2 data-i18n="whatTitle">What is OpenDuckFrame?</h2>
-        <p data-i18n="whatBody">OpenDuckFrame is a native Mac picture-enhancement app. It detects the source frame rate, creates in-between frames with RIFE or Apple interpolation, and lets you configure upscaling independently. Windows, displays and local video are supported inputs. Pictures are not uploaded.</p>
-        <a class="more" href="https://github.com/Jun-bao/OpenDuckFrame/blob/v0.3.0/docs/quick-start.md" data-link="guide"><span data-i18n="readDocs">Read the quick start</span> →</a>
+        <p data-i18n="whatBody">OpenDuckFrame is a native Mac picture-enhancement app. It detects the source frame rate, creates in-between frames with the ODF-VFI model, and lets you configure upscaling independently. Windows, displays and local video are supported inputs. Pictures are not uploaded.</p>
+        <a class="more" href="https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/quick-start.md" data-link="guide"><span data-i18n="readDocs">Read the quick start</span> →</a>
       </div>
       <ol class="features">
         <li><span class="n">01</span><div><h3 data-i18n="f1t">Detects the real frame rate</h3><p data-i18n="f1d">Counts only frames that actually change, so 24 fps video counts as 24 even on a 120 Hz display.</p></div></li>
-        <li><span class="n">02</span><div><h3 data-i18n="f2t">RIFE and Apple interpolation</h3><p data-i18n="f2d">Choose a target frame rate or request 2×, 3× or 4× generation. Actual output depends on the engine, source resolution and display refresh rate.</p></div></li>
+        <li><span class="n">02</span><div><h3 data-i18n="f2t">ODF-VFI frame generation</h3><p data-i18n="f2d">A four-stage reduction of RIFE 4.25 with lower model processing overhead. Choose a target frame rate or request 2×, 3× or 4× generation; actual output depends on the Mac, source resolution and display refresh rate.</p></div></li>
         <li><span class="n">03</span><div><h3 data-i18n="f3t">Real-time upscaling</h3><p data-i18n="f3d">Upscale low-resolution pictures with methods such as Lanczos and MetalFX. Configure scaling and frame generation separately; detail and processing cost vary by method.</p></div></li>
-        <li><span class="n">04</span><div><h3 data-i18n="f4t">Adjusts the multiplier to the budget</h3><p data-i18n="f4d">Live RIFE multiplier mode adjusts the effective multiplier to the processing budget. Smoothness still depends on the Mac and input.</p></div></li>
-        <li><span class="n">05</span><div><h3 data-i18n="f5t">Fits the display refresh rate</h3><p data-i18n="f5d">Live RIFE multiplier mode lowers the multiplier to fit the display. At 1×, it passes through the original picture.</p></div></li>
+        <li><span class="n">04</span><div><h3 data-i18n="f4t">Adjusts the multiplier to the budget</h3><p data-i18n="f4d">Live multiplier mode adjusts the effective multiplier to the processing budget. Smoothness still depends on the Mac and input.</p></div></li>
+        <li><span class="n">05</span><div><h3 data-i18n="f5t">Fits the display refresh rate</h3><p data-i18n="f5d">Live multiplier mode lowers the multiplier to fit the display. At 1×, it passes through the original picture.</p></div></li>
         <li><span class="n">06</span><div><h3 data-i18n="f6t">Frame rates at a glance</h3><p data-i18n="f6d">A small overlay shows the content rate, the output rate and the current multiplier.</p></div></li>
         <li><span class="n">07</span><div><h3 data-i18n="f7t">Everything stays local</h3><p data-i18n="f7d">Capture and models run on your Mac. No account, and the picture never leaves the machine.</p></div></li>
       </ol>
@@ -204,12 +203,12 @@
   <section id="inside" class="inside">
     <div class="wrap">
       <h2 data-i18n="insideTitle">Pick by picture, not by parameter</h2>
-      <p class="sub" data-i18n="insideSub">The technology library says what each frame-generation and upscaling method suits and what it costs. Choose a preset and press Use.</p>
+      <p class="sub" data-i18n="insideSub">The technology library says what ODF-VFI frame generation and each upscaling method suit and what they cost. Pick one and press Use. The screenshot below shows the earlier v0.1.0 interface; frame generation now offers ODF-VFI only.</p>
       <figure class="real">
         <div class="real-frame">
-          <img src="/assets/openduckframe-library.webp" width="1180" height="792" loading="lazy" decoding="async" alt="OpenDuckFrame technology library" data-i18n-alt="insideAlt">
+          <img src="/assets/openduckframe-library.webp" width="1180" height="792" loading="lazy" decoding="async" alt="Earlier OpenDuckFrame v0.1.0 technology library screenshot" data-i18n-alt="insideAlt">
         </div>
-        <figcaption><span class="chip-static" data-i18n="insideChip">Real screenshot</span> <span data-i18n="insideCaption">v0.1.0 · Quality Workbench › Technology library</span></figcaption>
+        <figcaption><span class="chip-static" data-i18n="insideChip">Real screenshot</span> <span data-i18n="insideCaption">Earlier v0.1.0 · Quality Workbench › Technology library</span></figcaption>
       </figure>
     </div>
   </section>
@@ -263,8 +262,8 @@
         <div class="notes">
           <h4 data-i18n="notesTitle">In this version</h4>
           <ul>
-            <li data-i18n="n1">The default frame-generation model is now ODF-VFI, a streamlined four-stage model derived from RIFE 4.25.</li>
-            <li data-i18n="n2">Existing enhancement profiles remain compatible; upscaling and local video playback are unchanged.</li>
+            <li data-i18n="n1">The default frame-generation model is now ODF-VFI, a streamlined four-stage model derived from RIFE 4.25. It keeps the original weights without retraining and lowers model processing overhead.</li>
+            <li data-i18n="n2">Existing enhancement profiles remain compatible, and continuous caching is on by default with no separate switch. Upscaling and local video playback are unchanged.</li>
             <li data-i18n="n3">Actual frame rate and picture quality still depend on the Mac, input and settings. Compare with the original picture when choosing a setup.</li>
           </ul>
           <h4 data-i18n="limitsTitle">Known limits</h4>
@@ -284,17 +283,17 @@
         <p><span data-i18n="faqMore">Something else?</span> <a href="https://github.com/Jun-bao/OpenDuckFrame/discussions" data-link="discussions" data-i18n="faqAsk">Join the discussion</a></p>
       </div>
       <div class="faq">
-        <details><summary data-i18n="q1">What is OpenDuckFrame?</summary><p data-i18n="a1">OpenDuckFrame (Chinese name: 开源小鸭) is a free, MIT-licensed Mac desktop app for real-time frame generation and upscaling. It enhances existing windows, displays and local video, with RIFE and Apple interpolation, independent scaling and local playback.</p></details>
-        <details><summary data-i18n="q2">Which Macs are supported? What about Windows and Intel?</summary><p data-i18n="a2">Apple silicon Macs on macOS 14 or later are supported. Apple interpolation and some other engines require macOS 26 and compatible hardware and inputs. Intel Macs, Windows, iPhone and iPad are not currently supported.</p></details>
+        <details><summary data-i18n="q1">What is OpenDuckFrame?</summary><p data-i18n="a1">OpenDuckFrame (Chinese name: 开源小鸭) is a free, MIT-licensed Mac desktop app for real-time frame generation and upscaling. It enhances existing windows, displays and local video, with ODF-VFI frame generation, independent scaling and local playback.</p></details>
+        <details><summary data-i18n="q2">Which Macs are supported? What about Windows and Intel?</summary><p data-i18n="a2">Apple silicon Macs on macOS 14 or later are supported. Apple super resolution and some other experimental features require macOS 26 and compatible hardware and inputs. Intel Macs, Windows, iPhone and iPad are not currently supported.</p></details>
         <details><summary data-i18n="q3">Does it add latency?</summary><p data-i18n="a3">Yes. Generating in-between pictures adds latency, which varies with engine, resolution and quality settings. Start with 2× and compare Original, Enhanced and Comparison views; choose carefully for latency-sensitive use.</p></details>
-        <details><summary data-i18n="q4">Does it work in full screen?</summary><p data-i18n="a4">Output can follow the source window or fill the selected display. Switching the source app to native fullscreen can affect capture; compatibility depends on the app and mode.</p></details>
+        <details><summary data-i18n="q4">Does it work in full screen?</summary><p data-i18n="a4">In window mode, enhanced output always follows the source window and the mouse still works in the original window; there is no separate fullscreen output. Switching the source app to native fullscreen can affect capture; compatibility depends on the app and mode. Displays and local video can be shown fullscreen on the selected display.</p></details>
         <details><summary data-i18n="q5">Is anything uploaded?</summary><p data-i18n="a5">Enhancement runs locally, without automatically uploading captured pictures or media, and no account is required. Update checks use the network. Sending feedback submits the content you enter and any screenshot you explicitly attach.</p></details>
         <details><summary data-i18n="q6">How much does it cost?</summary><p data-i18n="a6">Free. The project's own code is MIT licensed on GitHub. FFmpeg, RIFE, model weights and other dependencies retain their own licenses.</p></details>
         <details><summary data-i18n="q7">macOS says it can't verify the developer.</summary><p data-i18n="a7">This community build is not Apple notarized. If you trust the download, review its blocked-launch message in System Settings → Privacy &amp; Security and decide whether to allow it. The app does not change system security settings.</p></details>
         <details><summary data-i18n="q8">How do I generate frames for video on a Mac?</summary><p data-i18n="a8">After installing, open File → Quality Workbench and start with 2× frame generation. For a window, press Delayed enhancement and focus the target before the countdown ends. Displays and video files use Start enhancement. Window and display capture need Screen Recording permission.</p></details>
         <details><summary data-i18n="q9">Does selecting a multiplier guarantee 120 fps?</summary><p data-i18n="a9">A multiplier is a requested processing mode, not a guarantee of displayed frame rate. The engine, source cadence, resolution and display refresh rate affect the result. A 60 Hz display cannot present 120 distinct frames per second. Check the FPS overlay and the picture you actually see.</p></details>
         <details><summary data-i18n="q10">What is the difference between frame generation and upscaling?</summary><p data-i18n="a10">Frame generation creates in-between pictures for more continuous motion; upscaling enlarges pictures to a higher resolution. They can be enabled separately. Artifacts or changes in detail can occur, so compare at equal output sizes.</p></details>
-        <p class="note"><a href="https://github.com/Jun-bao/OpenDuckFrame/blob/v0.3.0/docs/features.md" data-link="features" data-i18n="featureReference">Read the features, requirements and current limitations</a></p>
+        <p class="note"><a href="https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/features.md" data-link="features" data-i18n="featureReference">Read the features, requirements and current limitations</a></p>
       </div>
     </div>
   </section>
@@ -320,7 +319,7 @@
         </article>
         <article>
           <h3><a href="/en/guides/rife-mac/" hreflang="en" data-i18n="guideRifeTitle">How to use RIFE on a Mac</a></h3>
-          <p data-i18n="guideRifeBody">Metal backends, live capture and files, multipliers, target FPS and what to do when output falls behind.</p>
+          <p data-i18n="guideRifeBody">How ODF-VFI relates to RIFE 4.25, live capture and files, multipliers, target FPS and what to do when output falls behind.</p>
         </article>
         <article>
           <h3><a href="/en/guides/lossless-scaling-mac/" hreflang="en" data-i18n="guideCompareTitle">Is there a tool like Lossless Scaling for Mac?</a></h3>
@@ -354,8 +353,8 @@
     <nav class="links" aria-label="Footer" data-i18n-aria="ariaFoot">
       <a href="https://github.com/Jun-bao/OpenDuckFrame" data-link="repo">GitHub</a>
       <a href="https://github.com/Jun-bao/OpenDuckFrame/releases" data-link="releases" data-i18n="footReleases">Releases</a>
-      <a href="https://github.com/Jun-bao/OpenDuckFrame/blob/v0.3.0/PRIVACY.md" data-link="privacy" data-i18n="footPrivacy">Privacy</a>
-      <a href="https://github.com/Jun-bao/OpenDuckFrame/blob/v0.3.0/LICENSE" data-link="license" data-i18n="footLicense">License</a>
+      <a href="https://github.com/Jun-bao/OpenDuckFrame/blob/main/PRIVACY.md" data-link="privacy" data-i18n="footPrivacy">Privacy</a>
+      <a href="https://github.com/Jun-bao/OpenDuckFrame/blob/main/LICENSE" data-link="license" data-i18n="footLicense">License</a>
       <a href="/feedback/privacy/#website-analytics" data-i18n="footAnalytics">Website analytics</a>
     </nav>
     <p class="fine">© 2026 OpenDuckFrame contributors · MIT License</p>
@@ -367,6 +366,6 @@
   <form method="dialog"><button class="close" aria-label="Close" data-i18n-aria="ariaClose">×</button></form>
 </dialog>
 
-<script src="/main.js?v=20261111-release033"></script>
+<script src="/main.js?v=20261111-content-sync"></script>
 </body>
 </html>

@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://openduckframe.cn/assets/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://openduckframe.cn/en/guides/mac-video-frame-interpolation/#article","url":"https://openduckframe.cn/en/guides/mac-video-frame-interpolation/","headline":"How to use frame generation on a Mac","description":"Use OpenDuckFrame for real-time frame generation on a Mac. Learn window and local-video interpolation, how it differs from in-game frame generation, 2× setup and actual output limits.","inLanguage":"en","datePublished":"2026-11-03","dateModified":"2026-11-06","about":{"@type":"SoftwareApplication","@id":"https://openduckframe.cn/#app","name":"OpenDuckFrame","alternateName":"开源小鸭","url":"https://openduckframe.cn/","sameAs":"https://github.com/Jun-bao/OpenDuckFrame"},"isPartOf":{"@id":"https://openduckframe.cn/#website"},"image":"https://openduckframe.cn/assets/openduckframe-library.webp","citation":["https://github.com/Jun-bao/OpenDuckFrame/blob/v0.3.0/docs/quick-start.md","https://github.com/Jun-bao/OpenDuckFrame/blob/v0.3.0/docs/features.md"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"OpenDuckFrame","item":"https://openduckframe.cn/en/"},{"@type":"ListItem","position":2,"name":"Mac video interpolation guide","item":"https://openduckframe.cn/en/guides/mac-video-frame-interpolation/"}]}]}
+{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://openduckframe.cn/en/guides/mac-video-frame-interpolation/#article","url":"https://openduckframe.cn/en/guides/mac-video-frame-interpolation/","headline":"How to use frame generation on a Mac","description":"Use OpenDuckFrame for real-time frame generation on a Mac. Learn window and local-video interpolation, how it differs from in-game frame generation, 2× setup and actual output limits.","inLanguage":"en","datePublished":"2026-11-03","dateModified":"2026-11-11","about":{"@type":"SoftwareApplication","@id":"https://openduckframe.cn/#app","name":"OpenDuckFrame","alternateName":"开源小鸭","url":"https://openduckframe.cn/","sameAs":"https://github.com/Jun-bao/OpenDuckFrame"},"isPartOf":{"@id":"https://openduckframe.cn/#website"},"image":"https://openduckframe.cn/assets/openduckframe-library.webp","citation":["https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/quick-start.md","https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/features.md"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"OpenDuckFrame","item":"https://openduckframe.cn/en/"},{"@type":"ListItem","position":2,"name":"Mac video interpolation guide","item":"https://openduckframe.cn/en/guides/mac-video-frame-interpolation/"}]}]}
 </script>
 <script>try { const theme = localStorage.getItem("odf-theme"); if (theme === "dark" || theme === "light") document.documentElement.dataset.theme = theme; } catch (e) {}</script>
 <script defer src="/analytics.js?v=20261106-growth1" data-odf-analytics></script>
@@ -35,13 +35,13 @@
   <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/en/">Home</a> / Mac video interpolation guide</nav>
   <article>
     <h1>How to use frame generation on a Mac</h1>
-    <p class="article-meta">Updated <time datetime="2026-11-06">November 6, 2026</time> · Based on OpenDuckFrame 0.3.0 release documentation · <a href="/guides/mac-video-frame-interpolation/" hreflang="zh-CN" lang="zh-CN">中文版</a></p>
+    <p class="article-meta">Updated <time datetime="2026-11-11">November 11, 2026</time> · Based on OpenDuckFrame 0.3.3 project documentation · <a href="/guides/mac-video-frame-interpolation/" hreflang="zh-CN" lang="zh-CN">中文版</a></p>
     <p class="answer">OpenDuckFrame is a free, open-source Mac app that generates intermediate pictures for windows, displays and local video in real time. On an Apple silicon Mac, open File → Quality Workbench, choose a source, start with 2× frame generation, and compare the FPS overlay and the picture with the original. Picture processing stays on your Mac.</p>
 
     <h2>Check your Mac and display first</h2>
     <ul>
       <li><strong>Mac and system:</strong> Apple silicon and macOS 14 or later. Intel Macs, Windows, iPhone and iPad are not currently supported.</li>
-      <li><strong>Engine requirements:</strong> RIFE uses Metal on Apple silicon. Apple FRC and low-latency interpolation require macOS 26, compatible hardware and supported input configurations. Use the availability state shown in the app.</li>
+      <li><strong>Frame-generation model:</strong> the workbench uses ODF-VFI, a four-stage reduction of RIFE 4.25, through Metal on Apple silicon. Apple upscaling engines also require macOS 26, compatible hardware and supported input configurations. Use the availability state shown in the app.</li>
       <li><strong>Display:</strong> Its refresh rate limits how many distinct pictures you can see. A 60 Hz display cannot present 120 distinct frames per second.</li>
     </ul>
     <p>Get the GitHub release from the <a href="/en/#download">official download section</a>. The current community build is not Apple notarized. Check the download source before deciding whether to allow its first launch through macOS.</p>
@@ -54,13 +54,13 @@
     <ol>
       <li><strong>Open the Quality Workbench.</strong> Choose File → Quality Workbench, or press ⇧⌘E.</li>
       <li><strong>Choose an input and output.</strong> Select the browser window for web video, a player window for content in a player, or Video file to use a local file directly. For display capture, avoid capturing the enhancement output again.</li>
-      <li><strong>Enable one enhancement first.</strong> Choose an available frame-generation engine and start at X2. Higher source resolutions and multipliers need more processing time.</li>
-      <li><strong>Start and compare.</strong> For a window, press Delayed enhancement and focus the target window before the countdown ends. Settings allow 1–20 seconds, with a 5 second default. Displays and video files use Start enhancement. Compare Original, Enhanced and Comparison views, check actual FPS, then save a profile.</li>
+      <li><strong>Enable one enhancement first.</strong> Frame generation uses ODF-VFI; start at X2. Higher source resolutions and multipliers need more processing time.</li>
+      <li><strong>Start and compare.</strong> For a window, press Delayed enhancement and focus the target window before the countdown ends. Settings allow 1–20 seconds, with a 3 second default. Displays and video files use Start enhancement. Compare Original, Enhanced and Comparison views, check actual FPS, then save a profile.</li>
     </ol>
     <p>Window and display capture need Screen Recording access in System Settings → Privacy &amp; Security. Local video-file playback does not need that capture permission. The setting name can vary with the macOS version.</p>
     <figure>
-      <img src="/assets/openduckframe-library.webp" width="1180" height="792" loading="lazy" decoding="async" alt="The frame-generation and upscaling technology library in OpenDuckFrame 0.1.0">
-      <figcaption>A real screenshot of the OpenDuckFrame 0.1.0 technology library. Availability differs between engines.</figcaption>
+      <img src="/assets/openduckframe-library.webp" width="1180" height="792" loading="lazy" decoding="async" alt="The frame-generation and upscaling technology library in the earlier OpenDuckFrame 0.1.0 interface">
+      <figcaption>A real screenshot of the earlier OpenDuckFrame 0.1.0 technology library. Frame generation now offers ODF-VFI only; availability differs between upscaling engines.</figcaption>
     </figure>
 
     <h2>Why does 4× not always mean 120 fps?</h2>
@@ -70,13 +70,13 @@
     <h2>What if capture, detail or motion looks wrong?</h2>
     <ul>
       <li><strong>No captured picture:</strong> check Screen Recording permission and the selected source. Protected content may not be capturable.</li>
-      <li><strong>Softness or motion artifacts:</strong> compare at the same output size, switch engines, or disable one enhancement at a time to identify which stage changes the picture.</li>
+      <li><strong>Softness or motion artifacts:</strong> compare at the same output size, switch the scaling technology, or disable one enhancement at a time to identify which stage changes the picture.</li>
       <li><strong>Problems after resizing or full screen:</strong> reselect the source. Start basic checks with a normal window or full-page video.</li>
-      <li><strong>More input latency:</strong> frame generation adds delay, which varies with the engine and settings. Compare original and enhanced output for latency-sensitive use.</li>
+      <li><strong>More input latency:</strong> frame generation adds delay, which varies with the Mac and settings. Compare original and enhanced output for latency-sensitive use.</li>
     </ul>
     <p>This guide covers real-time enhancement while viewing. Generating intermediate pictures does not increase the source application's simulation or logic update rate.</p>
 
-    <div class="sources"><p>Sources: the project's <a href="https://github.com/Jun-bao/OpenDuckFrame/blob/v0.3.0/docs/quick-start.md">quick start</a> and <a href="https://github.com/Jun-bao/OpenDuckFrame/blob/v0.3.0/docs/features.md">features and requirements</a>. This guide uses the 0.3.0 release documentation; the app's availability state determines supported configurations.</p></div>
+    <div class="sources"><p>Sources: the project's <a href="https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/quick-start.md">quick start</a> and <a href="https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/features.md">features and requirements</a>. This guide uses the 0.3.3 project documentation; the app's availability state determines supported configurations.</p></div>
     <nav class="related" aria-label="Related pages"><a href="/en/guides/mac-video-upscaling/">Mac video upscaling guide</a><a href="/en/guides/frame-generation-vs-upscaling/">Frame generation vs. upscaling</a><a href="/en/#download">Download OpenDuckFrame</a><a href="https://github.com/Jun-bao/OpenDuckFrame/issues">Report a problem</a><a href="/en/guides/rife-mac/">RIFE settings and FPS limits</a></nav>
   </article>
 </main>
