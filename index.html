@@ -55,7 +55,7 @@
       "operatingSystem": "macOS 14 or later",
       "processorRequirements": "Apple silicon",
       "softwareRequirements": "ArtCNN 超分支持 SDR 输入不超过 1920×1080，原生 2× 输出不超过 3840×2160。",
-      "softwareVersion": "0.4.0",
+      "softwareVersion": "0.4.1",
       "featureList": ["实时补帧（视频插帧）", "实时超分辨率", "窗口、显示器与本地视频输入", "本地视频播放与字幕"],
       "image": "https://openduckframe.cn/assets/icon.png",
       "downloadUrl": "https://github.com/Jun-bao/OpenDuckFrame/releases/latest/download/OpenDuckFrame.dmg",
@@ -224,7 +224,7 @@
         <div class="release-head">
           <img src="assets/icon-128.webp" alt="" width="64" height="64">
           <div>
-            <h3>OpenDuckFrame <span data-version>0.4.0</span></h3>
+            <h3>OpenDuckFrame <span data-version>0.4.1</span></h3>
             <p data-i18n="reqs">macOS 14 或更高 · Apple 芯片的 Mac</p>
           </div>
           <a class="btn solid" href="https://github.com/Jun-bao/OpenDuckFrame/releases/latest/download/OpenDuckFrame.dmg" data-link="dmg"><span data-i18n="downloadDmg">下载 .dmg</span></a>
@@ -261,7 +261,7 @@
         <details><summary data-i18n="q1">OpenDuckFrame（开源小鸭）是什么？</summary><p data-i18n="a1">OpenDuckFrame（开源小鸭）是一款免费、MIT 开源的 Mac 实时补帧与超分应用。它增强已有的窗口、显示器或本地视频画面，使用 ODF-VFI 补帧模型，并提供独立的画面缩放和本地视频播放功能。</p></details>
         <details><summary data-i18n="q2">支持哪些 Mac？支持 Windows 和 Intel 吗？</summary><p data-i18n="a2">支持 Apple 芯片的 Mac，要求 macOS 14 或更高版本。ArtCNN 超分支持不超过 1920×1080 的 SDR 输入，原生 2× 输出不超过 3840×2160。目前不支持 Intel Mac、Windows、iPhone 或 iPad。</p></details>
         <details><summary data-i18n="q3">会增加延迟吗？</summary><p data-i18n="a3">会。补帧需要根据已有帧计算中间画面，延迟会随引擎、分辨率和质量设置变化。建议先从 2 倍补帧开始，使用原画、增强和对比视图检查效果；对操作延迟敏感时应谨慎选择。</p></details>
-        <details><summary data-i18n="q4">支持全屏吗？</summary><p data-i18n="a4">窗口模式的增强画面始终跟随来源窗口，鼠标操作仍作用于原窗口，不提供单独的全屏输出；源应用切换原生全屏时可能影响采集，兼容性取决于具体应用与模式。显示器和本地视频可输出到所选显示器并全屏显示。</p></details>
+        <details><summary data-i18n="q4">支持全屏吗？</summary><p data-i18n="a4">窗口和显示器模式的增强画面跟随来源，鼠标可继续操作；源应用切换原生全屏时可能影响采集，兼容性取决于具体应用与模式。本地视频可在所选显示器全屏播放。</p></details>
         <details><summary data-i18n="q5">画面会上传吗？</summary><p data-i18n="a5">画面增强在本机完成，不自动上传采集画面或媒体，无需账号。检查更新会联网；主动发送反馈时，会提交你填写的内容和明确附上的截图。</p></details>
         <details><summary data-i18n="q6">多少钱？</summary><p data-i18n="a6">免费。项目自有代码以 MIT 许可公开在 GitHub 上；FFmpeg、RIFE、模型权重等依赖保留各自许可证。</p></details>
         <details><summary data-i18n="q7">打开时提示“无法验证开发者”怎么办？</summary><p data-i18n="a7">当前社区版未经过 Apple 公证。确认信任下载来源后，可在“系统设置 → 隐私与安全性”中查看拦截提示，自行决定是否允许打开。应用不会替你修改系统安全设置。</p></details>
@@ -342,6 +342,6 @@
   <form method="dialog"><button class="close" aria-label="关闭" data-i18n-aria="ariaClose">×</button></form>
 </dialog>
 
-<script src="main.js?v=20261112-release040"></script>
+<script src="main.js?v=20261112-release041"></script>
 </body>
 </html>

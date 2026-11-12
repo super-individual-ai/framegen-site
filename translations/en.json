@@ -92,7 +92,7 @@
   "q3": "Does it add latency?",
   "a3": "Yes. Generating in-between pictures adds latency, which varies with engine, resolution and quality settings. Start with 2× and compare Original, Enhanced and Comparison views; choose carefully for latency-sensitive use.",
   "q4": "Does it work in full screen?",
-  "a4": "In window mode, enhanced output always follows the source window and the mouse still works in the original window; there is no separate fullscreen output. Switching the source app to native fullscreen can affect capture; compatibility depends on the app and mode. Displays and local video can be shown fullscreen on the selected display.",
+  "a4": "Window and display output follow the source, and the mouse remains usable. Switching a source app to native fullscreen can affect capture; compatibility depends on the app and mode. Local video can be played fullscreen on a selected display.",
   "q5": "Is anything uploaded?",
   "a5": "Enhancement runs locally, without automatically uploading captured pictures or media, and no account is required. Update checks use the network. Sending feedback submits the content you enter and any screenshot you explicitly attach.",
   "q6": "How much does it cost?",
