@@ -55,7 +55,7 @@
       "operatingSystem": "macOS 14 or later",
       "processorRequirements": "Apple silicon",
       "softwareRequirements": "ArtCNN 超分支持 SDR 输入不超过 1920×1080，原生 2× 输出不超过 3840×2160。",
-      "softwareVersion": "0.4.1",
+      "softwareVersion": "0.5.0",
       "featureList": ["实时补帧（视频插帧）", "实时超分辨率", "窗口、显示器与本地视频输入", "本地视频播放与字幕"],
       "image": "https://openduckframe.cn/assets/icon.png",
       "downloadUrl": "https://github.com/Jun-bao/OpenDuckFrame/releases/latest/download/OpenDuckFrame.dmg",
@@ -160,12 +160,12 @@
     <div class="wrap grid2">
       <div class="side">
         <h2 data-i18n="whatTitle">OpenDuckFrame 是什么？</h2>
-        <p data-i18n="whatBody">OpenDuckFrame（开源小鸭）是一款原生 Mac 画质增强应用。它识别来源画面的帧率，用 ODF-VFI 补帧模型补出中间帧，也能独立配置超分。窗口、显示器与本地视频都可以作为输入，画面不上传。</p>
+        <p data-i18n="whatBody">OpenDuckFrame（开源小鸭）是一款原生 Mac 画质增强应用。它识别来源画面的帧率，用 ODF-VFI 或 Apple 插帧补出中间帧，也能独立配置超分。窗口、显示器与本地视频都可以作为输入，画面不上传。</p>
         <a class="more" href="https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/quick-start.md" data-link="guide"><span data-i18n="readDocs">读使用指南</span> →</a>
       </div>
       <ol class="features">
         <li><span class="n">01</span><div><h3 data-i18n="f1t">识别真实帧率</h3><p data-i18n="f1d">只数画面真正变化的帧，24 帧的视频按 24 帧算，不会被 120 Hz 刷新率骗到。</p></div></li>
-        <li><span class="n">02</span><div><h3 data-i18n="f2t">ODF-VFI 补帧模型</h3><p data-i18n="f2d">由 RIFE 4.25 精简为四阶段，模型处理开销更低。可选目标帧率，或请求 2 倍、3 倍、4 倍补帧；实际输出取决于设备、画面分辨率和显示器刷新率。</p></div></li>
+        <li><span class="n">02</span><div><h3 data-i18n="f2t">ODF-VFI 与 Apple 插帧</h3><p data-i18n="f2d">默认使用 RIFE 4.25 派生的 ODF-VFI，也可选择 Apple 低延迟或 Apple 帧率转换。可用帧率和质量设置随引擎与来源变化，实际输出取决于设备、分辨率和显示器刷新率。</p></div></li>
         <li><span class="n">03</span><div><h3 data-i18n="f3t">实时超分</h3><p data-i18n="f3d">使用 ArtCNN C4F32 或更轻量的 C4F16 模型，对 SDR 画面进行原生 2× 增强。超分与补帧可以分别配置，实际效果取决于输入与设备。</p></div></li>
         <li><span class="n">04</span><div><h3 data-i18n="f4t">按预算调整倍率</h3><p data-i18n="f4d">实时补帧的倍率模式会按处理预算调整有效倍率；实际流畅度仍取决于设备和输入。</p></div></li>
         <li><span class="n">05</span><div><h3 data-i18n="f5t">按屏幕刷新率限制倍率</h3><p data-i18n="f5d">实时补帧的倍率模式会按屏幕刷新率降低倍率，降到 1 倍时直通原画。</p></div></li>
@@ -178,7 +178,7 @@
   <section id="inside" class="inside">
     <div class="wrap">
       <h2 data-i18n="insideTitle">按画面挑技术，不用懂参数</h2>
-      <p class="sub" data-i18n="insideSub">当前工作台将来源、补帧、超分与输出设置分组排列，并提供三步新手引导。补帧使用 ODF-VFI，超分可选 ArtCNN C4F32 / C4F16。下图为 v0.1.0 旧版技术库，仅供历史界面参考。</p>
+      <p class="sub" data-i18n="insideSub">当前工作台将来源、补帧、超分与输出设置分组排列，并提供三步新手引导。补帧默认 ODF-VFI，也提供两种 Apple 选项；超分可选 ArtCNN C4F32 / C4F16。下图为 v0.1.0 旧版技术库，仅供历史界面参考。</p>
       <figure class="real">
         <div class="real-frame">
           <img src="assets/openduckframe-library.webp" width="1180" height="792" loading="lazy" decoding="async" alt="OpenDuckFrame v0.1.0 旧版技术库截图" data-i18n-alt="insideAlt">
@@ -224,7 +224,7 @@
         <div class="release-head">
           <img src="assets/icon-128.webp" alt="" width="64" height="64">
           <div>
-            <h3>OpenDuckFrame <span data-version>0.4.1</span></h3>
+            <h3>OpenDuckFrame <span data-version>0.5.0</span></h3>
             <p data-i18n="reqs">macOS 14 或更高 · Apple 芯片的 Mac</p>
           </div>
           <a class="btn solid" href="https://github.com/Jun-bao/OpenDuckFrame/releases/latest/download/OpenDuckFrame.dmg" data-link="dmg"><span data-i18n="downloadDmg">下载 .dmg</span></a>
@@ -237,9 +237,9 @@
         <div class="notes">
           <h4 data-i18n="notesTitle">这一版有什么</h4>
           <ul>
-            <li data-i18n="n1">0.4.1 移除显示器来源的全屏预览，增强画面跟随来源；本地视频仍可全屏。</li>
-            <li data-i18n="n2">支持 ArtCNN C4F32 / C4F16 原生 2× SDR 超分，可以与 ODF-VFI 补帧分别配置。</li>
-            <li data-i18n="n3">提供可跳过、可从帮助菜单重看的三步新手引导。实际画质和帧率仍取决于输入、设置与设备。</li>
+            <li data-i18n="n1">新增 Apple 低延迟插帧和 Apple 帧率转换，ODF-VFI 仍为默认；苹果选项需系统与硬件支持。</li>
+            <li data-i18n="n2">Apple 低延迟可选“自动视频”，识别常见 24／25／30 FPS 并整理播放节奏；更多缓冲可能增加音画偏移。</li>
+            <li data-i18n="n3">Fast 2× 窗口优化改为按 GPU 能力与准备耗时判断，预算充足时保留原尺寸；实际画质和帧率仍以运行结果为准。</li>
           </ul>
           <h4 data-i18n="limitsTitle">已知限制</h4>
           <ul>
@@ -258,8 +258,8 @@
         <p><span data-i18n="faqMore">还有别的问题？</span> <a href="https://github.com/Jun-bao/OpenDuckFrame/discussions" data-link="discussions" data-i18n="faqAsk">到 GitHub 交流</a></p>
       </div>
       <div class="faq">
-        <details><summary data-i18n="q1">OpenDuckFrame（开源小鸭）是什么？</summary><p data-i18n="a1">OpenDuckFrame（开源小鸭）是一款免费、MIT 开源的 Mac 实时补帧与超分应用。它增强已有的窗口、显示器或本地视频画面，使用 ODF-VFI 补帧模型，并提供独立的画面缩放和本地视频播放功能。</p></details>
-        <details><summary data-i18n="q2">支持哪些 Mac？支持 Windows 和 Intel 吗？</summary><p data-i18n="a2">支持 Apple 芯片的 Mac，要求 macOS 14 或更高版本。ArtCNN 超分支持不超过 1920×1080 的 SDR 输入，原生 2× 输出不超过 3840×2160。目前不支持 Intel Mac、Windows、iPhone 或 iPad。</p></details>
+        <details><summary data-i18n="q1">OpenDuckFrame（开源小鸭）是什么？</summary><p data-i18n="a1">OpenDuckFrame（开源小鸭）是一款免费、MIT 开源的 Mac 实时补帧与超分应用。它增强已有的窗口、显示器或本地视频画面，默认使用 ODF-VFI，也提供 Apple 插帧、独立的画面缩放和本地视频播放功能。</p></details>
+        <details><summary data-i18n="q2">支持哪些 Mac？支持 Windows 和 Intel 吗？</summary><p data-i18n="a2">支持 Apple 芯片的 Mac，要求 macOS 14 或更高版本。Apple 低延迟插帧需 macOS 26+，Apple 帧率转换需 macOS 15.4+，并取决于运行时支持。ArtCNN 超分支持不超过 1920×1080 的 SDR 输入，原生 2× 输出不超过 3840×2160。目前不支持 Intel Mac、Windows、iPhone 或 iPad。</p></details>
         <details><summary data-i18n="q3">会增加延迟吗？</summary><p data-i18n="a3">会。补帧需要根据已有帧计算中间画面，延迟会随引擎、分辨率和质量设置变化。建议先从 2 倍补帧开始，使用原画、增强和对比视图检查效果；对操作延迟敏感时应谨慎选择。</p></details>
         <details><summary data-i18n="q4">支持全屏吗？</summary><p data-i18n="a4">窗口和显示器模式的增强画面跟随来源，鼠标可继续操作；源应用切换原生全屏时可能影响采集，兼容性取决于具体应用与模式。本地视频可在所选显示器全屏播放。</p></details>
         <details><summary data-i18n="q5">画面会上传吗？</summary><p data-i18n="a5">画面增强在本机完成，不自动上传采集画面或媒体，无需账号。检查更新会联网；主动发送反馈时，会提交你填写的内容和明确附上的截图。</p></details>
@@ -342,6 +342,6 @@
   <form method="dialog"><button class="close" aria-label="关闭" data-i18n-aria="ariaClose">×</button></form>
 </dialog>
 
-<script src="main.js?v=20261112-release041"></script>
+<script src="main.js?v=20261114-v050"></script>
 </body>
 </html>
