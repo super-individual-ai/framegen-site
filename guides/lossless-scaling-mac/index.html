@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://openduckframe.cn/assets/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://openduckframe.cn/guides/lossless-scaling-mac/#article","url":"https://openduckframe.cn/guides/lossless-scaling-mac/","headline":"Mac 上有类似 Lossless Scaling 的工具吗","description":"比较 Lossless Scaling 与 OpenDuckFrame 的平台、窗口增强、帧生成和缩放场景。说明 Apple Silicon 条件、输入限制与不能直接类比的性能和延迟。","inLanguage":"zh-CN","datePublished":"2026-11-06","dateModified":"2026-11-12","about":{"@type":"SoftwareApplication","@id":"https://openduckframe.cn/#app","name":"OpenDuckFrame","url":"https://openduckframe.cn/","sameAs":"https://github.com/Jun-bao/OpenDuckFrame"},"isPartOf":{"@id":"https://openduckframe.cn/#website"},"citation":["https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/quick-start.md","https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/features.md","https://store.steampowered.com/app/993090/Lossless_Scaling/"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"OpenDuckFrame","item":"https://openduckframe.cn/"},{"@type":"ListItem","position":2,"name":"Mac 上有类似 Lossless Scaling 的工具吗","item":"https://openduckframe.cn/guides/lossless-scaling-mac/"}]}]}
+{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://openduckframe.cn/guides/lossless-scaling-mac/#article","url":"https://openduckframe.cn/guides/lossless-scaling-mac/","headline":"Mac 上有类似 Lossless Scaling 的工具吗","description":"比较 Lossless Scaling 与 OpenDuckFrame 的平台、窗口增强、帧生成和缩放场景。说明 Apple Silicon 条件、输入限制与不能直接类比的性能和延迟。","inLanguage":"zh-CN","datePublished":"2026-11-06","dateModified":"2026-11-14","about":{"@type":"SoftwareApplication","@id":"https://openduckframe.cn/#app","name":"OpenDuckFrame","url":"https://openduckframe.cn/","sameAs":"https://github.com/Jun-bao/OpenDuckFrame"},"isPartOf":{"@id":"https://openduckframe.cn/#website"},"citation":["https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/quick-start.md","https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/features.md","https://store.steampowered.com/app/993090/Lossless_Scaling/"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"OpenDuckFrame","item":"https://openduckframe.cn/"},{"@type":"ListItem","position":2,"name":"Mac 上有类似 Lossless Scaling 的工具吗","item":"https://openduckframe.cn/guides/lossless-scaling-mac/"}]}]}
 </script>
 <script>try { const theme = localStorage.getItem("odf-theme"); if (theme === "dark" || theme === "light") document.documentElement.dataset.theme = theme; } catch (e) {}</script>
 <script defer src="/analytics.js?v=20261106-growth1" data-odf-analytics></script>
@@ -30,15 +30,15 @@
 <header class="top"><div class="wrap bar"><a class="brand" href="/"><img src="/assets/icon.png" width="28" height="28" alt=""><span>OpenDuckFrame</span></a><nav class="guide-nav" aria-label="网站导航"><a href="/#download">下载</a><a href="/#guides">使用指南</a></nav></div></header>
 <main class="reading"><nav class="breadcrumbs" aria-label="当前位置"><a href="/">官网</a> / Mac 上有类似 Lossless Scaling 的工具吗</nav><article>
 <h1>Mac 上有类似 Lossless Scaling 的工具吗</h1>
-<p class="article-meta"><time datetime="2026-11-12">更新于 2026 年 11 月 12 日 · OpenDuckFrame 0.4.0</time> · <a href="/en/guides/lossless-scaling-mac/" hreflang="en" lang="en">English</a></p>
-<p class="answer">如果你想在 Apple 芯片 Mac 上，对已经显示的窗口或本地视频进行补帧与缩放，可以了解 OpenDuckFrame。两者有相近的使用场景，但不能据此认定引擎、兼容性、画质或延迟等价。以下依据截至 2026 年 11 月 6 日的官方资料，不是两款软件的性能对测。</p>
+<p class="article-meta"><time datetime="2026-11-14">更新于 2026 年 11 月 14 日 · OpenDuckFrame 0.6.2</time> · <a href="/en/guides/lossless-scaling-mac/" hreflang="en" lang="en">English</a></p>
+<p class="answer">如果你想在 Apple 芯片 Mac 上，对已经显示的窗口或本地视频进行补帧与缩放，可以了解 OpenDuckFrame。两者有相近的使用场景，但不能据此认定引擎、兼容性、画质或延迟等价。Lossless Scaling 资料核对至 2026 年 11 月 6 日，OpenDuckFrame 内容依据 0.6.2；这不是性能对测。</p>
 <h2>先区分平台与使用方式</h2>
 <p>Lossless Scaling 的 Steam 商店将其介绍为帧生成与缩放工具，列出的最低系统要求是 Windows 10 2004。该商店页面未列出原生 macOS 版本。OpenDuckFrame 面向 Apple 芯片 Mac，应用要求 macOS 14+，部分引擎另有更高条件。</p>
 <div class="table-scroll" tabindex="0" role="region" aria-label="横向滚动查看完整对比"><table><thead><tr><th scope="col">对照项</th><th scope="col">Lossless Scaling</th><th scope="col">OpenDuckFrame</th></tr></thead><tbody>
 <tr><th scope="row">平台依据</th><td>Steam 商店列出 Windows 系统要求</td><td>Apple Silicon、macOS 14+；目前不支持 Intel Mac 或 Windows</td></tr>
 <tr><th scope="row">相近场景</th><td>对游戏等已有画面进行帧生成与缩放</td><td>增强窗口、显示器或直接解码本地视频</td></tr>
-<tr><th scope="row">帧生成</th><td>商店说明的 LSFG 功能</td><td>ODF-VFI（由 RIFE 4.25 精简为四阶段），可用性由运行时检查</td></tr>
-<tr><th scope="row">缩放</th><td>商店列出的多种缩放选项</td><td>ArtCNN C4F32 / C4F16；可与补帧分别配置</td></tr>
+<tr><th scope="row">帧生成</th><td>商店说明的 LSFG 功能</td><td>ODF-VFI、Apple 低延迟和 Apple 帧率转换，可用性由运行时检查</td></tr>
+<tr><th scope="row">缩放</th><td>商店列出的多种缩放选项</td><td>受支持设备可使用苹果实时超分或视频超分</td></tr>
 <tr><th scope="row">获取方式</th><td>通过 Steam 获取，授权与功能以商店说明为准</td><td>免费社区版；项目自有代码 MIT 开源，依赖保留各自许可</td></tr>
 </tbody></table></div>
 <h2>哪些需求适合先试 OpenDuckFrame</h2>
@@ -46,7 +46,7 @@
 <h2>哪些结论不能直接搬过来</h2>
 <ul><li>不能把另一款工具的帧率、延迟或画质测试数字当作 OpenDuckFrame 的结果。</li><li>窗口捕获与游戏内置帧生成的数据来源不同；输入、输出模式和全屏兼容性需要分别验证。</li><li>受保护内容可能无法采集；补帧可能增加延迟，快速运动可能有伪影。倍率也不保证达到相同的实际显示帧率。</li></ul>
 <h2>在自己的 Mac 上做一次有效比较</h2>
-<ol><li>确认设备与系统条件，选一段你有权使用的本地视频或可采集窗口。</li><li>先保持相同输出尺寸，只开 ODF-VFI X2 补帧，比较原画、增强及实际 FPS。</li><li>单独测试 ArtCNN C4F32 或 C4F16，再决定是否与补帧一起使用。</li><li>记录分辨率、源帧率、引擎、质量、显示刷新率和操作感受；不只比较“设置里的倍率”。</li></ol>
+<ol><li>确认设备与系统条件，选一段你有权使用的本地视频或可采集窗口。</li><li>先保持相同输出尺寸，只开一种 X2 补帧，比较开启前后的画面及实际 FPS。</li><li>单独测试可用的苹果超分；实时采集使用苹果视频超分时需关闭补帧。</li><li>记录分辨率、源帧率、引擎、质量、显示刷新率和操作感受；不只比较“设置里的倍率”。</li></ol>
 <p>先看<a href="/guides/mac-video-frame-interpolation/">安装与实时补帧步骤</a>，或阅读<a href="/guides/rife-mac/">RIFE 设置与帧率限制</a>。需要哪个功能，应以当前版本的实际表现和官方限制为准。</p>
 <div class="sources"><p>依据：<a href="https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/quick-start.md">快速入门</a> · <a href="https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/features.md">功能与兼容要求</a> · <a href="https://store.steampowered.com/app/993090/Lossless_Scaling/">Lossless Scaling Steam</a></p></div>
 <nav class="related" aria-label="继续阅读"><a href="/guides/frame-generation-vs-upscaling/">补帧与超分的区别</a><a href="/#download">下载 OpenDuckFrame</a></nav>

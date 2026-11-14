@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mac 超分教程：窗口与视频放大、ArtCNN C4F32 / C4F16 设置 | OpenDuckFrame</title>
-<meta name="description" content="用免费开源的 OpenDuckFrame 在 Mac 上实时放大窗口、显示器和本地视频。了解 ArtCNN C4F32、C4F16 的区别与要求，以及画面变软、引擎不可用时的检查方法。">
+<title>Mac 超分教程：苹果实时超分与视频超分 | OpenDuckFrame</title>
+<meta name="description" content="用 OpenDuckFrame 在 Mac 上放大窗口、显示器和本地视频。了解苹果实时超分与视频超分的条件，以及画面变软或引擎不可用时的检查方法。">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="canonical" href="https://openduckframe.cn/guides/mac-video-upscaling/">
 <link rel="alternate" hreflang="zh-CN" href="https://openduckframe.cn/guides/mac-video-upscaling/">
@@ -17,11 +17,11 @@
 <meta property="og:site_name" content="OpenDuckFrame">
 <meta property="og:url" content="https://openduckframe.cn/guides/mac-video-upscaling/">
 <meta property="og:title" content="Mac 超分怎么用？窗口与视频放大教程">
-<meta property="og:description" content="用免费开源的 OpenDuckFrame 在 Mac 上实时放大窗口、显示器和本地视频。了解 ArtCNN C4F32、C4F16 的区别与要求，以及画面变软、引擎不可用时的检查方法。">
+<meta property="og:description" content="用 OpenDuckFrame 在 Mac 上放大窗口、显示器和本地视频。了解苹果实时超分与视频超分的条件，以及画面变软或引擎不可用时的检查方法。">
 <meta property="og:image" content="https://openduckframe.cn/assets/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://openduckframe.cn/guides/mac-video-upscaling/#article","url":"https://openduckframe.cn/guides/mac-video-upscaling/","headline":"Mac 超分怎么用？窗口与视频放大教程","description":"用免费开源的 OpenDuckFrame 在 Mac 上实时放大窗口、显示器和本地视频。了解 ArtCNN C4F32、C4F16 的区别与要求，以及画面变软、引擎不可用时的检查方法。","inLanguage":"zh-CN","datePublished":"2026-11-04","dateModified":"2026-11-12","about":{"@type":"SoftwareApplication","@id":"https://openduckframe.cn/#app","name":"OpenDuckFrame","alternateName":"开源小鸭","url":"https://openduckframe.cn/","sameAs":"https://github.com/Jun-bao/OpenDuckFrame"},"isPartOf":{"@id":"https://openduckframe.cn/#website"},"image":"https://openduckframe.cn/assets/openduckframe-library.webp","citation":["https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/quick-start.md","https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/features.md"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"OpenDuckFrame 官网","item":"https://openduckframe.cn/"},{"@type":"ListItem","position":2,"name":"Mac 超分怎么用？窗口与视频放大教程","item":"https://openduckframe.cn/guides/mac-video-upscaling/"}]}]}
+{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://openduckframe.cn/guides/mac-video-upscaling/#article","url":"https://openduckframe.cn/guides/mac-video-upscaling/","headline":"Mac 超分怎么用？窗口与视频放大教程","description":"用 OpenDuckFrame 在 Mac 上放大窗口、显示器和本地视频。了解苹果实时超分与视频超分的条件，以及画面变软或引擎不可用时的检查方法。","inLanguage":"zh-CN","datePublished":"2026-11-04","dateModified":"2026-11-14","about":{"@type":"SoftwareApplication","@id":"https://openduckframe.cn/#app","name":"OpenDuckFrame","alternateName":"开源小鸭","url":"https://openduckframe.cn/","sameAs":"https://github.com/Jun-bao/OpenDuckFrame"},"isPartOf":{"@id":"https://openduckframe.cn/#website"},"image":"https://openduckframe.cn/assets/openduckframe-library.webp","citation":["https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/quick-start.md","https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/features.md"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"OpenDuckFrame 官网","item":"https://openduckframe.cn/"},{"@type":"ListItem","position":2,"name":"Mac 超分怎么用？窗口与视频放大教程","item":"https://openduckframe.cn/guides/mac-video-upscaling/"}]}]}
 </script>
 <script>try { const theme = localStorage.getItem("odf-theme"); if (theme === "dark" || theme === "light") document.documentElement.dataset.theme = theme; } catch (e) {}</script>
 <script defer src="/analytics.js?v=20261106-growth1" data-odf-analytics></script>
@@ -35,27 +35,27 @@
   <nav class="breadcrumbs" aria-label="当前位置"><a href="/">官网</a> / Mac 视频超分教程</nav>
   <article>
     <h1>Mac 超分怎么用？窗口与视频放大教程</h1>
-    <p class="article-meta">更新于 <time datetime="2026-11-12">2026 年 11 月 12 日</time> · 依据 OpenDuckFrame 0.4.0 项目文档 · <a href="/en/guides/mac-video-upscaling/" hreflang="en" lang="en">English</a></p>
-    <p class="answer">在 Mac 上给窗口或视频做实时超分，可以使用免费开源的 OpenDuckFrame（开源小鸭）。打开“文件 → 画质工作台”，选择窗口、显示器或本地视频，先单独启用 ArtCNN C4F32 或 C4F16 超分，再以相同输出尺寸比较原画与增强结果。软件面向 Apple 芯片 Mac，要求 macOS 14 或更高版本；ArtCNN 输入须为 SDR 且不超过 1920×1080。</p>
+    <p class="article-meta">更新于 <time datetime="2026-11-14">2026 年 11 月 14 日</time> · 依据 OpenDuckFrame 0.6.2 项目文档 · <a href="/en/guides/mac-video-upscaling/" hreflang="en" lang="en">English</a></p>
+    <p class="answer">在 Mac 上给窗口或视频做超分，可以使用免费开源的 OpenDuckFrame（开源小鸭）。打开“文件 → 画质工作台”，选择来源，先单独尝试苹果实时超分或苹果视频超分。苹果超分需要受支持的 macOS 26+、硬件和 SDR 输入；在相同输出尺寸下比较开启前后的效果。</p>
 
     <h2>超分和帧生成解决什么问题？</h2>
     <p>超分与缩放负责把已有画面放大到更高分辨率；帧生成负责在相邻画面之间补出中间帧，改善运动连贯性。如果主要问题是低分辨率视频放大后不清晰，可以先只测试缩放；如果主要问题是镜头运动不连贯，再单独测试补帧。</p>
-    <p>当前工作台的 ArtCNN 使用原始上游模型权重增强 SDR 亮度，原生输出为来源的 2 倍，色度单独缩放。增强不能保证恢复源视频从未包含的真实细节，也不会提高游戏的模拟或逻辑更新速率。</p>
+    <p>当前工作台提供苹果实时超分与苹果视频超分。增强不能保证恢复源视频从未包含的真实细节，也不会提高游戏的模拟或逻辑更新速率。</p>
 
-    <h2>ArtCNN C4F32 与 C4F16 怎么选？</h2>
+    <h2>苹果实时超分与视频超分怎么选？</h2>
     <ul>
-      <li><strong>C4F32：</strong>模型规模更大，可先比较细节表现和处理开销。</li>
-      <li><strong>C4F16：</strong>更轻量的同系列模型，可在设备处理吃紧时比较使用。</li>
-      <li><strong>共同限制：</strong>输入须为不超过 1920×1080 的 SDR 画面，原生 2× 输出不超过 3840×2160；HDR、裁切和奇数尺寸输入不支持。</li>
+      <li><strong>苹果实时超分：</strong>面向实时画面，可在支持的设备上先尝试。</li>
+      <li><strong>苹果视频超分：</strong>系统模型可能需要下载；实时采集使用它时需先关闭补帧。</li>
+      <li><strong>共同条件：</strong>需要受支持的 macOS 26+、硬件和 SDR 输入，具体尺寸与倍率以应用中的检查为准。</li>
     </ul>
-    <p>在相同输出尺寸下比较两种模型。技术名称、参数或倍率均不是画质与帧率保证。</p>
+    <p>较大输入可能先被缩小，细节可能损失。在相同输出尺寸下比较，技术名称或倍率均不是画质与帧率保证。</p>
 
     <h2>给窗口或本地视频实时放大的步骤</h2>
     <ol>
       <li><strong>下载并打开应用。</strong>从<a href="/#download">官网的下载区域</a>进入 GitHub Release。当前社区版未经过 Apple 公证，首次打开时先确认下载来源，再根据 macOS 提示自行决定是否允许打开。</li>
       <li><strong>选择来源。</strong>打开“文件 → 画质工作台”（⇧⌘E）。网页视频选浏览器窗口，播放器或串流画面选对应窗口，本地文件可以直接选择“视频文件”。</li>
       <li><strong>选择输出并先只测试缩放。</strong>选好输出显示器，启用一个可用的缩放引擎。补帧与缩放可以分别配置，先只开启一项，便于判断画面变化来自哪里。</li>
-      <li><strong>开始增强并比较。</strong>窗口模式点击“延迟增强”后切换到目标窗口；显示器和本地视频点击“开始增强”。在原画、增强和对比视图间切换。保持相同输出尺寸，检查字幕、边缘、人物细节与运动画面，再看 FPS 面板中的实际输出。</li>
+      <li><strong>开始增强并比较。</strong>窗口模式选择窗口后点击“指定窗口增强”，或使用“延迟增强”；显示器和本地视频点击“开始增强”。保持相同输出尺寸，比较开启前后的画面，并检查字幕、边缘和实际输出帧率。</li>
       <li><strong>保存适合该来源的配置。</strong>画面效果和处理开销合适后再保存。更换视频分辨率或来源应用后，重新检查实际结果。</li>
     </ol>
     <p>采集窗口或显示器需要屏幕录制权限；本地视频文件播放不需要这项采集权限。显示器采集时，避免把增强输出再次采入，否则可能出现画面反馈。</p>
@@ -64,12 +64,12 @@
     <h2>放大后变软、出现伪影或跟不上怎么办？</h2>
     <ul>
       <li><strong>画面变软或边缘不自然：</strong>在相同输出尺寸下切换引擎，并暂时关闭补帧，确认是哪一项处理改变了画面。</li>
-      <li><strong>处理跟不上：</strong>降低来源分辨率，选择开销较低的质量设置，或减少同时启用的增强。不要把缩放倍率当成帧率提升承诺。</li>
+      <li><strong>处理跟不上：</strong>降低输入或输出尺寸，或减少同时启用的增强。不要把缩放倍率当成帧率提升承诺。</li>
       <li><strong>引擎不可用：</strong>核对系统版本、输入尺寸和运行库要求，优先使用当前可用的方案。</li>
       <li><strong>没有画面或全屏后异常：</strong>检查权限并重新选择来源。受保护内容、窗口尺寸和全屏模式可能影响采集与输出。</li>
     </ul>
     <p>这篇教程讲的是观看时的实时增强。评价效果时，应看相同尺寸下的实际画面、延迟与稳定性。</p>
-    <div class="sources"><p>依据：<a href="https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/quick-start.md">项目快速入门</a>、<a href="https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/features.md">缩放与超分引擎的功能和可用条件</a>。本文依据 0.4.0 项目文档；引擎是否可用仍以应用实际状态为准。</p></div>
+    <div class="sources"><p>依据：<a href="https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/quick-start.md">项目快速入门</a>、<a href="https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/features.md">缩放与超分引擎的功能和可用条件</a>。引擎是否可用仍以应用实际状态为准。</p></div>
     <nav class="related" aria-label="继续阅读"><a href="/guides/mac-video-frame-interpolation/">Mac 帧生成与补帧教程</a><a href="/guides/frame-generation-vs-upscaling/">补帧与超分的区别</a><a href="/#download">下载 OpenDuckFrame</a></nav>
   </article>
 </main>

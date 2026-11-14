@@ -38,7 +38,7 @@ html = html.replace(/(<script type="application\/ld\+json" id="site-schema">)([\
     }
     if (node["@type"] === "SoftwareApplication") {
       node.description = translations.description;
-      node.softwareRequirements = "ArtCNN super resolution accepts SDR input up to 1920×1080 and native 2× output up to 3840×2160.";
+      node.softwareRequirements = "Apple interpolation and super resolution require supported macOS versions, hardware and input.";
       node.featureList = ["Real-time frame generation (video interpolation)", "Real-time upscaling", "Window, display and local video inputs", "Local video playback and subtitles"];
     }
   }

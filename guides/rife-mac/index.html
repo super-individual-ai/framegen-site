@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://openduckframe.cn/assets/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://openduckframe.cn/guides/rife-mac/#article","url":"https://openduckframe.cn/guides/rife-mac/","headline":"Mac 上如何用 RIFE 实时补帧","description":"在 Apple 芯片 Mac 上用 RIFE 4.25 派生的 ODF-VFI 实时插帧，了解窗口与本地视频输入、倍率和目标帧率、处理预算及常见失败。","inLanguage":"zh-CN","datePublished":"2026-11-06","dateModified":"2026-11-11","about":{"@type":"SoftwareApplication","@id":"https://openduckframe.cn/#app","name":"OpenDuckFrame","url":"https://openduckframe.cn/","sameAs":"https://github.com/Jun-bao/OpenDuckFrame"},"isPartOf":{"@id":"https://openduckframe.cn/#website"},"citation":["https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/quick-start.md","https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/features.md"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"OpenDuckFrame","item":"https://openduckframe.cn/"},{"@type":"ListItem","position":2,"name":"Mac 上如何用 RIFE 实时补帧","item":"https://openduckframe.cn/guides/rife-mac/"}]}]}
+{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://openduckframe.cn/guides/rife-mac/#article","url":"https://openduckframe.cn/guides/rife-mac/","headline":"Mac 上如何用 RIFE 实时补帧","description":"在 Apple 芯片 Mac 上用 RIFE 4.25 派生的 ODF-VFI 实时插帧，了解窗口与本地视频输入、倍率和目标帧率、处理预算及常见失败。","inLanguage":"zh-CN","datePublished":"2026-11-06","dateModified":"2026-11-14","about":{"@type":"SoftwareApplication","@id":"https://openduckframe.cn/#app","name":"OpenDuckFrame","url":"https://openduckframe.cn/","sameAs":"https://github.com/Jun-bao/OpenDuckFrame"},"isPartOf":{"@id":"https://openduckframe.cn/#website"},"citation":["https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/quick-start.md","https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/features.md"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"OpenDuckFrame","item":"https://openduckframe.cn/"},{"@type":"ListItem","position":2,"name":"Mac 上如何用 RIFE 实时补帧","item":"https://openduckframe.cn/guides/rife-mac/"}]}]}
 </script>
 <script>try { const theme = localStorage.getItem("odf-theme"); if (theme === "dark" || theme === "light") document.documentElement.dataset.theme = theme; } catch (e) {}</script>
 <script defer src="/analytics.js?v=20261106-growth1" data-odf-analytics></script>
@@ -30,13 +30,13 @@
 <header class="top"><div class="wrap bar"><a class="brand" href="/"><img src="/assets/icon.png" width="28" height="28" alt=""><span>OpenDuckFrame</span></a><nav class="guide-nav" aria-label="网站导航"><a href="/#download">下载</a><a href="/#guides">使用指南</a></nav></div></header>
 <main class="reading"><nav class="breadcrumbs" aria-label="当前位置"><a href="/">官网</a> / Mac 上如何用 RIFE 实时补帧</nav><article>
 <h1>Mac 上如何用 RIFE 实时补帧</h1>
-<p class="article-meta"><time datetime="2026-11-11">更新于 2026 年 11 月 11 日 · OpenDuckFrame 0.3.3</time> · <a href="/en/guides/rife-mac/" hreflang="en" lang="en">English</a></p>
-<p class="answer">OpenDuckFrame 0.3.3 使用 ODF-VFI 补帧模型。它由 RIFE 4.25 精简为四阶段，在 Apple 芯片 Mac 上通过 Metal 运行，为窗口、显示器或本地视频计算中间画面。应用要求 macOS 14 或更高版本。先从快速质量和 X2 开始，观察实际输出与运动效果，再决定是否提高目标。</p>
+<p class="article-meta"><time datetime="2026-11-14">更新于 2026 年 11 月 14 日 · OpenDuckFrame 0.6.2</time> · <a href="/en/guides/rife-mac/" hreflang="en" lang="en">English</a></p>
+<p class="answer">OpenDuckFrame 可选择 ODF-VFI 补帧模型。它由 RIFE 4.25 精简为四阶段，在 Apple 芯片 Mac 上通过 Metal 运行，为窗口、显示器或本地视频计算中间画面。应用要求 macOS 14 或更高版本。选择 ODF-VFI 后可先从快速质量和 X2 开始，观察实际输出与运动效果。</p>
 <h2>ODF-VFI 和 RIFE 是什么关系</h2>
-<p>ODF-VFI 是对 RIFE 4.25 的结构精简：去掉一个阶段，保留的四个阶段沿用上游权重，没有重新训练，因此模型处理开销更低。它不保证每个场景的画质都与原版一致。Lanczos、MetalFX 是独立的缩放选项，打开补帧不会自动意味着提高分辨率。</p>
-<p>0.3.3 的工作台补帧只提供 ODF-VFI，不再提供 RIFE 4.26 或 Apple 插帧选项。全新安装默认使用快速质量和 X2；连续缓存默认开启，没有单独开关。升级时已有配置会保留，以 RIFE 4.25 保存的配置会改用 ODF-VFI。fast（快速）是已核对的档位，balanced 和 hq 仍属实验。</p>
+<p>ODF-VFI 是对 RIFE 4.25 的结构精简：去掉一个阶段，保留的四个阶段沿用上游权重，没有重新训练，因此模型处理开销更低。它不保证每个场景的画质都与原版一致。打开补帧不会自动提高分辨率。</p>
+<p>工作台还提供 Apple 低延迟和 Apple 帧率转换。受支持的 macOS 26+ 设备首次使用或恢复默认时选择 Apple 低延迟 X2，其他设备使用 ODF-VFI fast X2；已有引擎选择保留。连续缓存默认开启，没有单独开关。</p>
 <h2>用一个简单配置建立对照</h2>
-<ol><li>打开“文件 → 画质工作台”（⇧⌘E），选择窗口、显示器或视频文件；显示器和视频文件可另选输出显示器。</li><li>补帧模型为 ODF-VFI，质量先用快速档，倍率设为 X2。先关闭缩放，让这次对比只改变补帧。</li><li>窗口输入点击“延迟增强”，在倒计时内切到目标窗口；显示器和视频文件点击“开始增强”。采集窗口或显示器需要屏幕录制权限，本地文件无需采集权限。</li><li>比较原画、增强与对比视图，查看 FPS 面板和字幕、运动边缘。确认稳定后再保存配置；更高质量或倍率需要重新比较。</li></ol>
+<ol><li>打开“文件 → 画质工作台”（⇧⌘E），选择窗口、显示器或视频文件。</li><li>将补帧引擎选择为 ODF-VFI，质量先用快速档，倍率设为 X2。先关闭缩放，让这次对比只改变补帧。</li><li>窗口输入可选择窗口后点击“指定窗口增强”，或使用“延迟增强”；显示器和视频文件点击“开始增强”。采集窗口或显示器需要屏幕录制权限。</li><li>比较开启前后的画面，查看 FPS 面板和字幕、运动边缘。确认稳定后再保存配置；更高质量或倍率需要重新比较。</li></ol>
 <h2>倍率模式与目标帧率如何理解</h2>
 <p>X2／X3／X4 是请求的处理模式。24 fps × 2 的理论目标是 48 fps；实际是否能呈现，仍受源时间戳、分辨率、质量、处理预算和显示器刷新率影响。60 Hz 显示器不能呈现每秒 120 张不同画面。</p>
 <p>实时补帧的目标帧率模式会复用原始画面，只对剩余时隙计算中间帧，并依据来源时间戳安排插值。赶不上输出预算的任务可能被跳过；重复画面不能当作新增运动。倍率模式还会结合处理预算与屏幕刷新率调整有效倍率。请看实际呈现，而非只看请求数字。</p>
