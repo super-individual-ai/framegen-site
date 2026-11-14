@@ -64,8 +64,8 @@
       "applicationCategory": "MultimediaApplication",
       "operatingSystem": "macOS 14 or later",
       "processorRequirements": "Apple silicon",
-      "softwareRequirements": "ArtCNN super resolution accepts SDR input up to 1920×1080 and native 2× output up to 3840×2160.",
-      "softwareVersion": "0.5.0",
+      "softwareRequirements": "Apple interpolation and super resolution require supported macOS versions, hardware and input.",
+      "softwareVersion": "0.6.2",
       "featureList": [
         "Real-time frame generation (video interpolation)",
         "Real-time upscaling",
@@ -190,8 +190,8 @@
       </div>
       <ol class="features">
         <li><span class="n">01</span><div><h3 data-i18n="f1t">Detects the real frame rate</h3><p data-i18n="f1d">Counts only frames that actually change, so 24 fps video counts as 24 even on a 120 Hz display.</p></div></li>
-        <li><span class="n">02</span><div><h3 data-i18n="f2t">ODF-VFI and Apple interpolation</h3><p data-i18n="f2d">ODF-VFI, derived from RIFE 4.25, remains the default. Apple low latency and Apple FRC are also available. Rate and quality settings depend on the engine and source; actual output depends on hardware, resolution and display refresh rate.</p></div></li>
-        <li><span class="n">03</span><div><h3 data-i18n="f3t">Real-time upscaling</h3><p data-i18n="f3d">Use ArtCNN C4F32 or the lighter C4F16 model for native 2× SDR enhancement. Configure upscaling and frame generation separately; results depend on the input and Mac.</p></div></li>
+        <li><span class="n">02</span><div><h3 data-i18n="f2t">ODF-VFI and Apple interpolation</h3><p data-i18n="f2d">On supported macOS 26+ devices, new and reset profiles use Apple low latency at 2×. Other devices use ODF-VFI; saved choices are preserved. Apple FRC is also available where supported.</p></div></li>
+        <li><span class="n">03</span><div><h3 data-i18n="f3t">Real-time upscaling</h3><p data-i18n="f3d">Supported devices offer Apple low-latency and Apple video super resolution. Scaling is off by default. Live capture requires frame generation off for video SR; large inputs may be reduced first.</p></div></li>
         <li><span class="n">04</span><div><h3 data-i18n="f4t">Adjusts the multiplier to the budget</h3><p data-i18n="f4d">Live multiplier mode adjusts the effective multiplier to the processing budget. Smoothness still depends on the Mac and input.</p></div></li>
         <li><span class="n">05</span><div><h3 data-i18n="f5t">Fits the display refresh rate</h3><p data-i18n="f5d">Live multiplier mode lowers the multiplier to fit the display. At 1×, it passes through the original picture.</p></div></li>
         <li><span class="n">06</span><div><h3 data-i18n="f6t">Frame rates at a glance</h3><p data-i18n="f6d">A small overlay shows the content rate, the output rate and the current multiplier.</p></div></li>
@@ -203,7 +203,7 @@
   <section id="inside" class="inside">
     <div class="wrap">
       <h2 data-i18n="insideTitle">Pick by picture, not by parameter</h2>
-      <p class="sub" data-i18n="insideSub">The compact workbench groups source, interpolation, upscaling and output, with a three-step guide. ODF-VFI is the default alongside two Apple options; upscaling offers ArtCNN C4F32 / C4F16. The image below shows the old v0.1.0 technology library for historical reference.</p>
+      <p class="sub" data-i18n="insideSub">The workbench groups source, frame generation, upscaling and output, with a three-step guide. Choose ODF-VFI or Apple interpolation; supported devices also offer Apple low-latency and video super resolution. The image below is the earlier v0.1.0 technology library.</p>
       <figure class="real">
         <div class="real-frame">
           <img src="/assets/openduckframe-library.webp" width="1180" height="792" loading="lazy" decoding="async" alt="Earlier OpenDuckFrame v0.1.0 technology library screenshot" data-i18n-alt="insideAlt">
@@ -249,22 +249,22 @@
         <div class="release-head">
           <img src="/assets/icon-128.webp" alt="" width="64" height="64">
           <div>
-            <h3>OpenDuckFrame <span data-version>0.5.0</span></h3>
+            <h3>OpenDuckFrame <span data-version>0.6.2</span></h3>
             <p data-i18n="reqs">macOS 14 or later · Mac with Apple silicon</p>
           </div>
           <a class="btn solid" href="https://github.com/Jun-bao/OpenDuckFrame/releases/latest/download/OpenDuckFrame.dmg" data-link="dmg"><span data-i18n="downloadDmg">Download .dmg</span></a>
         </div>
         <ol class="steps">
           <li><b data-i18n="s1t">Drag to Applications</b><span data-i18n="s1d">Open the downloaded .dmg and drag OpenDuckFrame into Applications. This community build is not Apple notarized; macOS may block its first launch.</span></li>
-          <li><b data-i18n="s2t">Allow screen recording</b><span data-i18n="s2d">Allow Screen Recording in System Settings › Privacy &amp; Security for window or display capture. Local video playback does not need it.</span></li>
+          <li><b data-i18n="s2t">Allow screen recording</b><span data-i18n="s2d">Window or display capture requires Screen Recording access. Automatically resizing the source window also requires Accessibility access. Local video playback does not need Screen Recording.</span></li>
           <li><b data-i18n="s3t">Focus a window during the countdown</b><span data-i18n="s3d">Open File › Quality Workbench, configure enhancement, press Delayed enhancement, then focus your target window. Enhancement starts when the countdown ends. Settings allow 1–20 seconds; the default is 3.</span></li>
         </ol>
         <div class="notes">
           <h4 data-i18n="notesTitle">In this version</h4>
           <ul>
-            <li data-i18n="n1">Adds Apple low-latency interpolation and Apple FRC alongside default ODF-VFI, subject to system and hardware support.</li>
-            <li data-i18n="n2">Optional Automatic video timing detects common 24/25/30 FPS content in live Apple low latency. Extra buffering may increase audio/video offset.</li>
-            <li data-i18n="n3">Fast 2× window optimization now uses GPU capabilities and preparation timing, retaining native size when its budget fits. Actual quality and frame rate remain workload-dependent.</li>
+            <li data-i18n="n1">On supported devices, new and reset profiles use Apple low latency at 2×; saved engine choices remain unchanged.</li>
+            <li data-i18n="n2">Windows are grouped by application. Refresh guides Screen Recording access and reloads the list when permission becomes available.</li>
+            <li data-i18n="n3">A download control appears when an update is available; Apple video super resolution reuses buffers. Results depend on the device and source.</li>
           </ul>
           <h4 data-i18n="limitsTitle">Known limits</h4>
           <ul>
@@ -283,16 +283,16 @@
         <p><span data-i18n="faqMore">Something else?</span> <a href="https://github.com/Jun-bao/OpenDuckFrame/discussions" data-link="discussions" data-i18n="faqAsk">Join the discussion</a></p>
       </div>
       <div class="faq">
-        <details><summary data-i18n="q1">What is OpenDuckFrame?</summary><p data-i18n="a1">OpenDuckFrame is a free, MIT-licensed Mac app for real-time frame generation and upscaling. It enhances windows, displays and local video, with default ODF-VFI, optional Apple interpolation, independent scaling and local playback.</p></details>
-        <details><summary data-i18n="q2">Which Macs are supported? What about Windows and Intel?</summary><p data-i18n="a2">Apple silicon Macs running macOS 14 or later are supported. Apple low latency requires macOS 26+, and Apple FRC requires macOS 15.4+, both subject to runtime support. ArtCNN accepts SDR input up to 1920×1080 with native 2× output up to 3840×2160. Intel Macs, Windows, iPhone and iPad are not supported.</p></details>
-        <details><summary data-i18n="q3">Does it add latency?</summary><p data-i18n="a3">Yes. Generating in-between pictures adds latency, which varies with engine, resolution and quality settings. Start with 2× and compare Original, Enhanced and Comparison views; choose carefully for latency-sensitive use.</p></details>
+        <details><summary data-i18n="q1">What is OpenDuckFrame?</summary><p data-i18n="a1">OpenDuckFrame is a free, MIT-licensed Mac app for frame generation and upscaling. It enhances windows, displays or local video with ODF-VFI, Apple interpolation and Apple super resolution where available.</p></details>
+        <details><summary data-i18n="q2">Which Macs are supported? What about Windows and Intel?</summary><p data-i18n="a2">Apple silicon Macs running macOS 14 or later are supported. Apple low latency and Apple super resolution require macOS 26+; Apple FRC requires macOS 15.4+. All depend on runtime support. Apple super resolution requires SDR input and has engine-specific size and factor limits. Intel Macs, Windows, iPhone and iPad are not supported.</p></details>
+        <details><summary data-i18n="q3">Does it add latency?</summary><p data-i18n="a3">Yes. Generating in-between pictures adds latency, which varies with engine, resolution and quality settings. Start with 2× and compare the picture and interaction before and after enhancement; choose carefully for latency-sensitive use.</p></details>
         <details><summary data-i18n="q4">Does it work in full screen?</summary><p data-i18n="a4">Window and display output follow the source, and the mouse remains usable. Switching a source app to native fullscreen can affect capture; compatibility depends on the app and mode. Local video can be played fullscreen on a selected display.</p></details>
         <details><summary data-i18n="q5">Is anything uploaded?</summary><p data-i18n="a5">Enhancement runs locally, without automatically uploading captured pictures or media, and no account is required. Update checks use the network. Sending feedback submits the content you enter and any screenshot you explicitly attach.</p></details>
         <details><summary data-i18n="q6">How much does it cost?</summary><p data-i18n="a6">Free. The project's own code is MIT licensed on GitHub. FFmpeg, RIFE, model weights and other dependencies retain their own licenses.</p></details>
         <details><summary data-i18n="q7">macOS says it can't verify the developer.</summary><p data-i18n="a7">This community build is not Apple notarized. If you trust the download, review its blocked-launch message in System Settings → Privacy &amp; Security and decide whether to allow it. The app does not change system security settings.</p></details>
         <details><summary data-i18n="q8">How do I generate frames for video on a Mac?</summary><p data-i18n="a8">After installing, open File → Quality Workbench and start with 2× frame generation. For a window, press Delayed enhancement and focus the target before the countdown ends. Displays and video files use Start enhancement. Window and display capture need Screen Recording permission.</p></details>
         <details><summary data-i18n="q9">Does selecting a multiplier guarantee 120 fps?</summary><p data-i18n="a9">A multiplier is a requested processing mode, not a guarantee of displayed frame rate. The engine, source cadence, resolution and display refresh rate affect the result. A 60 Hz display cannot present 120 distinct frames per second. Check the FPS overlay and the picture you actually see.</p></details>
-        <details><summary data-i18n="q10">What is the difference between frame generation and upscaling?</summary><p data-i18n="a10">Frame generation creates in-between pictures for more continuous motion; upscaling enlarges pictures to a higher resolution. They can be enabled separately. Artifacts or changes in detail can occur, so compare at equal output sizes.</p></details>
+        <details><summary data-i18n="q10">What is the difference between frame generation and upscaling?</summary><p data-i18n="a10">Frame generation adds intermediate pictures for smoother motion; upscaling enlarges a picture. Each has separate controls. Live Apple video super resolution requires frame generation to be off. Compare results at the same output size.</p></details>
         <details><summary data-i18n="q11">Can an upgrade ask for permission again?</summary><p data-i18n="a11">Yes. This community build is ad-hoc signed, so macOS may ask for Screen Recording or Accessibility access again after an upgrade. Follow the system prompt in Privacy &amp; Security. Ordinary local video playback does not need Screen Recording permission.</p></details>
         <p class="note"><a href="https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/features.md" data-link="features" data-i18n="featureReference">Read the features, requirements and current limitations</a></p>
       </div>
@@ -316,7 +316,7 @@
         </article>
         <article>
           <h3><a href="/en/guides/mac-video-upscaling/" hreflang="en" data-i18n="guideUpscaleTitle">How to upscale video on a Mac</a></h3>
-          <p data-i18n="guideUpscaleBody">Choose ArtCNN C4F32 or C4F16 for windows and local video, then check picture quality, processing cost and input limits.</p>
+          <p data-i18n="guideUpscaleBody">Learn the requirements for Apple low-latency and video super resolution, and compare picture quality, processing cost and input limits.</p>
         </article>
         <article>
           <h3><a href="/en/guides/rife-mac/" hreflang="en" data-i18n="guideRifeTitle">How to use RIFE on a Mac</a></h3>
@@ -367,6 +367,6 @@
   <form method="dialog"><button class="close" aria-label="Close" data-i18n-aria="ariaClose">×</button></form>
 </dialog>
 
-<script src="/main.js?v=20261114-v050"></script>
+<script src="/main.js?v=20261114-v062"></script>
 </body>
 </html>

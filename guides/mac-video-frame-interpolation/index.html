@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://openduckframe.cn/assets/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://openduckframe.cn/guides/mac-video-frame-interpolation/#article","url":"https://openduckframe.cn/guides/mac-video-frame-interpolation/","headline":"Mac 帧生成怎么用？视频实时补帧教程","description":"用免费开源的 OpenDuckFrame 给 Mac 窗口、显示器或本地视频实时补帧。了解窗口插帧与游戏内帧生成的区别、2 倍设置步骤和实际帧率限制。","inLanguage":"zh-CN","datePublished":"2026-11-03","dateModified":"2026-11-11","about":{"@type":"SoftwareApplication","@id":"https://openduckframe.cn/#app","name":"OpenDuckFrame","alternateName":"开源小鸭","url":"https://openduckframe.cn/","sameAs":"https://github.com/Jun-bao/OpenDuckFrame"},"isPartOf":{"@id":"https://openduckframe.cn/#website"},"image":"https://openduckframe.cn/assets/openduckframe-library.webp","citation":["https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/quick-start.md","https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/features.md"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"OpenDuckFrame 官网","item":"https://openduckframe.cn/"},{"@type":"ListItem","position":2,"name":"Mac 视频实时补帧教程","item":"https://openduckframe.cn/guides/mac-video-frame-interpolation/"}]}]}
+{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://openduckframe.cn/guides/mac-video-frame-interpolation/#article","url":"https://openduckframe.cn/guides/mac-video-frame-interpolation/","headline":"Mac 帧生成怎么用？视频实时补帧教程","description":"用免费开源的 OpenDuckFrame 给 Mac 窗口、显示器或本地视频实时补帧。了解窗口插帧与游戏内帧生成的区别、2 倍设置步骤和实际帧率限制。","inLanguage":"zh-CN","datePublished":"2026-11-03","dateModified":"2026-11-14","about":{"@type":"SoftwareApplication","@id":"https://openduckframe.cn/#app","name":"OpenDuckFrame","alternateName":"开源小鸭","url":"https://openduckframe.cn/","sameAs":"https://github.com/Jun-bao/OpenDuckFrame"},"isPartOf":{"@id":"https://openduckframe.cn/#website"},"image":"https://openduckframe.cn/assets/openduckframe-library.webp","citation":["https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/quick-start.md","https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/features.md"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"OpenDuckFrame 官网","item":"https://openduckframe.cn/"},{"@type":"ListItem","position":2,"name":"Mac 视频实时补帧教程","item":"https://openduckframe.cn/guides/mac-video-frame-interpolation/"}]}]}
 </script>
 <script>try { const theme = localStorage.getItem("odf-theme"); if (theme === "dark" || theme === "light") document.documentElement.dataset.theme = theme; } catch (e) {}</script>
 <script defer src="/analytics.js?v=20261106-growth1" data-odf-analytics></script>
@@ -35,7 +35,7 @@
   <nav class="breadcrumbs" aria-label="当前位置"><a href="/">官网</a> / Mac 视频实时补帧教程</nav>
   <article>
     <h1>Mac 帧生成怎么用？视频实时补帧教程</h1>
-    <p class="article-meta">更新于 <time datetime="2026-11-11">2026 年 11 月 11 日</time> · 依据 OpenDuckFrame 0.3.3 项目文档 · <a href="/en/guides/mac-video-frame-interpolation/" hreflang="en" lang="en">English</a></p>
+    <p class="article-meta">更新于 <time datetime="2026-11-14">2026 年 11 月 14 日</time> · 依据 OpenDuckFrame 0.6.2 项目文档 · <a href="/en/guides/mac-video-frame-interpolation/" hreflang="en" lang="en">English</a></p>
     <p class="answer">在 Mac 上使用帧生成，可以通过视频插帧为已有画面补出中间帧。免费开源的 OpenDuckFrame（开源小鸭）支持 Apple 芯片 Mac 上的窗口、显示器和本地视频。下载安装后，打开“文件 → 画质工作台”，选择来源，先尝试 2 倍补帧，再用帧率面板与原画对比检查效果；画面在本机处理。</p>
 
     <h2>先确认你的 Mac 能不能用</h2>
@@ -54,13 +54,13 @@
     <ol>
       <li><strong>打开画质工作台。</strong>在菜单选择“文件 → 画质工作台”，快捷键为 ⇧⌘E。</li>
       <li><strong>选择输入和输出。</strong>网页视频选择浏览器窗口；播放器中的内容选择对应窗口；本地文件也可直接用“视频文件”输入。选择显示器采集时，避免把增强输出窗口再次采进去。</li>
-      <li><strong>先只开启一项增强。</strong>补帧使用 ODF-VFI，先设为 X2。高分辨率与更高倍率需要更多处理时间，适合等基础设置稳定后再尝试。</li>
-      <li><strong>开始增强并对比。</strong>窗口模式点击“延迟增强”后切换到目标窗口，倒计时结束时自动选定并增强。设置中可将默认 3 秒改为 1–20 秒。显示器和本地视频使用“开始增强”。在原画、增强和对比视图之间切换，观察实际 FPS 后再保存配置。</li>
+      <li><strong>先只开启一项增强。</strong>选择可用的补帧引擎，先设为 X2。高分辨率与更高倍率需要更多处理时间，适合等基础设置稳定后再尝试。</li>
+      <li><strong>开始增强并对比。</strong>窗口模式可选中目标后点击“指定窗口增强”，或点击“延迟增强”后切换到目标窗口。显示器和本地视频使用“开始增强”。比较开启前后的画面，观察实际 FPS 后再保存配置。</li>
     </ol>
     <p>窗口与显示器采集需要在“系统设置 → 隐私与安全性”中允许屏幕录制；本地视频文件播放不需要这项采集权限。设置名称可能随 macOS 版本变化。</p>
     <figure>
       <img src="/assets/openduckframe-library.webp" width="1180" height="792" loading="lazy" decoding="async" alt="OpenDuckFrame 0.1.0 旧版画质工作台中的补帧与超分技术库">
-      <figcaption>OpenDuckFrame 0.1.0 旧版技术库实机截图。当前版本的帧生成只提供 ODF-VFI，各项超分的可用条件不同。</figcaption>
+      <figcaption>OpenDuckFrame 0.1.0 旧版技术库实机截图。当前引擎及超分可用条件以应用中的运行时检查为准。</figcaption>
     </figure>
 
     <h2>为什么选了 4 倍，也不一定有 120 fps？</h2>
@@ -77,7 +77,7 @@
     <p>本教程说明观看时的实时增强。补帧生成中间画面，不会改变源应用自身的模拟或逻辑更新速率。</p>
 
     <div class="sources">
-      <p>依据：<a href="https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/quick-start.md">项目快速入门</a>、<a href="https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/features.md">功能与兼容要求</a>。本文依据 0.3.3 项目文档；引擎是否可用仍以应用实际状态为准。</p>
+      <p>依据：<a href="https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/quick-start.md">项目快速入门</a>、<a href="https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/features.md">功能与兼容要求</a>。本文依据 0.6.2 项目文档；引擎是否可用仍以应用实际状态为准。</p>
     </div>
     <nav class="related" aria-label="继续阅读"><a href="/guides/mac-video-upscaling/">Mac 超分使用教程</a><a href="/guides/frame-generation-vs-upscaling/">补帧和超分的区别</a><a href="/#download">下载 OpenDuckFrame</a><a href="https://github.com/Jun-bao/OpenDuckFrame/issues">反馈问题</a><a href="/guides/rife-mac/">RIFE 设置与帧率限制</a></nav>
   </article>
