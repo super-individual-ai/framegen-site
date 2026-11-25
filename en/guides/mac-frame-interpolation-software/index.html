@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mac frame interpolation and upscaling software: 15 tools compared | OpenDuckFrame</title>
+<meta name="description" content="Compare video frame interpolation and upscaling tools on Mac: OpenDuckFrame, SVP, IINA and mpv, Topaz Video, DaVinci Resolve, Final Cut Pro, Lossless Scaling and more, by real-time or export, free or paid, and window or local file.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://openduckframe.cn/en/guides/mac-frame-interpolation-software/">
+<link rel="alternate" hreflang="zh-CN" href="https://openduckframe.cn/guides/mac-frame-interpolation-software/">
+<link rel="alternate" hreflang="en" href="https://openduckframe.cn/en/guides/mac-frame-interpolation-software/">
+<link rel="alternate" hreflang="x-default" href="https://openduckframe.cn/guides/mac-frame-interpolation-software/">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon.png">
+<link rel="stylesheet" href="/styles.css?v=20261125-geo1">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="OpenDuckFrame">
+<meta property="og:url" content="https://openduckframe.cn/en/guides/mac-frame-interpolation-software/">
+<meta property="og:title" content="Mac frame interpolation and upscaling software: 15 tools compared">
+<meta property="og:description" content="Compare video frame interpolation and upscaling tools on Mac by real-time or export, free or paid, and window or local file.">
+<meta property="og:image" content="https://openduckframe.cn/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://openduckframe.cn/en/guides/mac-frame-interpolation-software/#article","url":"https://openduckframe.cn/en/guides/mac-frame-interpolation-software/","headline":"Mac frame interpolation and upscaling software: 15 tools compared","description":"Compare video frame interpolation and upscaling tools on Mac: OpenDuckFrame, SVP, IINA and mpv, Topaz Video, DaVinci Resolve, Final Cut Pro, Lossless Scaling and more, by real-time or export, free or paid, and window or local file.","inLanguage":"en","datePublished":"2026-11-25","dateModified":"2026-11-25","about":{"@type":"SoftwareApplication","@id":"https://openduckframe.cn/#app","name":"OpenDuckFrame","url":"https://openduckframe.cn/","sameAs":"https://github.com/Jun-Rex/OpenDuckFrame"},"isPartOf":{"@id":"https://openduckframe.cn/#website"},"citation":["https://github.com/Jun-Rex/OpenDuckFrame/blob/main/docs/features.md","https://www.svp-team.com/docs/mac/","https://iina.io/","https://mpv.io/manual/stable/","https://www.topazlabs.com/topaz-video","https://store.steampowered.com/app/993090/Lossless_Scaling/","https://www.blackmagicdesign.com/products/davinciresolve","https://support.apple.com/guide/final-cut-pro/ver40b00150/mac","https://developer.apple.com/videos/play/wwdc2025/300/"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"OpenDuckFrame","item":"https://openduckframe.cn/en/"},{"@type":"ListItem","position":2,"name":"Mac frame interpolation and upscaling software","item":"https://openduckframe.cn/en/guides/mac-frame-interpolation-software/"}]}]}
+</script>
+<script>try { const theme = localStorage.getItem("odf-theme"); if (theme === "dark" || theme === "light") document.documentElement.dataset.theme = theme; } catch (e) {}</script>
+<script defer src="/analytics.js?v=20261125-geo1" data-odf-analytics></script>
+</head>
+<body>
+<header class="top"><div class="wrap bar"><a class="brand" href="/en/"><img src="/assets/icon.png" width="28" height="28" alt=""><span>OpenDuckFrame</span></a><nav class="guide-nav" aria-label="Site navigation"><a href="/en/#download">Download</a><a href="/en/#guides">Guides</a></nav></div></header>
+<main class="reading"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/en/">Home</a> / Mac frame interpolation and upscaling software</nav><article>
+<h1>Which Mac apps do frame interpolation and upscaling?</h1>
+<p class="article-meta"><time datetime="2026-11-25">Updated November 25, 2026 · OpenDuckFrame 0.6.2</time> · <a href="/guides/mac-frame-interpolation-software/" hreflang="zh-CN" lang="zh-CN">中文版</a></p>
+<p class="answer">Start with whether you want to watch in real time or export a file. To enhance a browser, game window or whole display in real time, try OpenDuckFrame, a free open-source Mac app. For smoother playback inside a player, use SVP with IINA or mpv. To export processed video, use Topaz Video or LocalSR, or optical-flow retiming in DaVinci Resolve or Final Cut Pro. Lossless Scaling and Flowframes have no official Mac version. Facts below were checked against each vendor's official pages on November 25, 2026. This is not a performance test.</p>
+<h2>15 tools at a glance</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Scroll horizontally to see the full comparison"><table class="wide"><thead><tr><th scope="col">Tool</th><th scope="col">Mac support</th><th scope="col">Price and license</th><th scope="col">How it works</th><th scope="col">Interpolation / upscaling</th></tr></thead><tbody>
+<tr><th scope="row">OpenDuckFrame</th><td>macOS 14+, native Apple silicon; no Intel Macs</td><td>Free, MIT open source; community build is not Apple notarized</td><td>Real time: windows, whole displays, local video; no file export</td><td>Both</td></tr>
+<tr><th scope="row">SVP 4 Mac</th><td>Intel app that works with native Apple silicon players</td><td>US$24.99 lifetime, closed source</td><td>Real time inside IINA, mpv, VLC and other players; can also transcode</td><td>Interpolation</td></tr>
+<tr><th scope="row">IINA / mpv</th><td>Native Apple silicon builds</td><td>Free, GPL open source</td><td>Real time: local files and network streams in the player</td><td>mpv's built-in interpolation mainly smooths refresh-rate judder, and motion-compensated interpolation needs extra filters or SVP; it scales with Lanczos and other built-in filters, while AI upscaling needs shaders</td></tr>
+<tr><th scope="row">Topaz Video</th><td>macOS 13+, native Apple silicon; no Intel Macs</td><td>Subscription; Personal is US$59 monthly, less when paid yearly; closed source</td><td>Offline: import local video, render and export; optional cloud rendering</td><td>Both</td></tr>
+<tr><th scope="row">DaVinci Resolve</th><td>Native Apple silicon</td><td>Free version; Studio US$295 on the official site; closed source</td><td>Offline: retime and render on an editing timeline</td><td>Optical flow; Studio adds Speed Warp and Super Scale</td></tr>
+<tr><th scope="row">Final Cut Pro</th><td>Native Apple silicon</td><td>US$299.99 or subscription; closed source</td><td>Offline: slow motion and frame-rate conform on a timeline</td><td>Optical flow and machine-learning interpolation</td></tr>
+<tr><th scope="row">Apple VideoToolbox</th><td>Frame-rate conversion macOS 15.4+; low-latency interpolation and super resolution macOS 26+</td><td>Included with macOS; a framework for developers</td><td>Called by apps; not an app you use directly</td><td>Both</td></tr>
+<tr><th scope="row">Stellaria Motion</th><td>Apple silicon build; not Apple notarized</td><td>Free, AGPL open source</td><td>Real time in its own player for local video and cacheable online video; can also export</td><td>Interpolation</td></tr>
+<tr><th scope="row">LocalSR</th><td>Apple silicon build, beta</td><td>Free, MIT open source</td><td>Offline: process and export images and video</td><td>Upscaling; experimental interpolation</td></tr>
+<tr><th scope="row">Upscayl</th><td>macOS 12+, native Apple silicon</td><td>Free from the website, AGPL; paid on the Mac App Store</td><td>Offline: images only</td><td>Image upscaling</td></tr>
+<tr><th scope="row">rife-ncnn-vulkan / FFmpeg</th><td>Native Apple silicon builds</td><td>Free, open source</td><td>Offline: command-line batch processing</td><td>Interpolation; FFmpeg also has a neural super-resolution filter that needs a suitable build</td></tr>
+<tr><th scope="row">Lossless Scaling</th><td>Official build is Windows only</td><td>US$6.99, closed source</td><td>Real time: game and app windows on Windows</td><td>Interpolation and scaling</td></tr>
+<tr><th scope="row">Flowframes</th><td>Official build is Windows only</td><td>Older builds free, GPL open source</td><td>Offline: export local video; newer Patreon builds add real-time output</td><td>Interpolation</td></tr>
+</tbody></table></div>
+<p>Prices are the official list prices on the day checked and can change with promotions and region. Check the vendor's site before buying.</p>
+<h2>Which one fits your use</h2>
+<ul>
+<li><strong>Real-time enhancement of browser video, a game window or the whole screen:</strong> try OpenDuckFrame. It processes pictures that are already displayed and does not change a game's own rendering rate. Interpolation adds latency, so check input feel in games.</li>
+<li><strong>Smoother local movies inside a player:</strong> SVP with IINA or mpv is the established option. For a free option that can also export, look at Stellaria Motion.</li>
+<li><strong>Export a processed video file:</strong> Topaz Video (subscription) for quality, LocalSR as a free open-source option, or optical-flow retiming in DaVinci Resolve or Final Cut Pro for footage you are already editing.</li>
+<li><strong>Upscale still images only:</strong> Upscayl.</li>
+<li><strong>Repeatable batch processing from the command line:</strong> FFmpeg or rife-ncnn-vulkan.</li>
+<li><strong>Coming from Lossless Scaling on Windows:</strong> it has no official Mac version. See <a href="/en/guides/lossless-scaling-mac/">this comparison</a> for similar uses on a Mac.</li>
+</ul>
+<h2>OpenDuckFrame requirements and limits</h2>
+<ul>
+<li>Needs an Apple silicon Mac with macOS 14 or later. Apple low-latency interpolation and Apple super resolution need supported macOS 26 devices; Apple super resolution needs 8-bit SDR input, and live Apple video super resolution requires frame generation to be off.</li>
+<li>The ODF-VFI engine is reduced from RIFE 4.25. The fast tier is validated; balanced and hq are still experimental.</li>
+<li>Window and display capture need Screen Recording permission, and protected content may not be capturable. Audio still plays from the source app and can drift from the picture.</li>
+<li>It does not export processed video files. A multiplier is a requested mode; actual frame rate depends on the source, device and display refresh rate.</li>
+<li>The current community build is not Apple notarized. Check the download source before allowing the first launch.</li>
+</ul>
+<p>To get started, read the <a href="/en/guides/mac-video-frame-interpolation/">Mac frame generation guide</a>. For the difference between the two features, see <a href="/en/guides/frame-generation-vs-upscaling/">frame generation vs. upscaling</a>.</p>
+<div class="sources"><p>Sources: <a href="https://github.com/Jun-Rex/OpenDuckFrame/blob/main/docs/features.md">OpenDuckFrame features and limits</a> · <a href="https://www.svp-team.com/docs/mac/">SVP Mac docs</a> · <a href="https://www.svp-team.com/get/">SVP pricing</a> · <a href="https://iina.io/">IINA</a> · <a href="https://mpv.io/manual/stable/">mpv manual</a> · <a href="https://www.topazlabs.com/topaz-video">Topaz Video</a> · <a href="https://docs.topazlabs.com/topaz-video/system-requirements">Topaz requirements</a> · <a href="https://www.blackmagicdesign.com/products/davinciresolve">DaVinci Resolve</a> · <a href="https://support.apple.com/guide/final-cut-pro/ver40b00150/mac">Final Cut Pro retiming</a> · <a href="https://developer.apple.com/videos/play/wwdc2025/300/">Apple VideoToolbox</a> · <a href="https://github.com/Stellaria-Studio/Stellaria-Motion">Stellaria Motion</a> · <a href="https://github.com/HerRei/local-upscale">LocalSR</a> · <a href="https://upscayl.org/download">Upscayl</a> · <a href="https://github.com/nihui/rife-ncnn-vulkan">rife-ncnn-vulkan</a> · <a href="https://ffmpeg.org/ffmpeg-filters.html#minterpolate">FFmpeg minterpolate</a> · <a href="https://store.steampowered.com/app/993090/Lossless_Scaling/">Lossless Scaling on Steam</a> · <a href="https://nmkd.itch.io/flowframes">Flowframes</a></p></div>
+<nav class="related" aria-label="Continue reading"><a href="/en/guides/lossless-scaling-mac/">Lossless Scaling alternatives on Mac</a><a href="/en/guides/rife-mac/">RIFE on Mac</a><a href="/en/#download">Download OpenDuckFrame</a></nav>
+</article></main>
+<footer><div class="wrap bar"><a class="brand" href="/en/">OpenDuckFrame</a><p class="fine">Free · Open source (MIT) · Local processing</p><a href="/feedback/privacy/#website-analytics">Website analytics</a></div></footer>
+</body>
+</html>

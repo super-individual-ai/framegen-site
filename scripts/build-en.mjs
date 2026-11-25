@@ -45,6 +45,46 @@ html = html.replace(/(<script type="application\/ld\+json" id="site-schema">)([\
   return `${open}\n${JSON.stringify(data, null, 2)}\n${close}`;
 });
 
+// FAQPage structured data is generated from the visible FAQ so the two never drift.
+const unescape = (value) => {
+  const text = value.replace(/<[^>]+>/g, "").replaceAll("&quot;", '"').replaceAll("&#39;", "'").replaceAll("&lt;", "<").replaceAll("&gt;", ">").replaceAll("&amp;", "&").replace(/\s+/g, " ").trim();
+  if (/&[#a-z0-9]+;/i.test(text)) throw new Error(`Unsupported HTML entity in FAQ text: ${text}`);
+  return text;
+};
+const withFaqSchema = (page, url, lang) => {
+  const section = page.match(/<div class="faq">([\s\S]*?)<\/div>/);
+  if (!section) throw new Error(`No FAQ section found for ${url}`);
+  const blocks = [...section[1].replace(/<!--[\s\S]*?-->/g, "").matchAll(/<details>([\s\S]*?)<\/details>/g)].map(([, inner]) => inner);
+  const pairs = blocks.map((inner) => {
+    const question = inner.match(/<summary[^>]*>([\s\S]*?)<\/summary>/);
+    const answer = inner.match(/<p[^>]*>([\s\S]*?)<\/p>/);
+    if (!question || !answer) throw new Error(`FAQ entry without a question or answer on ${url}`);
+    return [null, question[1], answer[1]];
+  });
+  if (pairs.length === 0) throw new Error(`No FAQ entries found for ${url}`);
+  return page.replace(/(<script type="application\/ld\+json" id="site-schema">)([\s\S]*?)(<\/script>)/, (_, open, json, close) => {
+    const data = JSON.parse(json);
+    data["@graph"] = data["@graph"].filter((node) => node["@type"] !== "FAQPage");
+    data["@graph"].push({
+      "@type": "FAQPage",
+      "@id": `${url}#faq`,
+      url: `${url}#faq`,
+      inLanguage: lang,
+      isPartOf: { "@id": `${url}#webpage` },
+      mainEntity: pairs.map(([, question, answer]) => ({
+        "@type": "Question",
+        name: unescape(question),
+        acceptedAnswer: { "@type": "Answer", text: unescape(answer) },
+      })),
+    });
+    return `${open}\n${JSON.stringify(data, null, 2)}\n${close}`;
+  });
+};
+
+const zh = await readFile(new URL("index.html", base), "utf8");
+await writeFile(new URL("index.html", base), withFaqSchema(zh, "https://openduckframe.cn/", "zh-CN"));
+html = withFaqSchema(html, "https://openduckframe.cn/en/", "en");
+
 await mkdir(new URL("en/", base), { recursive: true });
 await writeFile(new URL("en/index.html", base), html);
 console.log(`Built ${fileURLToPath(new URL("en/index.html", base))}`);

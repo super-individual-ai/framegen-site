@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mac 补帧和超分软件有哪些？15 款工具对比 | OpenDuckFrame</title>
+<meta name="description" content="对比 Mac 上的视频补帧与超分工具：OpenDuckFrame、SVP、IINA 与 mpv、Topaz Video、DaVinci Resolve、Final Cut Pro、Lossless Scaling 等。按实时或导出、免费或付费、窗口或本地文件分别说明适用场景和限制。">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://openduckframe.cn/guides/mac-frame-interpolation-software/">
+<link rel="alternate" hreflang="zh-CN" href="https://openduckframe.cn/guides/mac-frame-interpolation-software/">
+<link rel="alternate" hreflang="en" href="https://openduckframe.cn/en/guides/mac-frame-interpolation-software/">
+<link rel="alternate" hreflang="x-default" href="https://openduckframe.cn/guides/mac-frame-interpolation-software/">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon.png">
+<link rel="stylesheet" href="/styles.css?v=20261125-geo1">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:site_name" content="OpenDuckFrame">
+<meta property="og:url" content="https://openduckframe.cn/guides/mac-frame-interpolation-software/">
+<meta property="og:title" content="Mac 补帧和超分软件有哪些？15 款工具对比">
+<meta property="og:description" content="按实时或导出、免费或付费、窗口或本地文件，对比 Mac 上的视频补帧与超分工具。">
+<meta property="og:image" content="https://openduckframe.cn/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://openduckframe.cn/guides/mac-frame-interpolation-software/#article","url":"https://openduckframe.cn/guides/mac-frame-interpolation-software/","headline":"Mac 补帧和超分软件有哪些？15 款工具对比","description":"对比 Mac 上的视频补帧与超分工具：OpenDuckFrame、SVP、IINA 与 mpv、Topaz Video、DaVinci Resolve、Final Cut Pro、Lossless Scaling 等。按实时或导出、免费或付费、窗口或本地文件分别说明适用场景和限制。","inLanguage":"zh-CN","datePublished":"2026-11-25","dateModified":"2026-11-25","about":{"@type":"SoftwareApplication","@id":"https://openduckframe.cn/#app","name":"OpenDuckFrame","url":"https://openduckframe.cn/","sameAs":"https://github.com/Jun-Rex/OpenDuckFrame"},"isPartOf":{"@id":"https://openduckframe.cn/#website"},"citation":["https://github.com/Jun-Rex/OpenDuckFrame/blob/main/docs/features.md","https://www.svp-team.com/docs/mac/","https://iina.io/","https://mpv.io/manual/stable/","https://www.topazlabs.com/topaz-video","https://store.steampowered.com/app/993090/Lossless_Scaling/","https://www.blackmagicdesign.com/products/davinciresolve","https://support.apple.com/guide/final-cut-pro/ver40b00150/mac","https://developer.apple.com/videos/play/wwdc2025/300/"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"OpenDuckFrame","item":"https://openduckframe.cn/"},{"@type":"ListItem","position":2,"name":"Mac 补帧和超分软件有哪些","item":"https://openduckframe.cn/guides/mac-frame-interpolation-software/"}]}]}
+</script>
+<script>try { const theme = localStorage.getItem("odf-theme"); if (theme === "dark" || theme === "light") document.documentElement.dataset.theme = theme; } catch (e) {}</script>
+<script defer src="/analytics.js?v=20261125-geo1" data-odf-analytics></script>
+</head>
+<body>
+<header class="top"><div class="wrap bar"><a class="brand" href="/"><img src="/assets/icon.png" width="28" height="28" alt=""><span>OpenDuckFrame</span></a><nav class="guide-nav" aria-label="网站导航"><a href="/#download">下载</a><a href="/#guides">使用指南</a></nav></div></header>
+<main class="reading"><nav class="breadcrumbs" aria-label="当前位置"><a href="/">官网</a> / Mac 补帧和超分软件有哪些</nav><article>
+<h1>Mac 补帧和超分软件有哪些？</h1>
+<p class="article-meta"><time datetime="2026-11-25">更新于 2026 年 11 月 25 日 · OpenDuckFrame 0.6.2</time> · <a href="/en/guides/mac-frame-interpolation-software/" hreflang="en" lang="en">English</a></p>
+<p class="answer">在 Mac 上给视频补帧或超分，先看你要“实时看”还是“导出文件”。实时增强浏览器、游戏窗口或整个显示器，可以用免费开源的 OpenDuckFrame（开源小鸭）；只在播放器里看片更流畅，可以用 SVP 配合 IINA 或 mpv；要导出处理后的视频，可以用 Topaz Video、LocalSR，或在 DaVinci Resolve、Final Cut Pro 的时间线里做光流变速。Lossless Scaling 和 Flowframes 没有官方 Mac 版。以下资料按各软件官方页面核对至 2026 年 11 月 25 日，不是性能对测。</p>
+<h2>15 款工具一览</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="横向滚动查看完整对比"><table class="wide"><thead><tr><th scope="col">工具</th><th scope="col">Mac 支持</th><th scope="col">价格与开源</th><th scope="col">怎么处理</th><th scope="col">补帧／超分</th></tr></thead><tbody>
+<tr><th scope="row">OpenDuckFrame</th><td>macOS 14+，Apple 芯片原生；不支持 Intel Mac</td><td>免费，MIT 开源；社区版未经 Apple 公证</td><td>实时：窗口、整个显示器、本地视频；不导出文件</td><td>补帧＋超分</td></tr>
+<tr><th scope="row">SVP 4 Mac</th><td>主程序为 Intel 版，可配合 Apple 芯片原生播放器</td><td>24.99 美元买断，闭源</td><td>实时：IINA、mpv、VLC 等播放器内；也可转码导出</td><td>补帧</td></tr>
+<tr><th scope="row">IINA／mpv</th><td>有原生 Apple 芯片版本</td><td>免费，GPL 开源</td><td>实时：播放器内的本地视频和网络流</td><td>mpv 自带插值主要减轻刷新率不匹配的顿挫，运动补偿补帧要另装滤镜或配合 SVP；放大自带 Lanczos 等算法，AI 超分要另装着色器</td></tr>
+<tr><th scope="row">Topaz Video</th><td>macOS 13+，Apple 芯片原生；不支持 Intel Mac</td><td>订阅制，个人版按月 59 美元、年付更低，闭源</td><td>离线：导入本地视频后渲染导出，可选云端</td><td>补帧＋超分</td></tr>
+<tr><th scope="row">DaVinci Resolve</th><td>Apple 芯片原生</td><td>有免费版；Studio 官网 295 美元，闭源</td><td>离线：剪辑时间线里变速、渲染导出</td><td>光流补帧；Studio 另有 Speed Warp 和 Super Scale 超分</td></tr>
+<tr><th scope="row">Final Cut Pro</th><td>Apple 芯片原生</td><td>299.99 美元买断或订阅，闭源</td><td>离线：剪辑时间线里慢动作和帧率适配</td><td>光流和机器学习补帧</td></tr>
+<tr><th scope="row">Apple VideoToolbox</th><td>帧率转换 macOS 15.4+；低延迟补帧与超分 macOS 26+</td><td>随 macOS 提供，是给开发者用的系统框架</td><td>由应用调用，本身不是可直接使用的软件</td><td>补帧＋超分</td></tr>
+<tr><th scope="row">Stellaria Motion</th><td>有 Apple 芯片安装包；未经 Apple 公证</td><td>免费，AGPL 开源</td><td>实时：内置播放器里的本地视频和可缓存的在线视频；也可导出</td><td>补帧</td></tr>
+<tr><th scope="row">LocalSR</th><td>有 Apple 芯片安装包，测试版</td><td>免费，MIT 开源</td><td>离线：图片和视频处理后导出</td><td>超分；补帧为实验功能</td></tr>
+<tr><th scope="row">Upscayl</th><td>macOS 12+，Apple 芯片原生</td><td>官网免费，AGPL 开源；Mac App Store 版付费</td><td>离线：只处理图片</td><td>图片超分</td></tr>
+<tr><th scope="row">rife-ncnn-vulkan／FFmpeg</th><td>都有 Apple 芯片原生构建</td><td>免费开源</td><td>离线：命令行批处理</td><td>补帧；FFmpeg 另有需要特定构建的神经网络超分滤镜</td></tr>
+<tr><th scope="row">Lossless Scaling</th><td>官方只有 Windows 版</td><td>6.99 美元，闭源</td><td>实时：Windows 上的游戏和应用窗口</td><td>补帧＋缩放</td></tr>
+<tr><th scope="row">Flowframes</th><td>官方只有 Windows 版</td><td>旧版免费，GPL 开源</td><td>离线：本地视频导出；Patreon 新版另有实时输出</td><td>补帧</td></tr>
+</tbody></table></div>
+<p>价格为查询当天各官网标价，可能随促销和地区变化，购买前以官网为准。</p>
+<h2>按需求怎么选</h2>
+<ul>
+<li><strong>实时增强浏览器视频、游戏窗口或整个屏幕：</strong>可以试 OpenDuckFrame。它处理的是已经显示出来的画面，不改变游戏本身的渲染帧率；补帧会增加延迟，玩游戏时要留意操作手感。</li>
+<li><strong>只在播放器里看本地电影更流畅：</strong>SVP 配合 IINA 或 mpv 是成熟方案；想免费并且能导出，可以看 Stellaria Motion。</li>
+<li><strong>要导出处理好的视频文件：</strong>追求画质可以用 Topaz Video（订阅）；免费开源可以试 LocalSR；已经在剪辑的素材，直接用 DaVinci Resolve 或 Final Cut Pro 的光流变速。</li>
+<li><strong>只放大图片：</strong>Upscayl。</li>
+<li><strong>批量处理、可复现的命令行流程：</strong>FFmpeg 或 rife-ncnn-vulkan。</li>
+<li><strong>用过 Windows 上的 Lossless Scaling：</strong>它没有官方 Mac 版，Mac 上相近的用法见<a href="/guides/lossless-scaling-mac/">这篇对照</a>。</li>
+</ul>
+<h2>OpenDuckFrame 的条件与限制</h2>
+<ul>
+<li>需要 Apple 芯片 Mac 和 macOS 14 或更高版本。Apple 低延迟补帧和苹果超分需要受支持的 macOS 26 设备，苹果超分要求 8 位 SDR 输入，实时采集使用苹果视频超分时要关闭补帧。</li>
+<li>补帧引擎 ODF-VFI 由 RIFE 4.25 精简而来，fast 档为已验证档，balanced 和 hq 仍属实验。</li>
+<li>窗口和显示器采集需要屏幕录制权限，受保护内容可能采集不到；音频仍由来源应用播放，可能出现音画偏移。</li>
+<li>不导出处理后的视频文件。倍率是请求的处理模式，实际帧率受素材、设备和显示器刷新率限制。</li>
+<li>当前是未经 Apple 公证的社区版，首次打开需要自行确认来源。</li>
+</ul>
+<p>想直接上手，看<a href="/guides/mac-video-frame-interpolation/">Mac 实时补帧教程</a>；不清楚补帧和超分的差别，看<a href="/guides/frame-generation-vs-upscaling/">这篇说明</a>。</p>
+<div class="sources"><p>依据：<a href="https://github.com/Jun-Rex/OpenDuckFrame/blob/main/docs/features.md">OpenDuckFrame 功能与限制</a> · <a href="https://www.svp-team.com/docs/mac/">SVP Mac 文档</a> · <a href="https://www.svp-team.com/get/">SVP 价格</a> · <a href="https://iina.io/">IINA</a> · <a href="https://mpv.io/manual/stable/">mpv 手册</a> · <a href="https://www.topazlabs.com/topaz-video">Topaz Video</a> · <a href="https://docs.topazlabs.com/topaz-video/system-requirements">Topaz 系统要求</a> · <a href="https://www.blackmagicdesign.com/products/davinciresolve">DaVinci Resolve</a> · <a href="https://support.apple.com/guide/final-cut-pro/ver40b00150/mac">Final Cut Pro 变速</a> · <a href="https://developer.apple.com/videos/play/wwdc2025/300/">Apple VideoToolbox</a> · <a href="https://github.com/Stellaria-Studio/Stellaria-Motion">Stellaria Motion</a> · <a href="https://github.com/HerRei/local-upscale">LocalSR</a> · <a href="https://upscayl.org/download">Upscayl</a> · <a href="https://github.com/nihui/rife-ncnn-vulkan">rife-ncnn-vulkan</a> · <a href="https://ffmpeg.org/ffmpeg-filters.html#minterpolate">FFmpeg minterpolate</a> · <a href="https://store.steampowered.com/app/993090/Lossless_Scaling/">Lossless Scaling Steam</a> · <a href="https://nmkd.itch.io/flowframes">Flowframes</a></p></div>
+<nav class="related" aria-label="继续阅读"><a href="/guides/lossless-scaling-mac/">Mac 上的 Lossless Scaling 替代</a><a href="/guides/rife-mac/">RIFE 在 Mac 上怎么用</a><a href="/#download">下载 OpenDuckFrame</a></nav>
+</article></main>
+<footer><div class="wrap bar"><a class="brand" href="/">OpenDuckFrame</a><p class="fine">免费 · 开源（MIT）· 本地处理</p><a href="/feedback/privacy/#website-analytics">网站统计说明</a></div></footer>
+</body>
+</html>
