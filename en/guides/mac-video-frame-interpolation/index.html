@@ -65,7 +65,7 @@
 
     <h2>Why does 4× not always mean 120 fps?</h2>
     <p>A multiplier is a requested processing mode. For example, 30 fps × 4 has a theoretical target of 120 fps. Model computation, output scheduling and physical presentation are separate stages. The engine, source cadence, resolution, frame budget and display refresh rate affect the result.</p>
-    <p>Do not judge output from the multiplier or the number of generated pictures alone. Check actual presentation and how the picture looks. If it cannot keep up, return to X2, lower the source resolution, or try a lighter quality mode. With Apple low-latency live interpolation, set Interpolation detail to “720p · smoother playback” to reduce GPU load.</p>
+    <p>Do not judge output from the multiplier or the number of generated pictures alone. Check actual presentation and how the picture looks. If it cannot keep up, return to X2, lower the source resolution, or try a lighter quality mode. With Apple low-latency live interpolation, try setting Interpolation detail to “720p · smoother playback”. It caps interpolation processing at 720p, which reduces GPU load when Automatic would use a larger size; output size is unchanged and generated frames may look softer.</p>
 
     <h2>What if capture, detail or motion looks wrong?</h2>
     <ul>
