@@ -21,16 +21,16 @@
 <meta property="og:image" content="https://openduckframe.cn/assets/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://openduckframe.cn/guides/rife-mac/#article","url":"https://openduckframe.cn/guides/rife-mac/","headline":"Mac 上如何用 RIFE 实时补帧","description":"在 Apple 芯片 Mac 上用 RIFE 4.25 派生的 ODF-VFI 实时插帧，了解窗口与本地视频输入、倍率和目标帧率、处理预算及常见失败。","inLanguage":"zh-CN","datePublished":"2026-11-06","dateModified":"2026-11-14","about":{"@type":"SoftwareApplication","@id":"https://openduckframe.cn/#app","name":"OpenDuckFrame","url":"https://openduckframe.cn/","sameAs":"https://github.com/Jun-bao/OpenDuckFrame"},"isPartOf":{"@id":"https://openduckframe.cn/#website"},"citation":["https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/quick-start.md","https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/features.md"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"OpenDuckFrame","item":"https://openduckframe.cn/"},{"@type":"ListItem","position":2,"name":"Mac 上如何用 RIFE 实时补帧","item":"https://openduckframe.cn/guides/rife-mac/"}]}]}
+{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://openduckframe.cn/guides/rife-mac/#article","url":"https://openduckframe.cn/guides/rife-mac/","headline":"Mac 上如何用 RIFE 实时补帧","description":"在 Apple 芯片 Mac 上用 RIFE 4.25 派生的 ODF-VFI 实时插帧，了解窗口与本地视频输入、倍率和目标帧率、处理预算及常见失败。","inLanguage":"zh-CN","datePublished":"2026-11-06","dateModified":"2026-11-25","about":{"@type":"SoftwareApplication","@id":"https://openduckframe.cn/#app","name":"OpenDuckFrame","url":"https://openduckframe.cn/","sameAs":"https://github.com/Jun-Rex/OpenDuckFrame"},"isPartOf":{"@id":"https://openduckframe.cn/#website"},"citation":["https://github.com/Jun-Rex/OpenDuckFrame/blob/main/docs/quick-start.md","https://github.com/Jun-Rex/OpenDuckFrame/blob/main/docs/features.md"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"OpenDuckFrame","item":"https://openduckframe.cn/"},{"@type":"ListItem","position":2,"name":"Mac 上如何用 RIFE 实时补帧","item":"https://openduckframe.cn/guides/rife-mac/"}]}]}
 </script>
 <script>try { const theme = localStorage.getItem("odf-theme"); if (theme === "dark" || theme === "light") document.documentElement.dataset.theme = theme; } catch (e) {}</script>
-<script defer src="/analytics.js?v=20261106-growth1" data-odf-analytics></script>
+<script defer src="/analytics.js?v=20261125-v080" data-odf-analytics></script>
 </head>
 <body>
 <header class="top"><div class="wrap bar"><a class="brand" href="/"><img src="/assets/icon.png" width="28" height="28" alt=""><span>OpenDuckFrame</span></a><nav class="guide-nav" aria-label="网站导航"><a href="/#download">下载</a><a href="/#guides">使用指南</a></nav></div></header>
 <main class="reading"><nav class="breadcrumbs" aria-label="当前位置"><a href="/">官网</a> / Mac 上如何用 RIFE 实时补帧</nav><article>
 <h1>Mac 上如何用 RIFE 实时补帧</h1>
-<p class="article-meta"><time datetime="2026-11-14">更新于 2026 年 11 月 14 日 · OpenDuckFrame 0.6.2</time> · <a href="/en/guides/rife-mac/" hreflang="en" lang="en">English</a></p>
+<p class="article-meta"><time datetime="2026-11-25">更新于 2026 年 11 月 25 日 · OpenDuckFrame 0.8.0</time> · <a href="/en/guides/rife-mac/" hreflang="en" lang="en">English</a></p>
 <p class="answer">OpenDuckFrame 可选择 ODF-VFI 补帧模型。它由 RIFE 4.25 精简为四阶段，在 Apple 芯片 Mac 上通过 Metal 运行，为窗口、显示器或本地视频计算中间画面。应用要求 macOS 14 或更高版本。选择 ODF-VFI 后可先从快速质量和 X2 开始，观察实际输出与运动效果。</p>
 <h2>ODF-VFI 和 RIFE 是什么关系</h2>
 <p>ODF-VFI 是对 RIFE 4.25 的结构精简：去掉一个阶段，保留的四个阶段沿用上游权重，没有重新训练，因此模型处理开销更低。它不保证每个场景的画质都与原版一致。打开补帧不会自动提高分辨率。</p>
@@ -45,7 +45,7 @@
 <h2>输出跟不上或画面不自然时</h2>
 <ul><li>先回到 X2，降低来源分辨率或选用开销更低的质量档，每次只改一项。</li><li>受保护内容可能采集不到；全屏、窗口尺寸变化或遮挡后异常，先重新选择来源。</li><li>插帧可能增加延迟，或使快速运动、遮挡边缘出现伪影。对操作延迟敏感时对比原画，再决定是否开启。</li><li>为复现问题，记录 Mac 型号、系统与应用版本、输入分辨率／帧率、补帧模型与质量、请求倍率、屏幕刷新率和实际输出。</li></ul>
 <p>本页不提供跨设备速度或画质保证，也没有将示意动画当作性能实测。安装和采集步骤见<a href="/guides/mac-video-frame-interpolation/">实时补帧教程</a>；需要放大画面时另看<a href="/guides/mac-video-upscaling/">超分教程</a>。</p>
-<div class="sources"><p>依据：<a href="https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/quick-start.md">快速入门</a> · <a href="https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/features.md">功能与兼容要求</a></p></div>
+<div class="sources"><p>依据：<a href="https://github.com/Jun-Rex/OpenDuckFrame/blob/main/docs/quick-start.md">快速入门</a> · <a href="https://github.com/Jun-Rex/OpenDuckFrame/blob/main/docs/features.md">功能与兼容要求</a></p></div>
 <nav class="related" aria-label="继续阅读"><a href="/guides/frame-generation-vs-upscaling/">补帧与超分的区别</a><a href="/#download">下载 OpenDuckFrame</a></nav>
 </article></main>
 <footer><div class="wrap bar"><a class="brand" href="/">OpenDuckFrame</a><p class="fine">免费 · 开源（MIT）· 本地处理</p><a href="/feedback/privacy/#website-analytics">网站统计说明</a></div></footer>

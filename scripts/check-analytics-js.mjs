@@ -24,13 +24,18 @@ function setup({ dnt = "", gpc = false, host = "openduckframe.cn", enabled = tru
 }
 
 const test = setup({ query: "?email=synthetic-secret&utm_source=google&utm_campaign=unapproved#private" });
-for (let i = 0; i < 10; i++) test.click("https://github.com/Jun-bao/OpenDuckFrame/releases/latest/download/OpenDuckFrame.dmg");
+for (let i = 0; i < 10; i++) test.click("https://github.com/Jun-Rex/OpenDuckFrame/releases/latest/download/OpenDuckFrame.dmg");
 assert.equal(test.calls.length, 10);
 assert.ok(test.calls.every(([name, data]) => name === "download_click" && data.position === "guide" && data.release === "unknown"));
 test.click("https://openduckframe.cn/#download");
-test.click("https://github.com/Jun-bao/OpenDuckFrame/releases");
+test.click("https://github.com/Jun-Rex/OpenDuckFrame/releases");
 assert.equal(test.calls[10][0], "download_section_click");
 assert.equal(test.calls[11][0], "github_release_click");
+// Cached pages from before the repository moved still link to the old owner; GitHub redirects them.
+test.click("https://github.com/Jun-bao/OpenDuckFrame/releases/latest/download/OpenDuckFrame.dmg");
+test.click("https://github.com/Jun-bao/OpenDuckFrame/releases");
+assert.deepEqual(test.calls.slice(12).map(([name]) => name), ["download_click", "github_release_click"]);
+test.calls.length = 12;
 const sanitized = test.window.odfAnalyticsBeforeSend("event", { referrer: "https://search.example/private?q=secret", title: "Public page" });
 assert.equal(sanitized.url, "/guides/rife-mac/?utm_source=google");
 assert.equal(sanitized.referrer, "https://search.example");
@@ -39,5 +44,5 @@ assert.equal(setup({ dnt: "1" }).scripts.length, 0);
 assert.equal(setup({ gpc: true }).scripts.length, 0);
 assert.equal(setup({ host: "localhost" }).scripts.length, 0);
 const blocked = setup({ enabled: false });
-assert.doesNotThrow(() => blocked.click("https://github.com/Jun-bao/OpenDuckFrame/releases/latest/download/OpenDuckFrame.dmg"));
+assert.doesNotThrow(() => blocked.click("https://github.com/Jun-Rex/OpenDuckFrame/releases/latest/download/OpenDuckFrame.dmg"));
 console.log("Analytics JS passed: exact event count, link categories, URL privacy, DNT/GPC, local exclusion and blocked-tracker fallback");
