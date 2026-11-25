@@ -38,9 +38,17 @@
       "@id": "https://openduckframe.cn/#website",
       "url": "https://openduckframe.cn/",
       "name": "OpenDuckFrame",
-      "alternateName": ["开源小鸭", "openduckframe.cn"],
-      "inLanguage": ["zh-CN", "en"],
-      "about": {"@id": "https://openduckframe.cn/#app"}
+      "alternateName": [
+        "开源小鸭",
+        "openduckframe.cn"
+      ],
+      "inLanguage": [
+        "zh-CN",
+        "en"
+      ],
+      "about": {
+        "@id": "https://openduckframe.cn/#app"
+      }
     },
     {
       "@type": "SoftwareApplication",
@@ -49,20 +57,31 @@
       "alternateName": "开源小鸭",
       "identifier": "OpenDuckFrame",
       "url": "https://openduckframe.cn/",
-      "mainEntityOfPage": {"@id": "https://openduckframe.cn/#webpage"},
+      "mainEntityOfPage": {
+        "@id": "https://openduckframe.cn/#webpage"
+      },
       "description": "免费开源的 Mac 帧生成（视频补帧）与超分应用，支持窗口、显示器和本地视频。画面在本机处理，无需账号。",
       "applicationCategory": "MultimediaApplication",
       "operatingSystem": "macOS 14 or later",
       "processorRequirements": "Apple silicon",
       "softwareRequirements": "Apple 原生插帧和超分需要受支持的 macOS 版本、硬件与输入。",
       "softwareVersion": "0.6.2",
-      "featureList": ["实时补帧（视频插帧）", "实时超分辨率", "窗口、显示器与本地视频输入", "本地视频播放与字幕"],
+      "featureList": [
+        "实时补帧（视频插帧）",
+        "实时超分辨率",
+        "窗口、显示器与本地视频输入",
+        "本地视频播放与字幕"
+      ],
       "image": "https://openduckframe.cn/assets/icon.png",
-      "downloadUrl": "https://github.com/Jun-bao/OpenDuckFrame/releases/latest/download/OpenDuckFrame.dmg",
-      "license": "https://github.com/Jun-bao/OpenDuckFrame/blob/main/LICENSE",
-      "sameAs": "https://github.com/Jun-bao/OpenDuckFrame",
+      "downloadUrl": "https://github.com/Jun-Rex/OpenDuckFrame/releases/latest/download/OpenDuckFrame.dmg",
+      "license": "https://github.com/Jun-Rex/OpenDuckFrame/blob/main/LICENSE",
+      "sameAs": "https://github.com/Jun-Rex/OpenDuckFrame",
       "isAccessibleForFree": true,
-      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "CNY"}
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "CNY"
+      }
     },
     {
       "@type": "WebPage",
@@ -71,9 +90,114 @@
       "name": "OpenDuckFrame（开源小鸭）官网 | Mac 帧生成与实时超分",
       "description": "OpenDuckFrame（开源小鸭）是免费开源的 Mac 帧生成（视频补帧）与超分应用，支持窗口、显示器和本地视频。使用基于 RIFE 4.25 的 ODF-VFI 补帧模型，画面在本机处理，无需账号。适用于 Apple 芯片 Mac，macOS 14+。",
       "inLanguage": "zh-CN",
-      "isPartOf": {"@id": "https://openduckframe.cn/#website"},
-      "mainEntity": {"@id": "https://openduckframe.cn/#app"},
-      "about": {"@id": "https://openduckframe.cn/#app"}
+      "isPartOf": {
+        "@id": "https://openduckframe.cn/#website"
+      },
+      "mainEntity": {
+        "@id": "https://openduckframe.cn/#app"
+      },
+      "about": {
+        "@id": "https://openduckframe.cn/#app"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://openduckframe.cn/#faq",
+      "url": "https://openduckframe.cn/#faq",
+      "inLanguage": "zh-CN",
+      "isPartOf": {
+        "@id": "https://openduckframe.cn/#webpage"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "OpenDuckFrame（开源小鸭）是什么？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "OpenDuckFrame（开源小鸭）是一款免费、MIT 开源的 Mac 实时补帧与超分应用。它增强窗口、显示器或本地视频画面，提供 ODF-VFI、Apple 插帧与苹果超分；可用功能取决于设备。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "支持哪些 Mac？支持 Windows 和 Intel 吗？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "支持 Apple 芯片的 Mac，要求 macOS 14 或更高版本。Apple 低延迟插帧和苹果超分需要 macOS 26+，Apple 帧率转换需要 macOS 15.4+，且均取决于运行时支持。苹果超分要求 SDR 输入，尺寸与倍率还受引擎限制。目前不支持 Intel Mac、Windows、iPhone 或 iPad。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "会增加延迟吗？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "会。补帧需要根据已有帧计算中间画面，延迟会随引擎、分辨率和质量设置变化。建议先从 2 倍补帧开始，比较开启前后的画面与操作感受；对操作延迟敏感时应谨慎选择。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "支持全屏吗？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "窗口和显示器模式的增强画面跟随来源，鼠标可继续操作；源应用切换原生全屏时可能影响采集，兼容性取决于具体应用与模式。本地视频可在所选显示器全屏播放。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "画面会上传吗？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "画面增强在本机完成，不自动上传采集画面或媒体，无需账号。检查更新会联网；主动发送反馈时，会提交你填写的内容和明确附上的截图。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "多少钱？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "免费。项目自有代码以 MIT 许可公开在 GitHub 上；FFmpeg、RIFE、模型权重等依赖保留各自许可证。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "打开时提示“无法验证开发者”怎么办？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "当前社区版未经过 Apple 公证。确认信任下载来源后，可在“系统设置 → 隐私与安全性”中查看拦截提示，自行决定是否允许打开。应用不会替你修改系统安全设置。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Mac 上如何给视频补帧？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "下载安装后，打开“文件 → 画质工作台”，先尝试 2 倍补帧。窗口模式点击“延迟增强”后切换到目标窗口，倒计时结束时自动选定并增强。显示器和本地视频使用“开始增强”。窗口或显示器采集需要屏幕录制权限。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "选择倍率后，一定能达到 120 fps 吗？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "倍率是请求的处理模式，不能保证实际显示帧率。引擎、来源帧率、分辨率和显示器刷新率都会影响结果；60 Hz 显示器也无法显示每秒 120 张不同画面。请以帧率面板和实际观看结果为准。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "视频补帧和超分分别做什么？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "补帧在相邻画面之间生成中间帧，改善运动连贯性；超分把画面放大到更高分辨率。两项功能可分别配置；实时采集使用苹果视频超分时需关闭补帧。建议在相同输出尺寸下比较效果。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "升级后会要求重新授权吗？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "有可能。当前社区版使用临时签名，macOS 可能在升级后重新请求屏幕录制或辅助功能权限。请按系统提示在“隐私与安全性”中确认；正常播放本地视频不需要录屏权限。"
+          }
+        }
+      ]
     }
   ]
 }
@@ -81,7 +205,7 @@
 <script>
   try { const s = localStorage.getItem("odf-theme"); if (s === "dark" || s === "light") document.documentElement.dataset.theme = s; } catch (e) {}
 </script>
-<script defer src="/analytics.js?v=20261106-growth1" data-odf-analytics></script>
+<script defer src="/analytics.js?v=20261125-geo1" data-odf-analytics></script>
 </head>
 <body>
 <header class="top">
@@ -106,7 +230,7 @@
         <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 3.2a8.2 8.2 0 1 0 5.3 12.6A7.2 7.2 0 0 1 15.5 3.2Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
         <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 3v2M12 19v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M3 12h2M19 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
       </button>
-      <a class="gh" href="https://github.com/Jun-bao/OpenDuckFrame" data-link="repo" aria-label="GitHub">
+      <a class="gh" href="https://github.com/Jun-Rex/OpenDuckFrame" data-link="repo" aria-label="GitHub">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
         <span>GitHub</span>
       </a>
@@ -126,16 +250,16 @@
             <button type="button" role="tab" aria-selected="false" data-tab="src" data-i18n="tabSrc">源码</button>
           </div>
           <code class="cmd-line" data-cmd="dmg"><span class="dim">↓</span> <span data-i18n="cmdDmg">OpenDuckFrame.dmg · macOS 14+ · Apple 芯片</span></code>
-          <code class="cmd-line" data-cmd="src" hidden><span class="dim">$</span> git clone https://github.com/Jun-bao/OpenDuckFrame</code>
+          <code class="cmd-line" data-cmd="src" hidden><span class="dim">$</span> git clone https://github.com/Jun-Rex/OpenDuckFrame</code>
           <button type="button" class="copy" data-action="copy" aria-label="复制" data-i18n-aria="ariaCopy">
             <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M16 8V6.5A2.5 2.5 0 0 0 13.5 4h-7A2.5 2.5 0 0 0 4 6.5v7A2.5 2.5 0 0 0 6.5 16H8" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
           </button>
         </div>
-        <a class="btn" href="https://github.com/Jun-bao/OpenDuckFrame" data-link="repo">
+        <a class="btn" href="https://github.com/Jun-Rex/OpenDuckFrame" data-link="repo">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m12 2.6 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5-4.7-4.6 6.5-.9L12 2.6Z"/></svg>
           <span data-i18n="star">在 GitHub 点 Star</span>
         </a>
-        <a class="btn solid" href="https://github.com/Jun-bao/OpenDuckFrame/releases/latest/download/OpenDuckFrame.dmg" data-link="dmg">
+        <a class="btn solid" href="https://github.com/Jun-Rex/OpenDuckFrame/releases/latest/download/OpenDuckFrame.dmg" data-link="dmg">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8 1.5 0 1.9.8 3.2.8 1.3 0 2.1-1.2 2.9-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.4-.9-2.4-3.9ZM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4Z"/></svg>
           <span data-i18n="download">下载 Mac 版</span>
         </a>
@@ -161,7 +285,7 @@
       <div class="side">
         <h2 data-i18n="whatTitle">OpenDuckFrame 是什么？</h2>
         <p data-i18n="whatBody">OpenDuckFrame（开源小鸭）是一款原生 Mac 画质增强应用。它识别来源画面的帧率，用 ODF-VFI 或 Apple 插帧补出中间帧，也能独立配置超分。窗口、显示器与本地视频都可以作为输入，画面不上传。</p>
-        <a class="more" href="https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/quick-start.md" data-link="guide"><span data-i18n="readDocs">读使用指南</span> →</a>
+        <a class="more" href="https://github.com/Jun-Rex/OpenDuckFrame/blob/main/docs/quick-start.md" data-link="guide"><span data-i18n="readDocs">读使用指南</span> →</a>
       </div>
       <ol class="features">
         <li><span class="n">01</span><div><h3 data-i18n="f1t">识别真实帧率</h3><p data-i18n="f1d">只数画面真正变化的帧，24 帧的视频按 24 帧算，不会被 120 Hz 刷新率骗到。</p></div></li>
@@ -218,7 +342,7 @@
       <div class="side">
         <h2 data-i18n="dlTitle">下载</h2>
         <p data-i18n="dlBody">正式版安装包发布在 GitHub，所有历史版本也在那里。</p>
-        <a class="more" href="https://github.com/Jun-bao/OpenDuckFrame/releases" data-link="releases"><span data-i18n="allReleases">查看全部版本</span> →</a>
+        <a class="more" href="https://github.com/Jun-Rex/OpenDuckFrame/releases" data-link="releases"><span data-i18n="allReleases">查看全部版本</span> →</a>
       </div>
       <div class="release">
         <div class="release-head">
@@ -227,7 +351,7 @@
             <h3>OpenDuckFrame <span data-version>0.6.2</span></h3>
             <p data-i18n="reqs">macOS 14 或更高 · Apple 芯片的 Mac</p>
           </div>
-          <a class="btn solid" href="https://github.com/Jun-bao/OpenDuckFrame/releases/latest/download/OpenDuckFrame.dmg" data-link="dmg"><span data-i18n="downloadDmg">下载 .dmg</span></a>
+          <a class="btn solid" href="https://github.com/Jun-Rex/OpenDuckFrame/releases/latest/download/OpenDuckFrame.dmg" data-link="dmg"><span data-i18n="downloadDmg">下载 .dmg</span></a>
         </div>
         <ol class="steps">
           <li><b data-i18n="s1t">拖进“应用程序”</b><span data-i18n="s1d">打开下载的 .dmg，把 OpenDuckFrame 拖到“应用程序”文件夹。社区版未经过 Apple 公证，首次打开可能被 macOS 拦截。</span></li>
@@ -255,7 +379,7 @@
     <div class="wrap grid2">
       <div class="side">
         <h2 data-i18n="faqTitle">常见问题</h2>
-        <p><span data-i18n="faqMore">还有别的问题？</span> <a href="https://github.com/Jun-bao/OpenDuckFrame/discussions" data-link="discussions" data-i18n="faqAsk">到 GitHub 交流</a></p>
+        <p><span data-i18n="faqMore">还有别的问题？</span> <a href="https://github.com/Jun-Rex/OpenDuckFrame/discussions" data-link="discussions" data-i18n="faqAsk">到 GitHub 交流</a></p>
       </div>
       <div class="faq">
         <details><summary data-i18n="q1">OpenDuckFrame（开源小鸭）是什么？</summary><p data-i18n="a1">OpenDuckFrame（开源小鸭）是一款免费、MIT 开源的 Mac 实时补帧与超分应用。它增强窗口、显示器或本地视频画面，提供 ODF-VFI、Apple 插帧与苹果超分；可用功能取决于设备。</p></details>
@@ -269,7 +393,7 @@
         <details><summary data-i18n="q9">选择倍率后，一定能达到 120 fps 吗？</summary><p data-i18n="a9">倍率是请求的处理模式，不能保证实际显示帧率。引擎、来源帧率、分辨率和显示器刷新率都会影响结果；60 Hz 显示器也无法显示每秒 120 张不同画面。请以帧率面板和实际观看结果为准。</p></details>
         <details><summary data-i18n="q10">视频补帧和超分分别做什么？</summary><p data-i18n="a10">补帧在相邻画面之间生成中间帧，改善运动连贯性；超分把画面放大到更高分辨率。两项功能可分别配置；实时采集使用苹果视频超分时需关闭补帧。建议在相同输出尺寸下比较效果。</p></details>
         <details><summary data-i18n="q11">升级后会要求重新授权吗？</summary><p data-i18n="a11">有可能。当前社区版使用临时签名，macOS 可能在升级后重新请求屏幕录制或辅助功能权限。请按系统提示在“隐私与安全性”中确认；正常播放本地视频不需要录屏权限。</p></details>
-        <p class="note"><a href="https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/features.md" data-link="features" data-i18n="featureReference">查看功能、系统要求与当前限制</a></p>
+        <p class="note"><a href="https://github.com/Jun-Rex/OpenDuckFrame/blob/main/docs/features.md" data-link="features" data-i18n="featureReference">查看功能、系统要求与当前限制</a></p>
       </div>
     </div>
   </section>
@@ -311,11 +435,11 @@
       <p data-i18n="openBody">OpenDuckFrame（中文名：开源小鸭）是一款免费、MIT 开源的 Mac 桌面应用。它为已有视频生成中间帧，并可独立进行超分；画面在本机处理。</p>
       <dl class="project-facts">
         <div><dt data-i18n="projectWebsite">官方网站</dt><dd><a href="https://openduckframe.cn/">openduckframe.cn</a></dd></div>
-        <div><dt data-i18n="projectSource">开源仓库</dt><dd><a href="https://github.com/Jun-bao/OpenDuckFrame">Jun-bao/OpenDuckFrame</a></dd></div>
-        <div><dt data-i18n="projectRelease">安装包与版本记录</dt><dd><a href="https://github.com/Jun-bao/OpenDuckFrame/releases" data-i18n="projectReleaseLink">GitHub Releases</a></dd></div>
-        <div><dt data-i18n="projectFeedback">提问与反馈</dt><dd><a href="https://github.com/Jun-bao/OpenDuckFrame/discussions" data-i18n="projectDiscussionLink">项目讨论区</a> · <a href="/feedback/" data-link="feedback" data-i18n="projectIssueLink">报告问题</a></dd></div>
+        <div><dt data-i18n="projectSource">开源仓库</dt><dd><a href="https://github.com/Jun-Rex/OpenDuckFrame">Jun-Rex/OpenDuckFrame</a></dd></div>
+        <div><dt data-i18n="projectRelease">安装包与版本记录</dt><dd><a href="https://github.com/Jun-Rex/OpenDuckFrame/releases" data-i18n="projectReleaseLink">GitHub Releases</a></dd></div>
+        <div><dt data-i18n="projectFeedback">提问与反馈</dt><dd><a href="https://github.com/Jun-Rex/OpenDuckFrame/discussions" data-i18n="projectDiscussionLink">项目讨论区</a> · <a href="/feedback/" data-link="feedback" data-i18n="projectIssueLink">报告问题</a></dd></div>
       </dl>
-      <a class="btn solid" href="https://github.com/Jun-bao/OpenDuckFrame" data-link="repo">
+      <a class="btn solid" href="https://github.com/Jun-Rex/OpenDuckFrame" data-link="repo">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m12 2.6 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5-4.7-4.6 6.5-.9L12 2.6Z"/></svg>
         <span data-i18n="star">在 GitHub 点 Star</span>
       </a>
@@ -327,10 +451,10 @@
   <div class="wrap bar">
     <a class="brand" href="#top"><img src="assets/icon-128.webp" alt="" width="22" height="22"><span>OpenDuckFrame</span></a>
     <nav class="links" aria-label="页脚" data-i18n-aria="ariaFoot">
-      <a href="https://github.com/Jun-bao/OpenDuckFrame" data-link="repo">GitHub</a>
-      <a href="https://github.com/Jun-bao/OpenDuckFrame/releases" data-link="releases" data-i18n="footReleases">版本发布</a>
-      <a href="https://github.com/Jun-bao/OpenDuckFrame/blob/main/PRIVACY.md" data-link="privacy" data-i18n="footPrivacy">隐私</a>
-      <a href="https://github.com/Jun-bao/OpenDuckFrame/blob/main/LICENSE" data-link="license" data-i18n="footLicense">许可证</a>
+      <a href="https://github.com/Jun-Rex/OpenDuckFrame" data-link="repo">GitHub</a>
+      <a href="https://github.com/Jun-Rex/OpenDuckFrame/releases" data-link="releases" data-i18n="footReleases">版本发布</a>
+      <a href="https://github.com/Jun-Rex/OpenDuckFrame/blob/main/PRIVACY.md" data-link="privacy" data-i18n="footPrivacy">隐私</a>
+      <a href="https://github.com/Jun-Rex/OpenDuckFrame/blob/main/LICENSE" data-link="license" data-i18n="footLicense">许可证</a>
       <a href="/feedback/privacy/#website-analytics" data-i18n="footAnalytics">网站统计说明</a>
     </nav>
     <p class="fine">© 2026 OpenDuckFrame contributors · MIT License</p>
@@ -342,6 +466,6 @@
   <form method="dialog"><button class="close" aria-label="关闭" data-i18n-aria="ariaClose">×</button></form>
 </dialog>
 
-<script src="main.js?v=20261114-v062"></script>
+<script src="main.js?v=20261125-geo1"></script>
 </body>
 </html>

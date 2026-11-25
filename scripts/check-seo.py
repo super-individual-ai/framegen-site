@@ -1,7 +1,9 @@
 """Validate the published static SEO pages, their language pairs and local links."""
 
 import argparse
+import html
 import json
+import re
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urljoin, urlsplit
@@ -68,6 +70,9 @@ def check(directory, base_url=None):
     expected = {ORIGIN + path for path in pages}
     if len(locations) != len(expected) or set(locations) != expected:
         raise ValueError("Sitemap must contain every published SEO page exactly once")
+    llms = (root / "llms.txt").read_text()
+    if not llms.startswith("# OpenDuckFrame") or any(url not in llms for url in expected):
+        raise ValueError("llms.txt must list every published SEO page; add new pages there too")
     robots = (root / "robots.txt").read_text()
     if "Sitemap: " + ORIGIN + "/sitemap.xml" not in robots:
         raise ValueError("robots.txt does not declare the official sitemap")
@@ -81,7 +86,8 @@ def check(directory, base_url=None):
                 return response.read().decode("utf-8")
         return pages[path].read_text()
 
-    parsed = {path: Page(load(path)) for path in pages}
+    texts = {path: load(path) for path in pages}
+    parsed = {path: Page(text) for path, text in texts.items()}
     titles = set()
     descriptions = set()
     for path, page in parsed.items():
@@ -112,6 +118,15 @@ def check(directory, base_url=None):
         required = {"WebSite", "SoftwareApplication", "WebPage"} if path in ("/", "/en/") else {"TechArticle", "BreadcrumbList"}
         if not required <= types:
             raise ValueError(f"{path}: missing structured-data types {required - types}")
+        if path in ("/", "/en/"):
+            visible = [
+                tuple(html.unescape(re.sub(r"<[^>]+>", "", part)).strip() for part in pair)
+                for pair in re.findall(r'<details><summary data-i18n="q\d+">(.*?)</summary><p data-i18n="a\d+">(.*?)</p></details>', texts[path], re.S)
+            ]
+            faq = [n for n in nodes if n.get("@type") == "FAQPage"]
+            marked = [(q.get("name"), q.get("acceptedAnswer", {}).get("text")) for q in faq[0].get("mainEntity", [])] if len(faq) == 1 else None
+            if not visible or marked != visible:
+                raise ValueError(f"{path}: FAQPage structured data must match the visible FAQ; run node scripts/build-en.mjs")
         for node in nodes:
             if node.get("@type") in ("WebPage", "TechArticle"):
                 if node.get("url") != ORIGIN + path or node.get("inLanguage") != lang:

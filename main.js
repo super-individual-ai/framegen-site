@@ -4,21 +4,21 @@
 const SITE = {
   version: "0.6.2",
   links: {
-    repo: "https://github.com/Jun-bao/OpenDuckFrame",
-    readme: "https://github.com/Jun-bao/OpenDuckFrame#readme",
-    releases: "https://github.com/Jun-bao/OpenDuckFrame/releases",
+    repo: "https://github.com/Jun-Rex/OpenDuckFrame",
+    readme: "https://github.com/Jun-Rex/OpenDuckFrame#readme",
+    releases: "https://github.com/Jun-Rex/OpenDuckFrame/releases",
     // GitHub serves the asset named OpenDuckFrame.dmg from the newest release.
-    dmg: "https://github.com/Jun-bao/OpenDuckFrame/releases/latest/download/OpenDuckFrame.dmg",
-    guide: "https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/quick-start.md",
-    features: "https://github.com/Jun-bao/OpenDuckFrame/blob/main/docs/features.md",
-    discussions: "https://github.com/Jun-bao/OpenDuckFrame/discussions",
-    source: "https://github.com/Jun-bao/OpenDuckFrame#build-from-source",
-    issues: "https://github.com/Jun-bao/OpenDuckFrame/issues",
+    dmg: "https://github.com/Jun-Rex/OpenDuckFrame/releases/latest/download/OpenDuckFrame.dmg",
+    guide: "https://github.com/Jun-Rex/OpenDuckFrame/blob/main/docs/quick-start.md",
+    features: "https://github.com/Jun-Rex/OpenDuckFrame/blob/main/docs/features.md",
+    discussions: "https://github.com/Jun-Rex/OpenDuckFrame/discussions",
+    source: "https://github.com/Jun-Rex/OpenDuckFrame#build-from-source",
+    issues: "https://github.com/Jun-Rex/OpenDuckFrame/issues",
     feedback: document.documentElement.lang === "en" ? "/feedback/?lang=en" : "/feedback/",
-    privacy: "https://github.com/Jun-bao/OpenDuckFrame/blob/main/PRIVACY.md",
-    license: "https://github.com/Jun-bao/OpenDuckFrame/blob/main/LICENSE",
+    privacy: "https://github.com/Jun-Rex/OpenDuckFrame/blob/main/PRIVACY.md",
+    license: "https://github.com/Jun-Rex/OpenDuckFrame/blob/main/LICENSE",
   },
-  clone: "git clone https://github.com/Jun-bao/OpenDuckFrame",
+  clone: "git clone https://github.com/Jun-Rex/OpenDuckFrame",
 };
 
 const root = document.documentElement;

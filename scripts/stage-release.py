@@ -21,7 +21,7 @@ from urllib.parse import urlsplit
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC_ROOT = {
     "index.html", "main.js", "analytics.js", "styles.css", "favicon.ico", "favicon.png",
-    "robots.txt", "sitemap.xml",
+    "robots.txt", "sitemap.xml", "llms.txt",
 }
 REQUIRED_PUBLIC = PUBLIC_ROOT | {
     "feedback/index.html", "feedback/privacy/index.html",

@@ -5,7 +5,7 @@ OpenDuckFrame（开源小鸭）的静态产品页：Mac 实时补帧、超分和
 正式网址：[https://openduckframe.cn/](https://openduckframe.cn/)。
 
 产品源码、构建说明、隐私政策和反馈入口：
-[Jun-bao/OpenDuckFrame](https://github.com/Jun-bao/OpenDuckFrame)。
+[Jun-Rex/OpenDuckFrame](https://github.com/Jun-Rex/OpenDuckFrame)。
 
 ## 本地预览
 
@@ -53,6 +53,8 @@ python3 -m http.server 4178 --bind 127.0.0.1
 - `robots.txt` 允许搜索引擎和搜索用途的 AI 爬虫访问，并公布 `sitemap.xml`；抓取服务还必须能通过 Cloudflare 和源站访问。
 - GEO 依靠可核对的产品事实、直接回答问题的正文与源码文档链接；不把倍率、演示动画或单一设备测量写成普遍效果承诺。
 - 上线后可将站点地图提交到搜索引擎站长平台。完成技术设置或提交网址，都不等于已经收录、获得排名或被 AI 推荐。
+- 首页常见问题的 `FAQPage` 结构化数据由 `node scripts/build-en.mjs` 从页面上可见的问答生成，中英文首页都会更新；改了常见问题就重跑一次，`check-seo.py` 会拦下文字与标注不一致的页面。
+- 根目录 `llms.txt` 是给 AI 工具看的站点摘要和页面索引。新增或下线页面时同步修改，`check-seo.py` 要求站点地图里的每个页面都列在其中。它不保证被任何 AI 平台读取或引用。
 - 首页中的 Google 与 Bing 公开验证标记用于保持当前站点所有权，请勿移除。验证标记可以公开，不是登录令牌或提交 API 密钥。
 - `/favicon.ico` 与 `/favicon.png` 沿用现有图标，兼容请求根目录图标的客户端；页面同时声明 64 × 64 PNG 图标。
 - 搜索表现使用站长平台的曝光、点击、查询词和索引数据判断；GEO 另外观察品牌是否被提及、是否推荐、是否引用本站，不能用提交成功代替效果。
@@ -80,7 +82,7 @@ Umami 使用独立应用和数据库，管理端仅绑定本机回环地址。HT
 
 ## 发布
 
-生产服务应只提供官网公开文件，不要把含 `.git` 的整个仓库用作公网服务目录。需发布 `index.html`、`en/`、`guides/`、`main.js`、`analytics.js`、`styles.css`、`assets/`、`favicon.ico`、`favicon.png`、`robots.txt`、`sitemap.xml`，以及站长平台要求的公开验证文件。`scripts/` 与 `translations/` 属于源码，不需要发布。
+生产服务应只提供官网公开文件，不要把含 `.git` 的整个仓库用作公网服务目录。需发布 `index.html`、`en/`、`guides/`、`main.js`、`analytics.js`、`styles.css`、`assets/`、`favicon.ico`、`favicon.png`、`robots.txt`、`sitemap.xml`、`llms.txt`，以及站长平台要求的公开验证文件。`scripts/` 与 `translations/` 属于源码，不需要发布。
 
 本机运行路径、后台服务配置和隧道令牌属于部署环境，保存在仓库外；令牌不得放入公开目录或提交 Git。
 

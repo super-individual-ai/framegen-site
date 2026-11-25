@@ -45,6 +45,34 @@ html = html.replace(/(<script type="application\/ld\+json" id="site-schema">)([\
   return `${open}\n${JSON.stringify(data, null, 2)}\n${close}`;
 });
 
+// FAQPage structured data is generated from the visible FAQ so the two never drift.
+const unescape = (value) => value.replace(/<[^>]+>/g, "").replaceAll("&quot;", '"').replaceAll("&lt;", "<").replaceAll("&gt;", ">").replaceAll("&amp;", "&").trim();
+const withFaqSchema = (page, url, lang) => {
+  const pairs = [...page.matchAll(/<details><summary data-i18n="q\d+">([\s\S]*?)<\/summary><p data-i18n="a\d+">([\s\S]*?)<\/p><\/details>/g)];
+  if (pairs.length === 0) throw new Error(`No FAQ entries found for ${url}`);
+  return page.replace(/(<script type="application\/ld\+json" id="site-schema">)([\s\S]*?)(<\/script>)/, (_, open, json, close) => {
+    const data = JSON.parse(json);
+    data["@graph"] = data["@graph"].filter((node) => node["@type"] !== "FAQPage");
+    data["@graph"].push({
+      "@type": "FAQPage",
+      "@id": `${url}#faq`,
+      url: `${url}#faq`,
+      inLanguage: lang,
+      isPartOf: { "@id": `${url}#webpage` },
+      mainEntity: pairs.map(([, question, answer]) => ({
+        "@type": "Question",
+        name: unescape(question),
+        acceptedAnswer: { "@type": "Answer", text: unescape(answer) },
+      })),
+    });
+    return `${open}\n${JSON.stringify(data, null, 2)}\n${close}`;
+  });
+};
+
+const zh = await readFile(new URL("index.html", base), "utf8");
+await writeFile(new URL("index.html", base), withFaqSchema(zh, "https://openduckframe.cn/", "zh-CN"));
+html = withFaqSchema(html, "https://openduckframe.cn/en/", "en");
+
 await mkdir(new URL("en/", base), { recursive: true });
 await writeFile(new URL("en/index.html", base), html);
 console.log(`Built ${fileURLToPath(new URL("en/index.html", base))}`);

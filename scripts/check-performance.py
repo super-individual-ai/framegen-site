@@ -28,6 +28,7 @@ class PerformanceChecks(unittest.TestCase):
         root = Path(cls.directory.name)
         (root / "assets").mkdir()
         (root / "index.html").write_text("homepage")
+        (root / "llms.txt").write_text("# OpenDuckFrame（开源小鸭）")
         (root / "assets/demo.mp4").write_bytes(bytes(range(256)) * 8)
         (root / "assets/empty.mp4").write_bytes(b"")
         (root / "feedback/privacy").mkdir(parents=True)
@@ -59,6 +60,12 @@ class PerformanceChecks(unittest.TestCase):
         status, headers, body = self.request("/")
         self.assertEqual((status, body), (200, b"homepage"))
         self.assertIn("max-age=0, s-maxage=300", headers["Cache-Control"])
+
+    def test_llms_txt_is_utf8_and_cached(self):
+        status, headers, body = self.request("/llms.txt")
+        self.assertEqual((status, body.decode("utf-8")), (200, "# OpenDuckFrame（开源小鸭）"))
+        self.assertEqual(headers["Content-type"], "text/plain; charset=utf-8")
+        self.assertIn("s-maxage=86400", headers["Cache-Control"])
 
     def test_static_cache_and_full_file(self):
         status, headers, body = self.request()

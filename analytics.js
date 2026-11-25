@@ -39,9 +39,9 @@
     const link = event.target.closest?.("a[href]");
     if (!link) return;
     const target = new URL(link.href, location.href);
-    if (target.hostname === "github.com" && target.pathname === "/Jun-bao/OpenDuckFrame/releases/latest/download/OpenDuckFrame.dmg") {
+    if (target.hostname === "github.com" && target.pathname === "/Jun-Rex/OpenDuckFrame/releases/latest/download/OpenDuckFrame.dmg") {
       track("download_click", link, { target: "dmg", release: "unknown" });
-    } else if (target.hostname === "github.com" && /^\/Jun-bao\/OpenDuckFrame\/releases(?:\/|$)/.test(target.pathname)) {
+    } else if (target.hostname === "github.com" && /^\/Jun-Rex\/OpenDuckFrame\/releases(?:\/|$)/.test(target.pathname)) {
       track("github_release_click", link);
     } else if (target.origin === location.origin && target.hash === "#download") {
       track("download_section_click", link);

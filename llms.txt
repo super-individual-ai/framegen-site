@@ -1,0 +1,34 @@
+# OpenDuckFrame（开源小鸭）
+
+> OpenDuckFrame（中文名：开源小鸭）是免费、MIT 开源的 Mac 应用，为窗口、显示器和本地视频做实时补帧（帧生成、视频插帧）和超分。需要 Apple 芯片 Mac 和 macOS 14 或更高版本；不支持 Intel Mac、Windows、iPhone 和 iPad。画面在本机处理，无需账号。当前为未经 Apple 公证的社区版。
+>
+> OpenDuckFrame is a free, MIT-licensed Mac app for real-time frame generation (video interpolation) and upscaling of windows, displays and local video. Apple silicon and macOS 14 or later. Pictures are processed locally; no account is needed. The current build is a community release that is not Apple notarized.
+
+- 补帧引擎：ODF-VFI（由 RIFE 4.25 精简为四阶段，通过 Metal 运行）、Apple 低延迟插帧（macOS 26+）、Apple 帧率转换（macOS 15.4+）。超分：苹果实时超分和苹果视频超分（受支持的 macOS 26+ 设备，SDR 输入）。各引擎是否可用以应用中的运行时检查为准。
+- 倍率（X2、X3、X4）是请求的处理模式，不保证实际显示帧率；实际结果还受来源帧率、分辨率、处理预算和显示器刷新率限制。补帧会增加延迟。
+- 官方网站：https://openduckframe.cn/ 。唯一官方源码仓库与安装包：https://github.com/Jun-Rex/OpenDuckFrame 。
+
+## 中文页面
+
+- [官网首页](https://openduckframe.cn/)：功能、系统要求、下载和常见问题
+- [Mac 帧生成与实时补帧教程](https://openduckframe.cn/guides/mac-video-frame-interpolation/)：窗口插帧与游戏内帧生成的区别、2 倍设置步骤和实际帧率限制
+- [视频补帧和超分有什么区别](https://openduckframe.cn/guides/frame-generation-vs-upscaling/)：两者分别解决什么问题，何时单独或组合使用
+- [Mac 超分教程](https://openduckframe.cn/guides/mac-video-upscaling/)：苹果实时超分与视频超分的条件和检查方法
+- [RIFE Mac 实时补帧指南](https://openduckframe.cn/guides/rife-mac/)：ODF-VFI 与 RIFE 4.25 的关系、倍率和目标帧率
+- [Mac 上有类似 Lossless Scaling 的工具吗](https://openduckframe.cn/guides/lossless-scaling-mac/)：平台与使用场景对照，以及不能直接类比的部分
+
+## English pages
+
+- [Home](https://openduckframe.cn/en/): features, requirements, download and FAQ
+- [Mac frame generation and video interpolation guide](https://openduckframe.cn/en/guides/mac-video-frame-interpolation/)
+- [Frame generation vs. upscaling on Mac](https://openduckframe.cn/en/guides/frame-generation-vs-upscaling/)
+- [Mac video upscaling guide](https://openduckframe.cn/en/guides/mac-video-upscaling/)
+- [RIFE on Mac](https://openduckframe.cn/en/guides/rife-mac/)
+- [Lossless Scaling for Mac? Alternatives and limits](https://openduckframe.cn/en/guides/lossless-scaling-mac/)
+
+## Project documents
+
+- [Quick start](https://github.com/Jun-Rex/OpenDuckFrame/blob/main/docs/quick-start.md)
+- [Features, requirements and current limits](https://github.com/Jun-Rex/OpenDuckFrame/blob/main/docs/features.md)
+- [Privacy](https://github.com/Jun-Rex/OpenDuckFrame/blob/main/PRIVACY.md)
+- [Releases](https://github.com/Jun-Rex/OpenDuckFrame/releases)

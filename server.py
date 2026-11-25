@@ -18,6 +18,9 @@ from feedback_service import FeedbackError, FeedbackService, MAX_REQUEST_BYTES, 
 
 
 class WebsiteHandler(StaticPerformanceMixin, SimpleHTTPRequestHandler):
+    # llms.txt is Chinese and English; declare UTF-8 so clients do not guess a legacy encoding.
+    extensions_map = {**SimpleHTTPRequestHandler.extensions_map, ".txt": "text/plain; charset=utf-8"}
+
     def parse_request(self):
         # Start after the request line arrives, excluding an idle preconnection.
         self._request_started = time.monotonic()
