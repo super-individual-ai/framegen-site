@@ -263,7 +263,7 @@
           <h4 data-i18n="notesTitle">In this version</h4>
           <ul>
             <li data-i18n="n1">During live interpolation, parts of a window that do not change, such as text, buttons and comments, keep the captured pixels, so browser pages around a video no longer alternate between sharp and soft. Detail right next to motion can still soften; ODF-VFI window optimization is not covered yet.</li>
-            <li data-i18n="n2">Apple low latency adds “720p · smoother playback” under Interpolation detail to reduce GPU load, and reserves more time before each frame reaches the screen, so fewer computed frames are dropped.</li>
+            <li data-i18n="n2">Apple low latency adds “720p · smoother playback” under Interpolation detail. It caps interpolation processing at 720p, which reduces GPU load when Automatic would use a larger size; output size is unchanged and generated frames may look softer. Each frame also gets more time before it reaches the screen, so fewer computed frames are dropped.</li>
             <li data-i18n="n3">Small picture changes are no longer mistaken for duplicate frames. Source-only preview now offers Stop Capture.</li>
             <li data-i18n="n4">Versions 0.6.2 and earlier will not be offered this update automatically. Download the installer here once and replace the app.</li>
           </ul>
