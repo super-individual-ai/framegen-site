@@ -65,7 +65,7 @@
       "operatingSystem": "macOS 14 or later",
       "processorRequirements": "Apple silicon",
       "softwareRequirements": "Apple interpolation and super resolution require supported macOS versions, hardware and input.",
-      "softwareVersion": "0.6.2",
+      "softwareVersion": "0.8.0",
       "featureList": [
         "Real-time frame generation (video interpolation)",
         "Real-time upscaling",
@@ -348,7 +348,7 @@
         <div class="release-head">
           <img src="/assets/icon-128.webp" alt="" width="64" height="64">
           <div>
-            <h3>OpenDuckFrame <span data-version>0.6.2</span></h3>
+            <h3>OpenDuckFrame <span data-version>0.8.0</span></h3>
             <p data-i18n="reqs">macOS 14 or later · Mac with Apple silicon</p>
           </div>
           <a class="btn solid" href="https://github.com/Jun-Rex/OpenDuckFrame/releases/latest/download/OpenDuckFrame.dmg" data-link="dmg"><span data-i18n="downloadDmg">Download .dmg</span></a>
@@ -361,9 +361,10 @@
         <div class="notes">
           <h4 data-i18n="notesTitle">In this version</h4>
           <ul>
-            <li data-i18n="n1">On supported devices, new and reset profiles use Apple low latency at 2×; saved engine choices remain unchanged.</li>
-            <li data-i18n="n2">Windows are grouped by application. Refresh guides Screen Recording access and reloads the list when permission becomes available.</li>
-            <li data-i18n="n3">A download control appears when an update is available; Apple video super resolution reuses buffers. Results depend on the device and source.</li>
+            <li data-i18n="n1">During live interpolation, parts of a window that do not change, such as text, buttons and comments, keep the captured pixels, so browser pages around a video no longer alternate between sharp and soft. Detail right next to motion can still soften; ODF-VFI window optimization is not covered yet.</li>
+            <li data-i18n="n2">Apple low latency adds “720p · smoother playback” under Interpolation detail to reduce GPU load, and reserves more time before each frame reaches the screen, so fewer computed frames are dropped.</li>
+            <li data-i18n="n3">Small picture changes are no longer mistaken for duplicate frames. Source-only preview now offers Stop Capture.</li>
+            <li data-i18n="n4">Versions 0.6.2 and earlier will not be offered this update automatically. Download the installer here once and replace the app.</li>
           </ul>
           <h4 data-i18n="limitsTitle">Known limits</h4>
           <ul>
@@ -470,6 +471,6 @@
   <form method="dialog"><button class="close" aria-label="Close" data-i18n-aria="ariaClose">×</button></form>
 </dialog>
 
-<script src="/main.js?v=20261125-geo1"></script>
+<script src="/main.js?v=20261125-v080"></script>
 </body>
 </html>

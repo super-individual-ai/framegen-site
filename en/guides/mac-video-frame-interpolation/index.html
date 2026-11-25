@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://openduckframe.cn/assets/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://openduckframe.cn/en/guides/mac-video-frame-interpolation/#article","url":"https://openduckframe.cn/en/guides/mac-video-frame-interpolation/","headline":"How to use frame generation on a Mac","description":"Use OpenDuckFrame for real-time frame generation on a Mac. Learn window and local-video interpolation, how it differs from in-game frame generation, 2× setup and actual output limits.","inLanguage":"en","datePublished":"2026-11-03","dateModified":"2026-11-14","about":{"@type":"SoftwareApplication","@id":"https://openduckframe.cn/#app","name":"OpenDuckFrame","alternateName":"开源小鸭","url":"https://openduckframe.cn/","sameAs":"https://github.com/Jun-Rex/OpenDuckFrame"},"isPartOf":{"@id":"https://openduckframe.cn/#website"},"image":"https://openduckframe.cn/assets/openduckframe-library.webp","citation":["https://github.com/Jun-Rex/OpenDuckFrame/blob/main/docs/quick-start.md","https://github.com/Jun-Rex/OpenDuckFrame/blob/main/docs/features.md"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"OpenDuckFrame","item":"https://openduckframe.cn/en/"},{"@type":"ListItem","position":2,"name":"Mac video interpolation guide","item":"https://openduckframe.cn/en/guides/mac-video-frame-interpolation/"}]}]}
+{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://openduckframe.cn/en/guides/mac-video-frame-interpolation/#article","url":"https://openduckframe.cn/en/guides/mac-video-frame-interpolation/","headline":"How to use frame generation on a Mac","description":"Use OpenDuckFrame for real-time frame generation on a Mac. Learn window and local-video interpolation, how it differs from in-game frame generation, 2× setup and actual output limits.","inLanguage":"en","datePublished":"2026-11-03","dateModified":"2026-11-25","about":{"@type":"SoftwareApplication","@id":"https://openduckframe.cn/#app","name":"OpenDuckFrame","alternateName":"开源小鸭","url":"https://openduckframe.cn/","sameAs":"https://github.com/Jun-Rex/OpenDuckFrame"},"isPartOf":{"@id":"https://openduckframe.cn/#website"},"image":"https://openduckframe.cn/assets/openduckframe-library.webp","citation":["https://github.com/Jun-Rex/OpenDuckFrame/blob/main/docs/quick-start.md","https://github.com/Jun-Rex/OpenDuckFrame/blob/main/docs/features.md"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"OpenDuckFrame","item":"https://openduckframe.cn/en/"},{"@type":"ListItem","position":2,"name":"Mac video interpolation guide","item":"https://openduckframe.cn/en/guides/mac-video-frame-interpolation/"}]}]}
 </script>
 <script>try { const theme = localStorage.getItem("odf-theme"); if (theme === "dark" || theme === "light") document.documentElement.dataset.theme = theme; } catch (e) {}</script>
 <script defer src="/analytics.js?v=20261125-geo1" data-odf-analytics></script>
@@ -35,7 +35,7 @@
   <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/en/">Home</a> / Mac video interpolation guide</nav>
   <article>
     <h1>How to use frame generation on a Mac</h1>
-    <p class="article-meta">Updated <time datetime="2026-11-14">November 14, 2026</time> · Based on OpenDuckFrame 0.6.2 project documentation · <a href="/guides/mac-video-frame-interpolation/" hreflang="zh-CN" lang="zh-CN">中文版</a></p>
+    <p class="article-meta">Updated <time datetime="2026-11-25">November 25, 2026</time> · Based on OpenDuckFrame 0.8.0 project documentation · <a href="/guides/mac-video-frame-interpolation/" hreflang="zh-CN" lang="zh-CN">中文版</a></p>
     <p class="answer">OpenDuckFrame is a free, open-source Mac app that generates intermediate pictures for windows, displays and local video in real time. On an Apple silicon Mac, open File → Quality Workbench, choose a source, start with 2× frame generation, and compare the FPS overlay and the picture with the original. Picture processing stays on your Mac.</p>
 
     <h2>Check your Mac and display first</h2>
@@ -65,18 +65,19 @@
 
     <h2>Why does 4× not always mean 120 fps?</h2>
     <p>A multiplier is a requested processing mode. For example, 30 fps × 4 has a theoretical target of 120 fps. Model computation, output scheduling and physical presentation are separate stages. The engine, source cadence, resolution, frame budget and display refresh rate affect the result.</p>
-    <p>Do not judge output from the multiplier or the number of generated pictures alone. Check actual presentation and how the picture looks. If it cannot keep up, return to X2, lower the source resolution, or try a lighter quality mode.</p>
+    <p>Do not judge output from the multiplier or the number of generated pictures alone. Check actual presentation and how the picture looks. If it cannot keep up, return to X2, lower the source resolution, or try a lighter quality mode. With Apple low-latency live interpolation, set Interpolation detail to “720p · smoother playback” to reduce GPU load.</p>
 
     <h2>What if capture, detail or motion looks wrong?</h2>
     <ul>
       <li><strong>No captured picture:</strong> check Screen Recording permission and the selected source. Protected content may not be capturable.</li>
       <li><strong>Softness or motion artifacts:</strong> compare at the same output size, switch the scaling technology, or disable one enhancement at a time to identify which stage changes the picture.</li>
+      <li><strong>Soft text or buttons on a web page:</strong> since 0.8.0, parts of a window that do not change, such as text, buttons and comments, keep the captured pixels during live interpolation. Detail right next to motion can still soften. ODF-VFI window optimization is not covered yet.</li>
       <li><strong>Problems after resizing or full screen:</strong> reselect the source. Start basic checks with a normal window or full-page video.</li>
       <li><strong>More input latency:</strong> frame generation adds delay, which varies with the Mac and settings. Compare original and enhanced output for latency-sensitive use.</li>
     </ul>
     <p>This guide covers real-time enhancement while viewing. Generating intermediate pictures does not increase the source application's simulation or logic update rate.</p>
 
-    <div class="sources"><p>Sources: the project's <a href="https://github.com/Jun-Rex/OpenDuckFrame/blob/main/docs/quick-start.md">quick start</a> and <a href="https://github.com/Jun-Rex/OpenDuckFrame/blob/main/docs/features.md">features and requirements</a>. This guide uses the 0.6.2 project documentation; the app's availability state determines supported configurations.</p></div>
+    <div class="sources"><p>Sources: the project's <a href="https://github.com/Jun-Rex/OpenDuckFrame/blob/main/docs/quick-start.md">quick start</a> and <a href="https://github.com/Jun-Rex/OpenDuckFrame/blob/main/docs/features.md">features and requirements</a>. This guide uses the 0.8.0 project documentation; the app's availability state determines supported configurations.</p></div>
     <nav class="related" aria-label="Related pages"><a href="/en/guides/mac-video-upscaling/">Mac video upscaling guide</a><a href="/en/guides/frame-generation-vs-upscaling/">Frame generation vs. upscaling</a><a href="/en/#download">Download OpenDuckFrame</a><a href="https://github.com/Jun-Rex/OpenDuckFrame/issues">Report a problem</a><a href="/en/guides/rife-mac/">RIFE settings and FPS limits</a></nav>
   </article>
 </main>
