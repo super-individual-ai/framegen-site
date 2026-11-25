@@ -46,9 +46,21 @@ html = html.replace(/(<script type="application\/ld\+json" id="site-schema">)([\
 });
 
 // FAQPage structured data is generated from the visible FAQ so the two never drift.
-const unescape = (value) => value.replace(/<[^>]+>/g, "").replaceAll("&quot;", '"').replaceAll("&lt;", "<").replaceAll("&gt;", ">").replaceAll("&amp;", "&").trim();
+const unescape = (value) => {
+  const text = value.replace(/<[^>]+>/g, "").replaceAll("&quot;", '"').replaceAll("&#39;", "'").replaceAll("&lt;", "<").replaceAll("&gt;", ">").replaceAll("&amp;", "&").replace(/\s+/g, " ").trim();
+  if (/&[#a-z0-9]+;/i.test(text)) throw new Error(`Unsupported HTML entity in FAQ text: ${text}`);
+  return text;
+};
 const withFaqSchema = (page, url, lang) => {
-  const pairs = [...page.matchAll(/<details><summary data-i18n="q\d+">([\s\S]*?)<\/summary><p data-i18n="a\d+">([\s\S]*?)<\/p><\/details>/g)];
+  const section = page.match(/<div class="faq">([\s\S]*?)<\/div>/);
+  if (!section) throw new Error(`No FAQ section found for ${url}`);
+  const blocks = [...section[1].replace(/<!--[\s\S]*?-->/g, "").matchAll(/<details>([\s\S]*?)<\/details>/g)].map(([, inner]) => inner);
+  const pairs = blocks.map((inner) => {
+    const question = inner.match(/<summary[^>]*>([\s\S]*?)<\/summary>/);
+    const answer = inner.match(/<p[^>]*>([\s\S]*?)<\/p>/);
+    if (!question || !answer) throw new Error(`FAQ entry without a question or answer on ${url}`);
+    return [null, question[1], answer[1]];
+  });
   if (pairs.length === 0) throw new Error(`No FAQ entries found for ${url}`);
   return page.replace(/(<script type="application\/ld\+json" id="site-schema">)([\s\S]*?)(<\/script>)/, (_, open, json, close) => {
     const data = JSON.parse(json);

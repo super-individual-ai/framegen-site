@@ -16,7 +16,7 @@
 - [Mac 超分教程](https://openduckframe.cn/guides/mac-video-upscaling/)：苹果实时超分与视频超分的条件和检查方法
 - [RIFE Mac 实时补帧指南](https://openduckframe.cn/guides/rife-mac/)：ODF-VFI 与 RIFE 4.25 的关系、倍率和目标帧率
 - [Mac 上有类似 Lossless Scaling 的工具吗](https://openduckframe.cn/guides/lossless-scaling-mac/)：平台与使用场景对照，以及不能直接类比的部分
-- [Mac 补帧和超分软件有哪些](https://openduckframe.cn/guides/mac-frame-interpolation-software/)：13 款工具按实时或导出、免费或付费对比
+- [Mac 补帧和超分软件有哪些](https://openduckframe.cn/guides/mac-frame-interpolation-software/)：15 款工具按实时或导出、免费或付费对比
 
 ## English pages
 

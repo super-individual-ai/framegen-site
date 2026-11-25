@@ -56,6 +56,34 @@ class Page(HTMLParser):
         return [a for tag, a in self.tags if tag == "link" and a.get("rel") == rel]
 
 
+def faq_text(fragment):
+    return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", "", fragment))).strip()
+
+
+def check_faq(path, text, nodes):
+    """The FAQPage markup must list exactly the visible FAQ entries, in order."""
+    section = re.search(r'<div class="faq">(.*?)</div>', text, re.S)
+    if not section:
+        raise ValueError(f"{path}: FAQ section missing")
+    visible = []
+    for block in re.findall(r"<details>(.*?)</details>", re.sub(r"<!--.*?-->", "", section.group(1), flags=re.S), re.S):
+        question = re.search(r"<summary[^>]*>(.*?)</summary>", block, re.S)
+        answer = re.search(r"<p[^>]*>(.*?)</p>", block, re.S)
+        if not question or not answer:
+            raise ValueError(f"{path}: FAQ entry without a question or answer")
+        visible.append((faq_text(question.group(1)), faq_text(answer.group(1))))
+    faq = [n for n in nodes if n.get("@type") == "FAQPage"]
+    marked = None
+    if len(faq) == 1 and all(q.get("@type") == "Question" and q.get("acceptedAnswer", {}).get("@type") == "Answer" for q in faq[0].get("mainEntity", [])):
+        marked = [(faq_text(q.get("name", "")), faq_text(q["acceptedAnswer"].get("text", ""))) for q in faq[0]["mainEntity"]]
+    if not visible or marked != visible:
+        raise ValueError(f"{path}: FAQPage structured data must match the visible FAQ; run node scripts/build-en.mjs")
+
+
+def llms_links(text):
+    return re.findall(r"^- \[[^\]]+\]\((https://openduckframe\.cn/[^)\s]*)\)", text, re.M)
+
+
 def check(directory, base_url=None):
     root = directory.resolve()
     pages = {"/": root / "index.html", "/en/": root / "en/index.html"}
@@ -71,8 +99,9 @@ def check(directory, base_url=None):
     if len(locations) != len(expected) or set(locations) != expected:
         raise ValueError("Sitemap must contain every published SEO page exactly once")
     llms = (root / "llms.txt").read_text()
-    if not llms.startswith("# OpenDuckFrame") or any(url not in llms for url in expected):
-        raise ValueError("llms.txt must list every published SEO page; add new pages there too")
+    listed = llms_links(llms)
+    if not llms.startswith("# OpenDuckFrame") or len(listed) != len(set(listed)) or set(listed) != expected:
+        raise ValueError("llms.txt must link each published SEO page exactly once and no other site page; update its page list")
     robots = (root / "robots.txt").read_text()
     if "Sitemap: " + ORIGIN + "/sitemap.xml" not in robots:
         raise ValueError("robots.txt does not declare the official sitemap")
@@ -119,14 +148,7 @@ def check(directory, base_url=None):
         if not required <= types:
             raise ValueError(f"{path}: missing structured-data types {required - types}")
         if path in ("/", "/en/"):
-            visible = [
-                tuple(html.unescape(re.sub(r"<[^>]+>", "", part)).strip() for part in pair)
-                for pair in re.findall(r'<details><summary data-i18n="q\d+">(.*?)</summary><p data-i18n="a\d+">(.*?)</p></details>', texts[path], re.S)
-            ]
-            faq = [n for n in nodes if n.get("@type") == "FAQPage"]
-            marked = [(q.get("name"), q.get("acceptedAnswer", {}).get("text")) for q in faq[0].get("mainEntity", [])] if len(faq) == 1 else None
-            if not visible or marked != visible:
-                raise ValueError(f"{path}: FAQPage structured data must match the visible FAQ; run node scripts/build-en.mjs")
+            check_faq(path, texts[path], nodes)
         for node in nodes:
             if node.get("@type") in ("WebPage", "TechArticle"):
                 if node.get("url") != ORIGIN + path or node.get("inLanguage") != lang:

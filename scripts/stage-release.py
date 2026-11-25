@@ -23,21 +23,9 @@ PUBLIC_ROOT = {
     "index.html", "main.js", "analytics.js", "styles.css", "favicon.ico", "favicon.png",
     "robots.txt", "sitemap.xml", "llms.txt",
 }
-REQUIRED_PUBLIC = PUBLIC_ROOT | {
+REQUIRED_PUBLIC = (PUBLIC_ROOT - {"llms.txt"}) | {
     "feedback/index.html", "feedback/privacy/index.html",
     "feedback/main.js", "feedback/styles.css",
-}
-SEO_PATHS = {
-    "/", "/en/",
-    "/guides/mac-video-frame-interpolation/",
-    "/en/guides/mac-video-frame-interpolation/",
-    "/guides/frame-generation-vs-upscaling/",
-    "/en/guides/frame-generation-vs-upscaling/",
-    "/guides/mac-video-upscaling/",
-    "/en/guides/mac-video-upscaling/",
-    "/guides/rife-mac/", "/en/guides/rife-mac/",
-    "/guides/lossless-scaling-mac/", "/en/guides/lossless-scaling-mac/",
-    "/guides/mac-frame-interpolation-software/", "/en/guides/mac-frame-interpolation-software/",
 }
 PUBLIC_DIRS = {"assets", "en", "guides", "feedback"}
 PUBLIC_EXTENSIONS = {
@@ -140,9 +128,11 @@ def main():
 
     sitemap = ElementTree.parse(output / "site/sitemap.xml")
     locations = sitemap.findall(".//{http://www.sitemaps.org/schemas/sitemap/0.9}loc")
-    expected = {"https://openduckframe.cn" + path for path in SEO_PATHS}
-    if len(locations) != len(expected) or {item.text for item in locations} != expected:
-        raise ValueError(f"Expected exactly {len(expected)} distinct canonical SEO URLs in sitemap.xml")
+    # The page list comes from the staged commit itself, so older commits can be
+    # staged for rollback; that commit's own check-seo.py enforces its required pages.
+    expected = {item.text for item in locations}
+    if not locations or len(locations) != len(expected):
+        raise ValueError("sitemap.xml must list each canonical SEO URL exactly once")
     for location in locations:
         url = urlsplit(location.text)
         if url.scheme != "https" or url.netloc != "openduckframe.cn" or url.query or url.fragment:
