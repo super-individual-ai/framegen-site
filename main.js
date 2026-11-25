@@ -2,7 +2,7 @@
 
 // One place for every outbound link and the current release.
 const SITE = {
-  version: "0.6.2",
+  version: "0.8.0",
   links: {
     repo: "https://github.com/Jun-Rex/OpenDuckFrame",
     readme: "https://github.com/Jun-Rex/OpenDuckFrame#readme",

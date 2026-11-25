@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://openduckframe.cn/assets/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://openduckframe.cn/guides/mac-video-upscaling/#article","url":"https://openduckframe.cn/guides/mac-video-upscaling/","headline":"Mac 超分怎么用？窗口与视频放大教程","description":"用 OpenDuckFrame 在 Mac 上放大窗口、显示器和本地视频。了解苹果实时超分与视频超分的条件，以及画面变软或引擎不可用时的检查方法。","inLanguage":"zh-CN","datePublished":"2026-11-04","dateModified":"2026-11-14","about":{"@type":"SoftwareApplication","@id":"https://openduckframe.cn/#app","name":"OpenDuckFrame","alternateName":"开源小鸭","url":"https://openduckframe.cn/","sameAs":"https://github.com/Jun-Rex/OpenDuckFrame"},"isPartOf":{"@id":"https://openduckframe.cn/#website"},"image":"https://openduckframe.cn/assets/openduckframe-library.webp","citation":["https://github.com/Jun-Rex/OpenDuckFrame/blob/main/docs/quick-start.md","https://github.com/Jun-Rex/OpenDuckFrame/blob/main/docs/features.md"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"OpenDuckFrame 官网","item":"https://openduckframe.cn/"},{"@type":"ListItem","position":2,"name":"Mac 超分怎么用？窗口与视频放大教程","item":"https://openduckframe.cn/guides/mac-video-upscaling/"}]}]}
+{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://openduckframe.cn/guides/mac-video-upscaling/#article","url":"https://openduckframe.cn/guides/mac-video-upscaling/","headline":"Mac 超分怎么用？窗口与视频放大教程","description":"用 OpenDuckFrame 在 Mac 上放大窗口、显示器和本地视频。了解苹果实时超分与视频超分的条件，以及画面变软或引擎不可用时的检查方法。","inLanguage":"zh-CN","datePublished":"2026-11-04","dateModified":"2026-11-25","about":{"@type":"SoftwareApplication","@id":"https://openduckframe.cn/#app","name":"OpenDuckFrame","alternateName":"开源小鸭","url":"https://openduckframe.cn/","sameAs":"https://github.com/Jun-Rex/OpenDuckFrame"},"isPartOf":{"@id":"https://openduckframe.cn/#website"},"image":"https://openduckframe.cn/assets/openduckframe-library.webp","citation":["https://github.com/Jun-Rex/OpenDuckFrame/blob/main/docs/quick-start.md","https://github.com/Jun-Rex/OpenDuckFrame/blob/main/docs/features.md"]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"OpenDuckFrame 官网","item":"https://openduckframe.cn/"},{"@type":"ListItem","position":2,"name":"Mac 超分怎么用？窗口与视频放大教程","item":"https://openduckframe.cn/guides/mac-video-upscaling/"}]}]}
 </script>
 <script>try { const theme = localStorage.getItem("odf-theme"); if (theme === "dark" || theme === "light") document.documentElement.dataset.theme = theme; } catch (e) {}</script>
 <script defer src="/analytics.js?v=20261125-geo1" data-odf-analytics></script>
@@ -35,7 +35,7 @@
   <nav class="breadcrumbs" aria-label="当前位置"><a href="/">官网</a> / Mac 视频超分教程</nav>
   <article>
     <h1>Mac 超分怎么用？窗口与视频放大教程</h1>
-    <p class="article-meta">更新于 <time datetime="2026-11-14">2026 年 11 月 14 日</time> · 依据 OpenDuckFrame 0.6.2 项目文档 · <a href="/en/guides/mac-video-upscaling/" hreflang="en" lang="en">English</a></p>
+    <p class="article-meta">更新于 <time datetime="2026-11-25">2026 年 11 月 25 日</time> · 依据 OpenDuckFrame 0.8.0 项目文档 · <a href="/en/guides/mac-video-upscaling/" hreflang="en" lang="en">English</a></p>
     <p class="answer">在 Mac 上给窗口或视频做超分，可以使用免费开源的 OpenDuckFrame（开源小鸭）。打开“文件 → 画质工作台”，选择来源，先单独尝试苹果实时超分或苹果视频超分。苹果超分需要受支持的 macOS 26+、硬件和 SDR 输入；在相同输出尺寸下比较开启前后的效果。</p>
 
     <h2>超分和帧生成解决什么问题？</h2>
@@ -54,7 +54,7 @@
     <ol>
       <li><strong>下载并打开应用。</strong>从<a href="/#download">官网的下载区域</a>进入 GitHub Release。当前社区版未经过 Apple 公证，首次打开时先确认下载来源，再根据 macOS 提示自行决定是否允许打开。</li>
       <li><strong>选择来源。</strong>打开“文件 → 画质工作台”（⇧⌘E）。网页视频选浏览器窗口，播放器或串流画面选对应窗口，本地文件可以直接选择“视频文件”。</li>
-      <li><strong>选择输出并先只测试缩放。</strong>选好输出显示器，启用一个可用的缩放引擎。补帧与缩放可以分别配置，先只开启一项，便于判断画面变化来自哪里。</li>
+      <li><strong>选择输出并先只测试缩放。</strong>窗口和显示器的增强画面跟随来源；本地视频可以选择输出显示器。启用一个可用的缩放引擎。补帧与缩放可以分别配置，先只开启一项，便于判断画面变化来自哪里。</li>
       <li><strong>开始增强并比较。</strong>窗口模式选择窗口后点击“指定窗口增强”，或使用“延迟增强”；显示器和本地视频点击“开始增强”。保持相同输出尺寸，比较开启前后的画面，并检查字幕、边缘和实际输出帧率。</li>
       <li><strong>保存适合该来源的配置。</strong>画面效果和处理开销合适后再保存。更换视频分辨率或来源应用后，重新检查实际结果。</li>
     </ol>

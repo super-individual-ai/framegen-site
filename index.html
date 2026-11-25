@@ -65,7 +65,7 @@
       "operatingSystem": "macOS 14 or later",
       "processorRequirements": "Apple silicon",
       "softwareRequirements": "Apple 原生插帧和超分需要受支持的 macOS 版本、硬件与输入。",
-      "softwareVersion": "0.6.2",
+      "softwareVersion": "0.8.0",
       "featureList": [
         "实时补帧（视频插帧）",
         "实时超分辨率",
@@ -348,7 +348,7 @@
         <div class="release-head">
           <img src="assets/icon-128.webp" alt="" width="64" height="64">
           <div>
-            <h3>OpenDuckFrame <span data-version>0.6.2</span></h3>
+            <h3>OpenDuckFrame <span data-version>0.8.0</span></h3>
             <p data-i18n="reqs">macOS 14 或更高 · Apple 芯片的 Mac</p>
           </div>
           <a class="btn solid" href="https://github.com/Jun-Rex/OpenDuckFrame/releases/latest/download/OpenDuckFrame.dmg" data-link="dmg"><span data-i18n="downloadDmg">下载 .dmg</span></a>
@@ -361,9 +361,10 @@
         <div class="notes">
           <h4 data-i18n="notesTitle">这一版有什么</h4>
           <ul>
-            <li data-i18n="n1">受支持设备首次使用或恢复默认时采用 Apple 低延迟 2×；已有配置的引擎选择不变。</li>
-            <li data-i18n="n2">窗口按应用分组；刷新列表时提供录屏授权引导，权限生效后自动刷新。</li>
-            <li data-i18n="n3">有更新时工作台显示下载入口；苹果视频超分复用缓冲区，实际效果仍取决于设备与片源。</li>
+            <li data-i18n="n1">实时补帧时，窗口里没变化的部分（文字、按钮、评论区）直接用原画，在浏览器里看视频不再整页一帧清楚一帧糊。紧挨运动画面的细节仍可能略软；ODF-VFI 的窗口优化模式暂不包括。</li>
+            <li data-i18n="n2">Apple 低延迟的“插帧画质”新增“720p · 流畅优先”，把插帧处理尺寸限制在 720p 以内，自动档用到更大尺寸时可减轻 GPU 负担；输出尺寸不变，生成的帧可能略软。每帧上屏也预留了更多时间，减少已算好的帧被丢弃。</li>
+            <li data-i18n="n3">画面里很小的变化不再被误当成重复帧丢掉；只预览原画时，按钮显示为“停止采集”。</li>
+            <li data-i18n="n4">0.6.2 及更早的版本收不到这次的自动更新提示，请在这里手动下载一次安装包覆盖安装。</li>
           </ul>
           <h4 data-i18n="limitsTitle">已知限制</h4>
           <ul>
@@ -470,6 +471,6 @@
   <form method="dialog"><button class="close" aria-label="关闭" data-i18n-aria="ariaClose">×</button></form>
 </dialog>
 
-<script src="main.js?v=20261125-geo1"></script>
+<script src="main.js?v=20261125-v080"></script>
 </body>
 </html>
