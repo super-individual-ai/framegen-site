@@ -32,8 +32,8 @@ test.click("https://github.com/Jun-Rex/OpenDuckFrame/releases");
 assert.equal(test.calls[10][0], "download_section_click");
 assert.equal(test.calls[11][0], "github_release_click");
 // Cached pages from before the repository moved still link to the old owner; GitHub redirects them.
-test.click("https://github.com/Jun-Rex/OpenDuckFrame/releases/latest/download/OpenDuckFrame.dmg");
-test.click("https://github.com/Jun-Rex/OpenDuckFrame/releases");
+test.click("https://github.com/Jun-bao/OpenDuckFrame/releases/latest/download/OpenDuckFrame.dmg");
+test.click("https://github.com/Jun-bao/OpenDuckFrame/releases");
 assert.deepEqual(test.calls.slice(12).map(([name]) => name), ["download_click", "github_release_click"]);
 test.calls.length = 12;
 const sanitized = test.window.odfAnalyticsBeforeSend("event", { referrer: "https://search.example/private?q=secret", title: "Public page" });
