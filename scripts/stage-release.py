@@ -37,6 +37,7 @@ SEO_PATHS = {
     "/en/guides/mac-video-upscaling/",
     "/guides/rife-mac/", "/en/guides/rife-mac/",
     "/guides/lossless-scaling-mac/", "/en/guides/lossless-scaling-mac/",
+    "/guides/mac-frame-interpolation-software/", "/en/guides/mac-frame-interpolation-software/",
 }
 PUBLIC_DIRS = {"assets", "en", "guides", "feedback"}
 PUBLIC_EXTENSIONS = {

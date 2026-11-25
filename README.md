@@ -36,6 +36,7 @@ python3 -m http.server 4178 --bind 127.0.0.1
 - `main.js`：链接、版本、主题和播放器。
 - `translations/en.json`：英文文案；修改首页或翻译后运行 `node scripts/build-en.mjs` 更新 `en/index.html`，生成后即可静态发布，无需服务器构建。
 - `guides/` 和 `en/guides/`：中英文帧生成与实时补帧教程、视频超分教程、补帧与超分对照。核心结论与步骤写在 HTML 正文中，附项目文档依据。
+- 双语 `mac-frame-interpolation-software/` 对比 13 款 Mac 补帧、超分工具，价格和功能按各官网核对（2026-11-25），每半年或同类工具有重大变化时复核一次，更新 `dateModified` 与站点地图日期。
 - 新增双语 `rife-mac/` 与 `lossless-scaling-mac/` 专题，沿用现有教程版式，说明 RIFE 设置和官方资料支持的客观对比。动画补帧专题待有可展示素材和实测依据后再发布。
 - `styles.css`：浅色和深色主题，桌面端和移动端样式。
 - `assets/openduckframe-library.webp`：v0.1.0 技术库实机截图，属于旧版界面。页面说明须保留“v0.1.0 旧版”标注，不能当作当前界面；有新的实机截图前不要改成当前版本号。
@@ -49,7 +50,7 @@ python3 -m http.server 4178 --bind 127.0.0.1
 - JSON-LD 描述网站、网页及软件的身份、系统要求、免费价格、MIT 许可与官方源码。不填写虚构评分，也不保证软件富媒体搜索结果。
 - 首页“开源构建”提供中英文名称、官网域名、唯一源代码仓库、版本发布与反馈入口，便于读者及搜索系统核对项目身份。结构化数据将首页的主要对象明确为 OpenDuckFrame 应用，指南也在本页标记中写出产品名称和官网地址。
 - 核心产品介绍、安装要求、使用步骤和 FAQ 都在原始 HTML 中，抓取不依赖 JavaScript。中文首页 `/`、英文首页 `/en/` 有独立规范网址、静态正文与双向 `hreflang`。语言按钮使用普通链接，不按浏览器语言或旧偏好自动改写页面。
-- 五篇指南均有独立中英文版本、标题、摘要、规范网址、文章和面包屑结构化数据；从对应语言首页和彼此之间直接链接，通过双向 `hreflang` 关联。只有实际更新内容时才更新站点地图的 `lastmod`。
+- 六篇指南均有独立中英文版本、标题、摘要、规范网址、文章和面包屑结构化数据；从对应语言首页和彼此之间直接链接，通过双向 `hreflang` 关联。只有实际更新内容时才更新站点地图的 `lastmod`。
 - `robots.txt` 允许搜索引擎和搜索用途的 AI 爬虫访问，并公布 `sitemap.xml`；抓取服务还必须能通过 Cloudflare 和源站访问。
 - GEO 依靠可核对的产品事实、直接回答问题的正文与源码文档链接；不把倍率、演示动画或单一设备测量写成普遍效果承诺。
 - 上线后可将站点地图提交到搜索引擎站长平台。完成技术设置或提交网址，都不等于已经收录、获得排名或被 AI 推荐。
@@ -70,7 +71,7 @@ node scripts/check-analytics-js.mjs
 git diff --check
 ```
 
-`check-seo.py` 要求原有八页继续存在，核对全部已发布指南的标题、语言、JSON-LD、canonical、双向 hreflang、站点地图及本地文件／锚点。可增加 `--base-url https://openduckframe.cn` 检查线上 HTML；使用配置有可信 CA 根证书的 Python 环境。自检请求使用明确的 OpenDuckFrame 标识，不冒充真实搜索爬虫。
+`check-seo.py` 要求已有的十四页继续存在，核对全部已发布指南的标题、语言、JSON-LD、canonical、双向 hreflang、站点地图及本地文件／锚点。可增加 `--base-url https://openduckframe.cn` 检查线上 HTML；使用配置有可信 CA 根证书的 Python 环境。自检请求使用明确的 OpenDuckFrame 标识，不冒充真实搜索爬虫。
 
 ### 网站统计
 
@@ -86,7 +87,7 @@ Umami 使用独立应用和数据库，管理端仅绑定本机回环地址。HT
 
 本机运行路径、后台服务配置和隧道令牌属于部署环境，保存在仓库外；令牌不得放入公开目录或提交 Git。
 
-`server.py` 用于生产服务，启动时必须显式传入只含公开文件的 `--directory`。它把 `www` 与 `index.html` 别名合并到正式 HTTPS 网址，保留路径和查询参数；中文、英文与五篇指南仍各有独立规范地址。服务脚本不放入公开文件目录。
+`server.py` 用于生产服务，启动时必须显式传入只含公开文件的 `--directory`。它把 `www` 与 `index.html` 别名合并到正式 HTTPS 网址，保留路径和查询参数；中文、英文与六篇指南仍各有独立规范地址。服务脚本不放入公开文件目录。
 
 ### 完整发布包与回退
 
@@ -98,11 +99,11 @@ python3 scripts/stage-release.py --output /absolute/private/runtime/releases/rel
 
 `--output` 必须在源码目录以外且尚不存在。`HEAD` 模式拒绝未提交的工作区；如需从历史提交回退，可显式使用 `--ref <commit>`。脚本直接读取 Git 提交中的文件，不把当前工作区或机器私有配置混进发布物。
 
-发布包包含 `site/` 下的公开文件，以及公开目录之外的 `server.py`、`performance_http.py`、`feedback_service.py`、`analytics_service.py` 和检查／统计维护脚本。脚本先校验白名单、十二个站点地图页面、服务模块导入及 HTTP／统计回归测试，全部通过才写出 `release-manifest.json`（提交、文件 SHA-256 和检查结果）。含 `INCOMPLETE` 的目录不得部署。脚本本身只准备发布包，不切换服务、不读取反馈配置或隧道凭据。
+发布包包含 `site/` 下的公开文件，以及公开目录之外的 `server.py`、`performance_http.py`、`feedback_service.py`、`analytics_service.py` 和检查／统计维护脚本。脚本先校验白名单、十四个站点地图页面、服务模块导入及 HTTP／统计回归测试，全部通过才写出 `release-manifest.json`（提交、文件 SHA-256 和检查结果）。含 `INCOMPLETE` 的目录不得部署。脚本本身只准备发布包，不切换服务、不读取反馈配置或隧道凭据。
 
 切换时先保留现有 HTTP 服务配置。将服务的程序路径、`--directory` 和工作目录一并指向同一个已验证发布目录；`--feedback-config` 继续使用公开目录外的原有私有配置；启用统计时 `--analytics-config` 指向独立的私有上游配置。仅重载官网 HTTP 服务。不要边覆盖单个服务文件边重启，否则可能出现主文件已更新、依赖模块尚未到位的启动失败。
 
-切换后检查源站与正式域名的十二个 SEO 页面、反馈页的 `no-store`、视频 Range、规范重定向和服务启动日志，并将运行中的程序参数与发布清单对照。保留切换前的发布目录和服务配置；失败时恢复该配置并重载 HTTP 服务，再验证同一组路径。Cloudflare 缓存更新与源站切换分别核对，源站成功不代表边缘已经更新。
+切换后检查源站与正式域名的十四个 SEO 页面、反馈页的 `no-store`、视频 Range、规范重定向和服务启动日志，并将运行中的程序参数与发布清单对照。保留切换前的发布目录和服务配置；失败时恢复该配置并重载 HTTP 服务，再验证同一组路径。Cloudflare 缓存更新与源站切换分别核对，源站成功不代表边缘已经更新。
 
 ### 网页性能
 

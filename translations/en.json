@@ -129,6 +129,8 @@
   "guideUpscaleBody": "Learn the requirements for Apple low-latency and video super resolution, and compare picture quality, processing cost and input limits.",
   "guideRifeTitle": "How to use RIFE on a Mac",
   "guideRifeBody": "How ODF-VFI relates to RIFE 4.25, live capture and files, multipliers, target FPS and what to do when output falls behind.",
+  "guideSoftwareTitle": "Which Mac apps do frame interpolation and upscaling?",
+  "guideSoftwareBody": "13 tools compared by real-time or export, free or paid, and window or local file, with the uses and limits of each.",
   "guideCompareTitle": "Is there a tool like Lossless Scaling for Mac?",
   "guideCompareBody": "Compare documented platforms and use cases without assuming equivalent compatibility, quality or latency.",
   "footAnalytics": "Website analytics",

@@ -14,7 +14,7 @@ ORIGIN = "https://openduckframe.cn"
 BASE_PATHS = {"/", "/en/"} | {
     prefix + slug + "/"
     for prefix in ("/guides/", "/en/guides/")
-    for slug in ("mac-video-frame-interpolation", "frame-generation-vs-upscaling", "mac-video-upscaling")
+    for slug in ("mac-video-frame-interpolation", "frame-generation-vs-upscaling", "mac-video-upscaling", "rife-mac", "lossless-scaling-mac", "mac-frame-interpolation-software")
 }
 
 

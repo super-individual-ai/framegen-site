@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://openduckframe.cn/</loc>
-    <lastmod>2026-11-14</lastmod>
+    <lastmod>2026-11-25</lastmod>
   </url>
   <url>
     <loc>https://openduckframe.cn/en/</loc>
-    <lastmod>2026-11-14</lastmod>
+    <lastmod>2026-11-25</lastmod>
   </url>
   <url>
     <loc>https://openduckframe.cn/guides/mac-video-frame-interpolation/</loc>
@@ -47,5 +47,13 @@
   <url>
     <loc>https://openduckframe.cn/en/guides/lossless-scaling-mac/</loc>
     <lastmod>2026-11-14</lastmod>
+  </url>
+  <url>
+    <loc>https://openduckframe.cn/guides/mac-frame-interpolation-software/</loc>
+    <lastmod>2026-11-25</lastmod>
+  </url>
+  <url>
+    <loc>https://openduckframe.cn/en/guides/mac-frame-interpolation-software/</loc>
+    <lastmod>2026-11-25</lastmod>
   </url>
 </urlset>
